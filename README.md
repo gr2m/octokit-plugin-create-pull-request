@@ -1,7 +1,3 @@
-# 🚧 THIS IS WORK IN PROGRESS 🚧
-
-See [#1](https://github.com/gr2m/octokit-create-pull-request/pull/1) for the work-in-progress implementation
-
 # octokit-create-pull-request
 
 > Octokit plugin to create a pull request with multiple file changes
