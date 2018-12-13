@@ -9,9 +9,9 @@
 
 Features
 
-- Creates a fork if necessary
 - Retrieves the repository’s default branch unless `base` branch is set
 - Makes multiple file changes using a single commit
+- See [Todos](#todos) for more cool feature ideas! Pull requests welcome!
 
 ## Usage
 
@@ -42,6 +42,8 @@ octokit.createPullRequest({
 
 ## Todos
 
+- **Creates a fork if necessary**  
+  If the authenticated user does not have write access to the repository then create a fork first.
 - **Deleting files**  
   The challenge with deleting files is hat the [`base_tree` parameter](https://developer.github.com/v3/git/trees/#create-a-tree) cannot be used, meaning the entire tree has to be retrieved, changed, and sent again.
 - **Editing files** based on current content  
