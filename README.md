@@ -11,7 +11,6 @@ Features
 - Creates a fork if necessary
 - Retrieves the repository’s default branch unless `base` branch is set
 - Makes multiple file changes using a single commit
-- Allows to update files depending on current content
 
 ## Usage
 
