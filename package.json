@@ -8,7 +8,12 @@
     "coverage:upload": "nyc report --reporter=text-lcov | coveralls",
     "test": "tap --coverage test/*-test.js"
   },
-  "keywords": [],
+  "keywords": [
+    "github",
+    "octokit",
+    "plugin",
+    "pull-request"
+  ],
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
   "devDependencies": {
