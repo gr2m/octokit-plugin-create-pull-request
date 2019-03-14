@@ -17,7 +17,7 @@
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
   "devDependencies": {
-    "@octokit/rest": "^16.0.1",
+    "@octokit/rest": "^16.18.0",
     "coveralls": "^3.0.2",
     "tap": "^12.1.0",
     "semantic-release": "^15.12.0"
