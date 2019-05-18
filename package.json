@@ -20,7 +20,7 @@
     "@octokit/rest": "^16.18.0",
     "coveralls": "^3.0.2",
     "semantic-release": "^15.13.12",
-    "tap": "^13.0.3"
+    "tap": "^14.0.0"
   },
   "repository": {
     "type": "git",
