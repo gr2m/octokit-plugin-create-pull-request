@@ -689,7 +689,7 @@
       "url": "/repos/:owner/:repo/pulls",
       "owner": "gr2m",
       "repo": "pull-request-test",
-      "head": "patch",
+      "head": "gr2m:patch",
       "base": "master",
       "title": "One comes, one goes",
       "body": "because"
