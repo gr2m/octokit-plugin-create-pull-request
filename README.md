@@ -11,7 +11,7 @@ Features
 
 - Retrieves the repository’s default branch unless `base` branch is set
 - Makes multiple file changes using a single commit
-- If the authenticated user does not have write access to the repository then create a fork first
+- Creates a fork if the authenticated user does not have write access to the repository
 - See [Todos](#todos) for more cool feature ideas! Pull requests welcome!
 
 ## Usage
