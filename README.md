@@ -44,7 +44,7 @@ octokit.createPullRequest({
 ## Todos
 
 - **Deleting files**  
-  The challenge with deleting files is hat the [`base_tree` parameter](https://developer.github.com/v3/git/trees/#create-a-tree) cannot be used, meaning the entire tree has to be retrieved, changed, and sent again.
+  The challenge with deleting files is that the [`base_tree` parameter](https://developer.github.com/v3/git/trees/#create-a-tree) cannot be used, meaning the entire tree has to be retrieved, changed, and sent again.
 - **Editing files** based on current content  
   Add support to pass a function as file content, the function will be called with the current file content, if present.
 - **Multiple commits**  
