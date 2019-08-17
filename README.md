@@ -24,6 +24,8 @@ const Octokit = require('@octokit/rest')
 
 const octokit = new Octokit()
 
+// Returns a normal Octokit PR response
+// See https://octokit.github.io/rest.js/#octokit-routes-pulls-create
 octokit.createPullRequest({
   owner: 'repo-name',
   repo: 'repo-name',
@@ -38,7 +40,7 @@ octokit.createPullRequest({
     },
     commit: 'creating file1.txt & file2.txt'
   }
-})
+}).then(pr => console.log(pr.data.number))
 ```
 
 ## Todos
