@@ -5,6 +5,7 @@ const Octokit = require('@octokit/rest')
 
 test('happy path', async t => {
   const fixtures = require('./fixtures/happy-path')
+  const fixturePr = fixtures[fixtures.length-1].response;
   const octokit = new Octokit()
 
   octokit.hook.wrap('request', (_, options) => {
@@ -20,7 +21,7 @@ test('happy path', async t => {
     return currentFixtures.response
   })
 
-  await octokit.createPullRequest({
+  const pr = await octokit.createPullRequest({
     owner: 'gr2m',
     repo: 'pull-request-test',
     title: 'One comes, one goes',
@@ -35,6 +36,7 @@ test('happy path', async t => {
     }
   })
 
+  t.deepEqual(pr, fixturePr)
   t.equal(fixtures.length, 0)
 })
 
