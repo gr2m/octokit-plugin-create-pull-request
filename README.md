@@ -4,7 +4,6 @@
 
 [![@latest](https://img.shields.io/npm/v/octokit-create-pull-request.svg)](https://www.npmjs.com/package/octokit-create-pull-request)
 [![Build Status](https://travis-ci.com/gr2m/octokit-create-pull-request.svg?branch=master)](https://travis-ci.com/gr2m/octokit-create-pull-request)
-[![Coverage Status](https://coveralls.io/repos/github/gr2m/octokit-create-pull-request/badge.svg)](https://coveralls.io/github/gr2m/octokit-create-pull-request)
 [![Greenkeeper](https://badges.greenkeeper.io/gr2m/octokit-create-pull-request.svg)](https://greenkeeper.io/)
 
 Features
