@@ -46,30 +46,3 @@ test("happy path", async t => {
   t.deepEqual(pr, fixturePr);
   t.equal(fixtures.length, 0);
 });
-
-// const Octokit = require('@octokit/rest')
-//   .plugin(octokitCreatePullRequest)
-//
-// const octokit = new Octokit()
-//
-// octokit.hook.before('request', options => console.log(`${options.method} ${options.url}`))
-//
-// octokit.authenticate({
-//   type: 'token',
-//   token: process.env.GITHUB_TOKEN
-// })
-//
-// octokit.createPullRequest({
-//   owner: 'gr2m',
-//   repo: 'pull-request-test',
-//   title: 'One comes, one goes',
-//   body: 'because',
-//   head: 'test-branch-' + Math.random().toString(36).substr(2, 5),
-//   changes: {
-//     files: {
-//       'path/to/file1.txt': 'Content for file1',
-//       'path/to/file2.txt': 'Content for file2'
-//     },
-//     commit: 'why'
-//   }
-// })
