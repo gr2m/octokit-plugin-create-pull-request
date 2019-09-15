@@ -2,7 +2,7 @@ const { test } = require("tap");
 
 const Octokit = require("@octokit/rest").plugin(require(".."));
 
-test("happy path", async t => {
+test("use custom base", async t => {
   const fixtures = require("./fixtures/custom-base");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
