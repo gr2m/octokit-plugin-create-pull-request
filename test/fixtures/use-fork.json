@@ -288,11 +288,7 @@
             "type": "string"
           },
           "sort": {
-            "enum": [
-              "newest",
-              "oldest",
-              "stargazers"
-            ],
+            "enum": ["newest", "oldest", "stargazers"],
             "type": "string"
           }
         }
@@ -635,13 +631,7 @@
             "type": "string"
           },
           "tree[].mode": {
-            "enum": [
-              "100644",
-              "100755",
-              "040000",
-              "160000",
-              "120000"
-            ],
+            "enum": ["100644", "100755", "040000", "160000", "120000"],
             "type": "string"
           },
           "tree[].path": {
@@ -651,11 +641,7 @@
             "type": "string"
           },
           "tree[].type": {
-            "enum": [
-              "blob",
-              "tree",
-              "commit"
-            ],
+            "enum": ["blob", "tree", "commit"],
             "type": "string"
           }
         }
@@ -800,9 +786,7 @@
       "repo": "pull-request-test",
       "message": "why",
       "tree": "57359ee9bd51c9222ba2d288a8ce676169c2cdcf",
-      "parents": [
-        "3b6c2a2df60769aa026013f5bc1649cc004bd925"
-      ]
+      "parents": ["3b6c2a2df60769aa026013f5bc1649cc004bd925"]
     },
     "response": {
       "status": 201,

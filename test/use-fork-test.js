@@ -1,12 +1,12 @@
-const { test } = require('tap');
+const { test } = require("tap");
 
-const Octokit = require('@octokit/rest').plugin(require('..'));
+const Octokit = require("@octokit/rest").plugin(require(".."));
 
-test('create fork', async t => {
-  const fixtures = require('./fixtures/use-fork');
+test("create fork", async t => {
+  const fixtures = require("./fixtures/use-fork");
   const octokit = new Octokit();
 
-  octokit.hook.wrap('request', (_, options) => {
+  octokit.hook.wrap("request", (_, options) => {
     const currentFixtures = fixtures.shift();
     const {
       baseUrl,
@@ -28,17 +28,17 @@ test('create fork', async t => {
   });
 
   await octokit.createPullRequest({
-    owner: 'gr2m',
-    repo: 'pull-request-test',
-    title: 'Fork has already been created',
-    body: 'because',
-    head: 'test-branch-rlbes',
+    owner: "gr2m",
+    repo: "pull-request-test",
+    title: "Fork has already been created",
+    body: "because",
+    head: "test-branch-rlbes",
     changes: {
       files: {
-        'path/to/file1.txt': 'Content for file1',
-        'path/to/file2.txt': 'Content for file2'
+        "path/to/file1.txt": "Content for file1",
+        "path/to/file2.txt": "Content for file2"
       },
-      commit: 'why'
+      commit: "why"
     }
   });
 

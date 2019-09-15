@@ -352,13 +352,7 @@
             "type": "string"
           },
           "tree[].mode": {
-            "enum": [
-              "100644",
-              "100755",
-              "040000",
-              "160000",
-              "120000"
-            ],
+            "enum": ["100644", "100755", "040000", "160000", "120000"],
             "type": "string"
           },
           "tree[].path": {
@@ -368,11 +362,7 @@
             "type": "string"
           },
           "tree[].type": {
-            "enum": [
-              "blob",
-              "tree",
-              "commit"
-            ],
+            "enum": ["blob", "tree", "commit"],
             "type": "string"
           }
         }
@@ -500,9 +490,7 @@
       "repo": "pull-request-test",
       "message": "why",
       "tree": "2795a02a92bc252969879a4f39203a88a519e95d",
-      "parents": [
-        "17691c2ddfd50d749c83fada3584841038b3b661"
-      ]
+      "parents": ["17691c2ddfd50d749c83fada3584841038b3b661"]
     },
     "response": {
       "data": {
