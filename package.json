@@ -6,6 +6,9 @@
   "scripts": {
     "coverage": "nyc report --reporter=html && open coverage/index.html",
     "coverage:upload": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "prettier --check '{lib,test}/**/*.{js,json}' README.md package.json",
+    "lint:fix": "prettier --write '{lib,test}/**/*.{js,json}' README.md package.json",
+    "pretest": "npm run -s lint",
     "test": "tap --coverage test/*-test.js"
   },
   "keywords": [
@@ -19,6 +22,7 @@
   "devDependencies": {
     "@octokit/rest": "^16.18.0",
     "coveralls": "^3.0.2",
+    "prettier": "^1.18.2",
     "semantic-release": "^15.13.12",
     "tap": "^14.0.0"
   },
