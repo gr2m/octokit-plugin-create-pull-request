@@ -40,7 +40,7 @@ octokit
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",
-        "path/to/file2.txt": "Content for file2"
+        "path/to/file2.txt": null // deletes file if it exists
       },
       commit: "creating file1.txt & file2.txt"
     }
@@ -52,8 +52,6 @@ You can create a personal access token with the `repo` scope at https://github.c
 
 ## Todos
 
-- **Deleting files**  
-  The challenge with deleting files is that the [`base_tree` parameter](https://developer.github.com/v3/git/trees/#create-a-tree) cannot be used, meaning the entire tree has to be retrieved, changed, and sent again.
 - **Editing files** based on current content  
   Add support to pass a function as file content, the function will be called with the current file content, if present.
 - **Multiple commits**  
