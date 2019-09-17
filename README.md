@@ -22,7 +22,10 @@ const Octokit = require("@octokit/rest").plugin(
   require("octokit-create-pull-request")
 );
 
-const octokit = new Octokit();
+const TOKEN = 'secret123' // token needs "repo" scope
+const octokit = new Octokit({
+  auth: `token ${TOKEN}`
+});
 
 // Returns a normal Octokit PR response
 // See https://octokit.github.io/rest.js/#octokit-routes-pulls-create
@@ -44,6 +47,8 @@ octokit
   })
   .then(pr => console.log(pr.data.number));
 ```
+
+You can create a personal access token with the `repo` scope at https://github.com/settings/tokens/new?scopes=repo
 
 ## Todos
 
