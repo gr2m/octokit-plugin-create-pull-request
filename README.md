@@ -22,7 +22,7 @@ const Octokit = require("@octokit/rest").plugin(
   require("octokit-create-pull-request")
 );
 
-const TOKEN = 'secret123' // token needs "repo" scope
+const TOKEN = "secret123"; // token needs "repo" scope
 const octokit = new Octokit({
   auth: `token ${TOKEN}`
 });
