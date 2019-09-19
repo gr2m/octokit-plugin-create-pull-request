@@ -11,4 +11,3 @@ branches:
 
 after_success:
   - npx semantic-release
-  - npm run coverage:upload
