@@ -56,6 +56,8 @@ You can create a personal access token with the `repo` scope at https://github.c
   Add support to pass a function as file content, the function will be called with the current file content, if present.
 - **Multiple commits**  
   Split up changes among multiple edits
+- **Binary files**  
+  Allow to create / edit files with binary content
 
 ## LICENSE
 
