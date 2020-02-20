@@ -9,8 +9,12 @@ Here is a script that records fixtures and logs them to stdout
 
 ```js
 const TOKEN = process.env.TOKEN
-const octokit = require('@octokit/rest')
-  .plugin(require('.'))()
+const { Octokit } = require('@octokit/core')
+const createPullRequest = require('.')
+const MyOctokit = Octokit.plugin(createPullRequest)()
+const octokit = new MyOctokit({
+  auth: TOKEN
+})
 
 
 const fixtures = []

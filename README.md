@@ -18,13 +18,14 @@ Features
 Update or create two files with a single commit
 
 ```js
-const Octokit = require("@octokit/rest").plugin(
-  require("octokit-create-pull-request")
-);
+const { Octokit } = require("@octokit/core");
+const createPullRequest = require("octokit-create-pull-request");
+
+const MyOctokit = Octokit.plugin(createPullRequest);
 
 const TOKEN = "secret123"; // token needs "repo" scope
-const octokit = new Octokit({
-  auth: `token ${TOKEN}`
+const octokit = new MyOctokit({
+  auth: TOKEN
 });
 
 // Returns a normal Octokit PR response
