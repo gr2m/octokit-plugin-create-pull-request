@@ -19,7 +19,7 @@
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
   "devDependencies": {
-    "@octokit/rest": "^16.29.0",
+    "@octokit/rest": "^17.0.0",
     "prettier": "^1.19.1",
     "semantic-release": "^17.0.0",
     "tap": "^14.0.0"
