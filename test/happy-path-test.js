@@ -1,6 +1,8 @@
 const { test } = require("tap");
 
-const Octokit = require("@octokit/rest").plugin(require(".."));
+const { Octokit: Core } = require("@octokit/core");
+const createPullRequest = require("..");
+const Octokit = Core.plugin(createPullRequest);
 
 test("happy path", async t => {
   const fixtures = require("./fixtures/happy-path");

@@ -1,7 +1,9 @@
 const { test } = require("tap");
 const { RequestError } = require("@octokit/request-error");
 
-const Octokit = require("@octokit/rest").plugin(require(".."));
+const { Octokit: Core } = require("@octokit/core");
+const createPullRequest = require("..");
+const Octokit = Core.plugin(createPullRequest);
 
 test("happy path", async t => {
   const fixtures = require("./fixtures/delete-files");
