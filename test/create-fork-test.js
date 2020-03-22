@@ -4,7 +4,7 @@ const { Octokit: Core } = require("@octokit/core");
 const createPullRequest = require("..");
 const Octokit = Core.plugin(createPullRequest);
 
-test("create fork", async t => {
+test("create fork", async (t) => {
   const fixtures = require("./fixtures/create-fork");
   const octokit = new Octokit();
 
@@ -23,7 +23,7 @@ test("create fork", async t => {
     t.equal(currentFixtures.request.method, options.method);
     t.equal(currentFixtures.request.url, options.url);
 
-    Object.keys(params).forEach(paramName => {
+    Object.keys(params).forEach((paramName) => {
       t.deepEqual(currentFixtures.request[paramName], params[paramName]);
     });
     return currentFixtures.response;
@@ -38,10 +38,10 @@ test("create fork", async t => {
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",
-        "path/to/file2.txt": "Content for file2"
+        "path/to/file2.txt": "Content for file2",
       },
-      commit: "why"
-    }
+      commit: "why",
+    },
   });
 
   t.equal(fixtures.length, 0);

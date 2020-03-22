@@ -4,7 +4,7 @@ const { Octokit: Core } = require("@octokit/core");
 const createPullRequest = require("..");
 const Octokit = Core.plugin(createPullRequest);
 
-test("happy path", async t => {
+test("happy path", async (t) => {
   const fixtures = require("./fixtures/happy-path");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
@@ -24,7 +24,7 @@ test("happy path", async t => {
     t.equal(currentFixtures.request.method, options.method);
     t.equal(currentFixtures.request.url, options.url);
 
-    Object.keys(params).forEach(paramName => {
+    Object.keys(params).forEach((paramName) => {
       t.deepEqual(currentFixtures.request[paramName], params[paramName]);
     });
     return currentFixtures.response;
@@ -39,10 +39,10 @@ test("happy path", async t => {
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",
-        "path/to/file2.txt": "Content for file2"
+        "path/to/file2.txt": "Content for file2",
       },
-      commit: "why"
-    }
+      commit: "why",
+    },
   });
 
   t.deepEqual(pr, fixturePr);

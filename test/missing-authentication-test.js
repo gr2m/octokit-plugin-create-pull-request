@@ -4,7 +4,7 @@ const { Octokit: Core } = require("@octokit/core");
 const createPullRequest = require("..");
 const Octokit = Core.plugin(createPullRequest);
 
-test("invalid auth", async t => {
+test("invalid auth", async (t) => {
   const fixtures = require("./fixtures/missing-authentication");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
@@ -24,7 +24,7 @@ test("invalid auth", async t => {
     t.equal(currentFixtures.request.method, options.method);
     t.equal(currentFixtures.request.url, options.url);
 
-    Object.keys(params).forEach(paramName => {
+    Object.keys(params).forEach((paramName) => {
       t.deepEqual(currentFixtures.request[paramName], params[paramName]);
     });
     return currentFixtures.response;
@@ -40,10 +40,10 @@ test("invalid auth", async t => {
       changes: {
         files: {
           "path/to/file1.txt": "Content for file1",
-          "path/to/file2.txt": "Content for file2"
+          "path/to/file2.txt": "Content for file2",
         },
-        commit: "why"
-      }
+        commit: "why",
+      },
     });
     throw new Error("Should not resolve");
   } catch (error) {

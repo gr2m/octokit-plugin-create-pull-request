@@ -5,7 +5,7 @@ const { Octokit: Core } = require("@octokit/core");
 const createPullRequest = require("..");
 const Octokit = Core.plugin(createPullRequest);
 
-test("happy path", async t => {
+test("happy path", async (t) => {
   const fixtures = require("./fixtures/delete-files");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
@@ -25,7 +25,7 @@ test("happy path", async t => {
     t.equal(currentFixtures.request.method, options.method);
     t.equal(currentFixtures.request.url, options.url);
 
-    Object.keys(params).forEach(paramName => {
+    Object.keys(params).forEach((paramName) => {
       t.deepEqual(currentFixtures.request[paramName], params[paramName]);
     });
 
@@ -45,10 +45,10 @@ test("happy path", async t => {
       files: {
         "path/to/file1.txt": "Content for file1",
         "path/to/file2.txt": null,
-        "path/to/file-does-not-exist.txt": null
+        "path/to/file-does-not-exist.txt": null,
       },
-      commit: "why"
-    }
+      commit: "why",
+    },
   });
 
   t.deepEqual(pr, fixturePr);

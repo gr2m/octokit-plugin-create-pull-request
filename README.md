@@ -25,7 +25,7 @@ const MyOctokit = Octokit.plugin(createPullRequest);
 
 const TOKEN = "secret123"; // token needs "repo" scope
 const octokit = new MyOctokit({
-  auth: TOKEN
+  auth: TOKEN,
 });
 
 // Returns a normal Octokit PR response
@@ -41,12 +41,12 @@ octokit
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",
-        "path/to/file2.txt": null // deletes file if it exists
+        "path/to/file2.txt": null, // deletes file if it exists
       },
-      commit: "creating file1.txt & file2.txt"
-    }
+      commit: "creating file1.txt & file2.txt",
+    },
   })
-  .then(pr => console.log(pr.data.number));
+  .then((pr) => console.log(pr.data.number));
 ```
 
 You can create a personal access token with the `repo` scope at https://github.com/settings/tokens/new?scopes=repo
@@ -54,11 +54,11 @@ You can create a personal access token with the `repo` scope at https://github.c
 ## Todos
 
 - **Editing files** based on current content  
-  Add support to pass a function as file content, the function will be called with the current file content, if present.
+  Addsupporttopassafunctionasfilecontent,thefunctionwillbecalledwiththecurrentfilecontent,ifpresent.
 - **Multiple commits**  
-  Split up changes among multiple edits
+  Splitupchangesamongmultipleedits
 - **Binary files**  
-  Allow to create / edit files with binary content
+  Allowtocreate/editfileswithbinarycontent
 
 ## LICENSE
 
