@@ -83,9 +83,13 @@ octokit
               .toString("utf-8")
               .toUpperCase();
           },
+          "path/to/file5.sh": {
+            content: "Content for file5",
+            mode: "100755", // one of the modes supported by the git tree object https://developer.github.com/v3/git/trees/#tree-object
+          },
         },
         commit:
-          "creating file1.txt, file2.png, deleting file3.txt, updating file4.txt (if it exists)",
+          "creating file1.txt, file2.png, deleting file3.txt, updating file4.txt (if it exists), file5.sh",
       },
     ],
   })
