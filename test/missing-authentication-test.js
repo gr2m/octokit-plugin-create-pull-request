@@ -49,7 +49,7 @@ test("invalid auth", async (t) => {
   } catch (error) {
     t.equal(
       error.message,
-      "[octokit-create-pull-request] Missing authentication"
+      "[octokit-plugin-create-pull-request] Missing authentication"
     );
   }
 });
