@@ -1,10 +1,10 @@
-# octokit-create-pull-request
+# octokit-plugin-create-pull-request
 
 > Octokit plugin to create a pull request with multiple file changes
 
-[![@latest](https://img.shields.io/npm/v/octokit-create-pull-request.svg)](https://www.npmjs.com/package/octokit-create-pull-request)
-[![Build Status](https://travis-ci.com/gr2m/octokit-create-pull-request.svg?branch=master)](https://travis-ci.com/gr2m/octokit-create-pull-request)
-[![Greenkeeper](https://badges.greenkeeper.io/gr2m/octokit-create-pull-request.svg)](https://greenkeeper.io/)
+[![@latest](https://img.shields.io/npm/v/octokit-plugin-create-pull-request.svg)](https://www.npmjs.com/package/octokit-plugin-create-pull-request)
+[![Build Status](https://travis-ci.com/gr2m/octokit-plugin-create-pull-request.svg?branch=master)](https://travis-ci.com/gr2m/octokit-plugin-create-pull-request)
+[![Greenkeeper](https://badges.greenkeeper.io/gr2m/octokit-plugin-create-pull-request.svg)](https://greenkeeper.io/)
 
 Features
 
@@ -20,7 +20,7 @@ Update or create two files with a single commit
 
 ```js
 const { Octokit } = require("@octokit/core");
-const createPullRequest = require("octokit-create-pull-request");
+const createPullRequest = require("octokit-plugin-create-pull-request");
 
 const MyOctokit = Octokit.plugin(createPullRequest);
 
