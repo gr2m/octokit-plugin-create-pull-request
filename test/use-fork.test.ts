@@ -3,7 +3,7 @@ import { Octokit as Core } from "@octokit/core";
 import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("create fork", async () => {
+test("use fork", async () => {
   const fixtures = require("./fixtures/use-fork");
   const octokit = new Octokit();
 

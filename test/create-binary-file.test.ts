@@ -4,7 +4,7 @@ import { RequestError } from "@octokit/request-error";
 import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("happy path", async () => {
+test("create binary file", async () => {
   const fixtures = require("./fixtures/create-binary-file");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();

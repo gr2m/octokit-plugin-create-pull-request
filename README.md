@@ -84,8 +84,6 @@ https://github.com/settings/tokens/new?scopes=repo
 
 ## Todos
 
-- **Editing files** based on current content  
-  Add support to pass a function as file content, the function will be called with the current file content, if present.
 - **Multiple commits**  
   Split up changes among multiple edits
 

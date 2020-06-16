@@ -4,8 +4,8 @@ import { RequestError } from "@octokit/request-error";
 import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("delete files", async () => {
-  const fixtures = require("./fixtures/delete-files");
+test("update readme", async () => {
+  const fixtures = require("./fixtures/update-readme");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -42,18 +42,16 @@ test("delete files", async () => {
   const pr = await octokit.createPullRequest({
     owner: "gr2m",
     repo: "pull-request-test",
-    title: "One comes, one goes",
-    body: "because",
-    head: "patch",
+    title: "Test",
+    head: "test",
+    body: "",
     changes: {
       files: {
-        "path/to/file1.txt": "Content for file1",
-        // @ts-ignore null is a valid value, but it's not documented.
-        "path/to/file2.txt": null,
-        // @ts-ignore null is a valid value, but it's not documented.
-        "path/to/file-does-not-exist.txt": null,
+        "README.md": ({ encoding, content }) => {
+          return Buffer.from(content, encoding).toString("utf-8").toUpperCase();
+        },
       },
-      commit: "why",
+      commit: "up up up",
     },
   });
 
