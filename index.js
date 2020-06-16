@@ -1,7 +1,16 @@
-module.exports = octokitCreatePullRequest
+module.exports = deprecatedCreatePullRequest;
 
-const createPullRequest = require('./lib/create-pull-request')
+const octokitCreatePullRequest = require("./lib/create-pull-request");
 
-function octokitCreatePullRequest (octokit) {
-  octokit.createPullRequest = createPullRequest.bind(null, octokit)
+function deprecatedCreatePullRequest(octokit) {
+  octokit.log.warn(
+    "[octokit-plugin-create-pull-request] Default export is deprecated. Use 'const { createPullRequest} = require('octokit-plugin-create-pull-request')` instead"
+  );
+  octokit.createPullRequest = octokitCreatePullRequest.bind(null, octokit);
 }
+
+function createPullRequest(octokit) {
+  octokit.createPullRequest = octokitCreatePullRequest.bind(null, octokit);
+}
+
+deprecatedCreatePullRequest.createPullRequest = createPullRequest;
