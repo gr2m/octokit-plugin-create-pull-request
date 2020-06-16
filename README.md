@@ -78,7 +78,8 @@ octokit
           return Buffer.from(content, encoding).toString("utf-8").toUpperCase();
         },
       },
-      commit: "creating file1.txt, file2.png and deleting file3.txt",
+      commit:
+        "creating file1.txt, file2.png, deleting file3.txt, updating file4.txt",
     },
   })
   .then((pr) => console.log(pr.data.number));
