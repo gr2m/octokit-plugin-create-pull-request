@@ -58,7 +58,7 @@ const octokit = new MyOctokit({
 // See https://octokit.github.io/rest.js/#octokit-routes-pulls-create
 octokit
   .createPullRequest({
-    owner: "repo-name",
+    owner: "user-or-org-login",
     repo: "repo-name",
     title: "pull request title",
     body: "pull request description",
@@ -71,7 +71,12 @@ octokit
           content: "_base64_encoded_content_",
           encoding: "base64",
         },
-        "path/to/file3.txt": null, // deletes file if it exists
+        // deletes file if it exists,
+        "path/to/file3.txt": null,
+        // updates file based on current content
+        "path/to/file4.txt": ({ encoding, content }) => {
+          return Buffer.from(content, encoding).toString("utf-8").toUpperCase();
+        },
       },
       commit: "creating file1.txt, file2.png and deleting file3.txt",
     },
