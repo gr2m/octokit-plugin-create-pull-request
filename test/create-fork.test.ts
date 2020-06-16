@@ -1,10 +1,9 @@
-const { test } = require("tap");
+import { Octokit as Core } from "@octokit/core";
+import { createPullRequest } from "../src";
 
-const { Octokit: Core } = require("@octokit/core");
-const { createPullRequest } = require("..");
 const Octokit = Core.plugin(createPullRequest);
 
-test("create fork", async (t) => {
+test("create fork", async () => {
   const fixtures = require("./fixtures/create-fork");
   const octokit = new Octokit();
 
@@ -20,11 +19,13 @@ test("create fork", async (t) => {
       ...params
     } = options;
 
-    t.equal(currentFixtures.request.method, options.method);
-    t.equal(currentFixtures.request.url, options.url);
+    expect(currentFixtures.request.method).toEqual(options.method);
+    expect(currentFixtures.request.url).toEqual(options.url);
 
     Object.keys(params).forEach((paramName) => {
-      t.deepEqual(currentFixtures.request[paramName], params[paramName]);
+      expect(currentFixtures.request[paramName]).toStrictEqual(
+        params[paramName]
+      );
     });
     return currentFixtures.response;
   });
@@ -44,5 +45,5 @@ test("create fork", async (t) => {
     },
   });
 
-  t.equal(fixtures.length, 0);
+  expect(fixtures.length).toEqual(0);
 });

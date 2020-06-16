@@ -1,10 +1,9 @@
-const { test } = require("tap");
+import { Octokit as Core } from "@octokit/core";
 
-const { Octokit: Core } = require("@octokit/core");
-const { createPullRequest } = require("..");
+import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("invalid auth", async (t) => {
+test("invalid auth", async () => {
   const fixtures = require("./fixtures/missing-authentication");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
@@ -21,11 +20,13 @@ test("invalid auth", async (t) => {
       ...params
     } = options;
 
-    t.equal(currentFixtures.request.method, options.method);
-    t.equal(currentFixtures.request.url, options.url);
+    expect(currentFixtures.request.method).toEqual(options.method);
+    expect(currentFixtures.request.url).toEqual(options.url);
 
     Object.keys(params).forEach((paramName) => {
-      t.deepEqual(currentFixtures.request[paramName], params[paramName]);
+      expect(currentFixtures.request[paramName]).toStrictEqual(
+        params[paramName]
+      );
     });
     return currentFixtures.response;
   });
@@ -47,8 +48,7 @@ test("invalid auth", async (t) => {
     });
     throw new Error("Should not resolve");
   } catch (error) {
-    t.equal(
-      error.message,
+    expect(error.message).toEqual(
       "[octokit-plugin-create-pull-request] Missing authentication"
     );
   }
