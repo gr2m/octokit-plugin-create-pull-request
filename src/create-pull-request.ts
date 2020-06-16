@@ -1,43 +1,14 @@
 import type { Octokit } from "@octokit/core";
-import type { Endpoints } from "@octokit/types";
+import type { Options, State } from "./types";
 
-type TreeParameter = Endpoints["POST /repos/:owner/:repo/git/trees"]["parameters"]["tree"];
-
-type Options = {
-  owner: string;
-  repo: string;
-  title: string;
-  body: string;
-  head: string;
-  base?: string;
-  changes: Changes;
-};
-
-type Changes = {
-  files: {
-    [path: string]: string | File | UpdateFunction;
-  };
-  commit: string;
-};
-
-// https://developer.github.com/v3/git/blobs/#parameters
-type File = {
-  content: string;
-  encoding: "utf-8" | "base64";
-};
-
-type UpdateFunctionFile = {
-  size: number;
-  encoding: "base64";
-  content: string;
-};
-
-type UpdateFunction = (file: UpdateFunctionFile) => string | File;
+import { createTreeAndCommit } from "./create-tree-and-commit";
 
 export async function octokitCreatePullRequest(
   octokit: Octokit,
   { owner, repo, title, body, base, head, changes }: Options
 ) {
+  const state: State = { octokit, owner, repo };
+
   // https://developer.github.com/v3/repos/#get-a-repository
   const { data: repository } = await octokit.request(
     "GET /repos/:owner/:repo",
@@ -57,7 +28,7 @@ export async function octokitCreatePullRequest(
     base = repository.default_branch;
   }
 
-  let fork = owner;
+  state.fork = owner;
 
   if (!repository.permissions.push) {
     // https://developer.github.com/v3/users/#get-the-authenticated-user
@@ -80,93 +51,28 @@ export async function octokitCreatePullRequest(
       });
     }
 
-    fork = user.data.login;
+    state.fork = user.data.login;
   }
 
   // https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
   const {
-    data: [firstCommit],
+    data: [latestCommit],
   } = await octokit.request("GET /repos/:owner/:repo/commits", {
     owner,
     repo,
     sha: base,
     per_page: 1,
   });
-  const treeSha = firstCommit.commit.tree.sha;
+  state.latestCommit = latestCommit;
 
-  const tree = (
-    await Promise.all(
-      Object.keys(changes.files).map(async (path) => {
-        const value = changes.files[path];
-
-        if (value === null) {
-          // Deleting a non-existent file from a tree leads to an "GitRPC::BadObjectState" error,
-          // so we only attempt to delete the file if it exists.
-          try {
-            // https://developer.github.com/v3/repos/contents/#get-contents
-            await octokit.request("HEAD /repos/:owner/:repo/contents/:path", {
-              owner: fork,
-              repo,
-              ref: firstCommit.sha,
-              path,
-            });
-
-            return {
-              path,
-              mode: "100644",
-              sha: null,
-            };
-          } catch (error) {
-            return;
-          }
-        }
-
-        // When passed a function, retrieve the content of the file, pass it
-        // to the function, then return the result
-        if (typeof value === "function") {
-          const { data: file } = await octokit.request(
-            "GET /repos/:owner/:repo/contents/:path",
-            {
-              owner: fork,
-              repo,
-              ref: firstCommit.sha,
-              path,
-            }
-          );
-
-          const result = await value(file as UpdateFunctionFile);
-          return valueToTreeObject(octokit, owner, repo, path, result);
-        }
-
-        return valueToTreeObject(octokit, owner, repo, path, value);
-      })
-    )
-  ).filter(Boolean) as TreeParameter;
-
-  // https://developer.github.com/v3/git/trees/#create-a-tree
-  const {
-    data: { sha: newTreeSha },
-  } = await octokit.request("POST /repos/:owner/:repo/git/trees", {
-    owner: fork,
-    repo,
-    base_tree: treeSha,
-    tree,
-  });
-
-  // https://developer.github.com/v3/git/commits/#create-a-commit
-  const {
-    data: { sha: latestCommitSha },
-  } = await octokit.request("POST /repos/:owner/:repo/git/commits", {
-    owner: fork,
-    repo,
-    message: changes.commit,
-    tree: newTreeSha,
-    parents: [firstCommit.sha],
-  });
+  const latestCommitSha = await createTreeAndCommit(
+    state as Required<State>,
+    changes
+  );
 
   // https://developer.github.com/v3/git/refs/#create-a-reference
   await octokit.request("POST /repos/:owner/:repo/git/refs", {
-    owner: fork,
+    owner: state.fork,
     repo,
     sha: latestCommitSha,
     ref: `refs/heads/${head}`,
@@ -176,40 +82,9 @@ export async function octokitCreatePullRequest(
   return await octokit.request("POST /repos/:owner/:repo/pulls", {
     owner,
     repo,
-    head: `${fork}:${head}`,
+    head: `${state.fork}:${head}`,
     base,
     title,
     body,
   });
-}
-
-async function valueToTreeObject(
-  octokit: Octokit,
-  owner: string,
-  repo: string,
-  path: string,
-  value: string | File
-) {
-  // Text files can be changed through the .content key
-  if (typeof value === "string") {
-    return {
-      path,
-      mode: "100644",
-      content: value,
-    };
-  }
-
-  // Binary files need to be created first using the git blob API,
-  // then changed by referencing in the .sha key
-  const { data } = await octokit.request("POST /repos/:owner/:repo/git/blobs", {
-    owner,
-    repo,
-    ...value,
-  });
-  const blobSha = data.sha;
-  return {
-    path,
-    mode: "100644",
-    sha: blobSha,
-  };
 }
