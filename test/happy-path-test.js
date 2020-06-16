@@ -1,6 +1,7 @@
 const { test } = require("tap");
 
 const { Octokit: Core } = require("@octokit/core");
+// intentionally test deprecated default export
 const createPullRequest = require("..");
 const Octokit = Core.plugin(createPullRequest);
 

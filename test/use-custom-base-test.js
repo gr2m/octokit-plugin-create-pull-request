@@ -1,7 +1,7 @@
 const { test } = require("tap");
 
 const { Octokit: Core } = require("@octokit/core");
-const createPullRequest = require("..");
+const { createPullRequest } = require("..");
 const Octokit = Core.plugin(createPullRequest);
 
 test("use custom base", async (t) => {
