@@ -1,10 +1,9 @@
-const { test } = require("tap");
+import { Octokit as Core } from "@octokit/core";
 
-const { Octokit: Core } = require("@octokit/core");
-const { createPullRequest } = require("..");
+import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("use custom base", async (t) => {
+test("use custom base", async () => {
   const fixtures = require("./fixtures/custom-base");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
@@ -21,11 +20,13 @@ test("use custom base", async (t) => {
       ...params
     } = options;
 
-    t.equal(currentFixtures.request.method, options.method);
-    t.equal(currentFixtures.request.url, options.url);
+    expect(currentFixtures.request.method).toEqual(options.method);
+    expect(currentFixtures.request.url).toEqual(options.url);
 
     Object.keys(params).forEach((paramName) => {
-      t.deepEqual(currentFixtures.request[paramName], params[paramName]);
+      expect(currentFixtures.request[paramName]).toStrictEqual(
+        params[paramName]
+      );
     });
     return currentFixtures.response;
   });
@@ -46,6 +47,6 @@ test("use custom base", async (t) => {
     },
   });
 
-  t.deepEqual(pr, fixturePr);
-  t.equal(fixtures.length, 0);
+  expect(pr).toStrictEqual(fixturePr);
+  expect(fixtures.length).toEqual(0);
 });

@@ -1,12 +1,9 @@
-const { test } = require("tap");
-const { RequestError } = require("@octokit/request-error");
-
-const { Octokit: Core } = require("@octokit/core");
-const { createPullRequest } = require("..");
+import { Octokit as Core } from "@octokit/core";
+import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("happy path", async (t) => {
-  const fixtures = require("./fixtures/delete-files");
+test("happy path", async () => {
+  const fixtures = require("./fixtures/happy-path");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -22,16 +19,14 @@ test("happy path", async (t) => {
       ...params
     } = options;
 
-    t.equal(currentFixtures.request.method, options.method);
-    t.equal(currentFixtures.request.url, options.url);
+    expect(currentFixtures.request.method).toEqual(options.method);
+    expect(currentFixtures.request.url).toEqual(options.url);
 
     Object.keys(params).forEach((paramName) => {
-      t.deepEqual(currentFixtures.request[paramName], params[paramName]);
+      expect(currentFixtures.request[paramName]).toStrictEqual(
+        params[paramName]
+      );
     });
-
-    if (currentFixtures.response.status >= 400) {
-      throw new RequestError("Error", currentFixtures.response.status);
-    }
     return currentFixtures.response;
   });
 
@@ -44,13 +39,12 @@ test("happy path", async (t) => {
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",
-        "path/to/file2.txt": null,
-        "path/to/file-does-not-exist.txt": null,
+        "path/to/file2.txt": "Content for file2",
       },
       commit: "why",
     },
   });
 
-  t.deepEqual(pr, fixturePr);
-  t.equal(fixtures.length, 0);
+  expect(pr).toStrictEqual(fixturePr);
+  expect(fixtures.length).toEqual(0);
 });

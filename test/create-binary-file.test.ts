@@ -1,11 +1,10 @@
-const { test } = require("tap");
-const { RequestError } = require("@octokit/request-error");
+import { Octokit as Core } from "@octokit/core";
+import { RequestError } from "@octokit/request-error";
 
-const { Octokit: Core } = require("@octokit/core");
-const { createPullRequest } = require("..");
+import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("happy path", async (t) => {
+test("happy path", async () => {
   const fixtures = require("./fixtures/create-binary-file");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
@@ -22,15 +21,20 @@ test("happy path", async (t) => {
       ...params
     } = options;
 
-    t.equal(currentFixtures.request.method, options.method);
-    t.equal(currentFixtures.request.url, options.url);
+    expect(currentFixtures.request.method).toEqual(options.method);
+    expect(currentFixtures.request.url).toEqual(options.url);
 
     Object.keys(params).forEach((paramName) => {
-      t.deepEqual(currentFixtures.request[paramName], params[paramName]);
+      expect(currentFixtures.request[paramName]).toStrictEqual(
+        params[paramName]
+      );
     });
 
     if (currentFixtures.response.status >= 400) {
-      throw new RequestError("Error", currentFixtures.response.status);
+      throw new RequestError("Error", currentFixtures.response.status, {
+        request: currentFixtures.request,
+        headers: currentFixtures.response.headers,
+      });
     }
     return currentFixtures.response;
   });
@@ -53,6 +57,6 @@ test("happy path", async (t) => {
     },
   });
 
-  t.deepEqual(pr, fixturePr);
-  t.equal(fixtures.length, 0);
+  expect(pr).toStrictEqual(fixturePr);
+  expect(fixtures.length).toEqual(0);
 });
