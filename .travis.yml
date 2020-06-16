@@ -10,4 +10,5 @@ branches:
     - /^greenkeeper.*$/
 
 after_success:
+  - npm run build
   - npx semantic-release
