@@ -15,7 +15,7 @@ type Options = {
 
 type Changes = {
   files: {
-    [path: string]: string | File;
+    [path: string]: string | File | UpdateFunction;
   };
   commit: string;
 };
@@ -25,6 +25,14 @@ type File = {
   content: string;
   encoding: "utf-8" | "base64";
 };
+
+type UpdateFunctionFile = {
+  size: number;
+  encoding: "base64";
+  content: string;
+};
+
+type UpdateFunction = (file: UpdateFunctionFile) => string | File;
 
 export async function octokitCreatePullRequest(
   octokit: Octokit,
@@ -113,31 +121,24 @@ export async function octokitCreatePullRequest(
           }
         }
 
-        // Text files can be changed through the .content key
-        if (typeof value === "string") {
-          return {
-            path,
-            mode: "100644",
-            content: value,
-          };
+        // When passed a function, retrieve the content of the file, pass it
+        // to the function, then return the result
+        if (typeof value === "function") {
+          const { data: file } = await octokit.request(
+            "GET /repos/:owner/:repo/contents/:path",
+            {
+              owner: fork,
+              repo,
+              ref: firstCommit.sha,
+              path,
+            }
+          );
+
+          const result = await value(file as UpdateFunctionFile);
+          return valueToTreeObject(octokit, owner, repo, path, result);
         }
 
-        // Binary files need to be created first using the git blob API,
-        // then changed by referencing in the .sha key
-        const { data } = await octokit.request(
-          "POST /repos/:owner/:repo/git/blobs",
-          {
-            owner,
-            repo,
-            ...value,
-          }
-        );
-        const blobSha = data.sha;
-        return {
-          path,
-          mode: "100644",
-          sha: blobSha,
-        };
+        return valueToTreeObject(octokit, owner, repo, path, value);
       })
     )
   ).filter(Boolean) as TreeParameter;
@@ -180,4 +181,35 @@ export async function octokitCreatePullRequest(
     title,
     body,
   });
+}
+
+async function valueToTreeObject(
+  octokit: Octokit,
+  owner: string,
+  repo: string,
+  path: string,
+  value: string | File
+) {
+  // Text files can be changed through the .content key
+  if (typeof value === "string") {
+    return {
+      path,
+      mode: "100644",
+      content: value,
+    };
+  }
+
+  // Binary files need to be created first using the git blob API,
+  // then changed by referencing in the .sha key
+  const { data } = await octokit.request("POST /repos/:owner/:repo/git/blobs", {
+    owner,
+    repo,
+    ...value,
+  });
+  const blobSha = data.sha;
+  return {
+    path,
+    mode: "100644",
+    sha: blobSha,
+  };
 }
