@@ -3,7 +3,7 @@
 > Octokit plugin to create a pull request with multiple file changes
 
 [![@latest](https://img.shields.io/npm/v/octokit-plugin-create-pull-request.svg)](https://www.npmjs.com/package/octokit-plugin-create-pull-request)
-[![Build Status](https://travis-ci.com/gr2m/octokit-plugin-create-pull-request.svg?branch=master)](https://travis-ci.com/gr2m/octokit-plugin-create-pull-request)
+[![Build Status](https://github.com/gr2m/octokit-plugin-create-pull-request/workflows/Test/badge.svg)](https://github.com/gr2m/octokit-plugin-create-pull-request/actions?query=workflow%3ATest+branch%3Amain)
 
 Features
 
@@ -12,8 +12,6 @@ Features
 - Creates a fork if the authenticated user does not have write access to the
   repository
 - See [Todos](#todos) for more cool feature ideas! Pull requests welcome!
-
-## Usage
 
 ## Usage
 
