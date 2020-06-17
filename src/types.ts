@@ -14,7 +14,7 @@ export type Options = {
 };
 
 export type Changes = {
-  files: {
+  files?: {
     [path: string]: string | File | UpdateFunction;
   };
   commit: string;

@@ -1,4 +1,3 @@
-import type { Octokit } from "@octokit/core";
 import type {
   Changes,
   State,
@@ -8,10 +7,10 @@ import type {
 
 import { valueToTreeObject } from "./value-to-tree-object";
 
-export async function createTreeAndCommit(
+export async function createTree(
   state: Required<State>,
-  changes: Changes
-): Promise<void> {
+  changes: Required<Changes>
+): Promise<string> {
   const {
     octokit,
     owner,
@@ -20,6 +19,7 @@ export async function createTreeAndCommit(
     latestCommitSha,
     latestCommitTreeSha,
   } = state;
+
   const tree = (
     await Promise.all(
       Object.keys(changes.files).map(async (path) => {
@@ -79,18 +79,5 @@ export async function createTreeAndCommit(
     tree,
   });
 
-  // https://developer.github.com/v3/git/commits/#create-a-commit
-  const { data: latestCommit } = await octokit.request(
-    "POST /repos/:owner/:repo/git/commits",
-    {
-      owner: fork,
-      repo,
-      message: changes.commit,
-      tree: newTreeSha,
-      parents: [latestCommitSha],
-    }
-  );
-
-  state.latestCommitSha = latestCommit.sha;
-  state.latestCommitTreeSha = latestCommit.tree.sha;
+  return newTreeSha;
 }
