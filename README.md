@@ -66,6 +66,7 @@ octokit
     head: "pull-request-branch-name",
     changes: [
       {
+        /* optional: if `files` is not passed, an empty commit is created instead */
         files: {
           "path/to/file1.txt": "Content for file1",
           "path/to/file2.png": {
