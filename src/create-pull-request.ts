@@ -1,7 +1,8 @@
 import type { Octokit } from "@octokit/core";
-import type { Options, State } from "./types";
+import type { Changes, Options, State } from "./types";
 
-import { createTreeAndCommit } from "./create-tree-and-commit";
+import { createTree } from "./create-tree";
+import { createCommit } from "./create-commit";
 
 export async function octokitCreatePullRequest(
   octokit: Octokit,
@@ -76,7 +77,16 @@ export async function octokitCreatePullRequest(
   state.latestCommitTreeSha = latestCommit.commit.tree.sha;
 
   for (const change of changes) {
-    await createTreeAndCommit(state as Required<State>, change);
+    if (change.files && Object.keys(change.files).length) {
+      state.latestCommitTreeSha = await createTree(
+        state as Required<State>,
+        change as Required<Changes>
+      );
+    }
+    state.latestCommitSha = await createCommit(
+      state as Required<State>,
+      change
+    );
   }
 
   // https://developer.github.com/v3/git/refs/#create-a-reference
