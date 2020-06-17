@@ -64,34 +64,33 @@ octokit
     body: "pull request description",
     base: "master" /* optional: defaults to default branch */,
     head: "pull-request-branch-name",
-    changes: {
-      files: {
-        "path/to/file1.txt": "Content for file1",
-        "path/to/file2.png": {
-          content: "_base64_encoded_content_",
-          encoding: "base64",
+    changes: [
+      {
+        files: {
+          "path/to/file1.txt": "Content for file1",
+          "path/to/file2.png": {
+            content: "_base64_encoded_content_",
+            encoding: "base64",
+          },
+          // deletes file if it exists,
+          "path/to/file3.txt": null,
+          // updates file based on current content
+          "path/to/file4.txt": ({ encoding, content }) => {
+            return Buffer.from(content, encoding)
+              .toString("utf-8")
+              .toUpperCase();
+          },
         },
-        // deletes file if it exists,
-        "path/to/file3.txt": null,
-        // updates file based on current content
-        "path/to/file4.txt": ({ encoding, content }) => {
-          return Buffer.from(content, encoding).toString("utf-8").toUpperCase();
-        },
+        commit:
+          "creating file1.txt, file2.png, deleting file3.txt, updating file4.txt",
       },
-      commit:
-        "creating file1.txt, file2.png, deleting file3.txt, updating file4.txt",
-    },
+    ],
   })
   .then((pr) => console.log(pr.data.number));
 ```
 
 You can create a personal access token with the `repo` scope at
 https://github.com/settings/tokens/new?scopes=repo
-
-## Todos
-
-- **Multiple commits**  
-  Split up changes among multiple edits
 
 ## LICENSE
 
