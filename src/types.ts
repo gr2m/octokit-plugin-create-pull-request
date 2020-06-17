@@ -2,7 +2,6 @@ import type { Octokit } from "@octokit/core";
 import type { Endpoints } from "@octokit/types";
 
 export type TreeParameter = Endpoints["POST /repos/:owner/:repo/git/trees"]["parameters"]["tree"];
-export type LatestCommit = Endpoints["GET /repos/:owner/:repo/commits"]["response"]["data"][0];
 
 export type Options = {
   owner: string;
@@ -11,7 +10,7 @@ export type Options = {
   body: string;
   head: string;
   base?: string;
-  changes: Changes;
+  changes: Changes | Changes[];
 };
 
 export type Changes = {
@@ -40,6 +39,7 @@ export type State = {
   owner: string;
   repo: string;
   fork?: string;
-  latestCommit?: LatestCommit;
+  latestCommitSha?: string;
+  latestCommitTreeSha?: string;
   treeSha?: string;
 };

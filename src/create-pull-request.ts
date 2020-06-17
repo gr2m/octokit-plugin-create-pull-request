@@ -5,8 +5,17 @@ import { createTreeAndCommit } from "./create-tree-and-commit";
 
 export async function octokitCreatePullRequest(
   octokit: Octokit,
-  { owner, repo, title, body, base, head, changes }: Options
+  { owner, repo, title, body, base, head, changes: changesOption }: Options
 ) {
+  const changes = Array.isArray(changesOption)
+    ? changesOption
+    : [changesOption];
+
+  if (changes.length === 0)
+    throw new Error(
+      '[octokit-plugin-create-pull-request] "changes" cannot be an empty array'
+    );
+
   const state: State = { octokit, owner, repo };
 
   // https://developer.github.com/v3/repos/#get-a-repository
@@ -63,18 +72,18 @@ export async function octokitCreatePullRequest(
     sha: base,
     per_page: 1,
   });
-  state.latestCommit = latestCommit;
+  state.latestCommitSha = latestCommit.sha;
+  state.latestCommitTreeSha = latestCommit.commit.tree.sha;
 
-  const latestCommitSha = await createTreeAndCommit(
-    state as Required<State>,
-    changes
-  );
+  for (const change of changes) {
+    await createTreeAndCommit(state as Required<State>, change);
+  }
 
   // https://developer.github.com/v3/git/refs/#create-a-reference
   await octokit.request("POST /repos/:owner/:repo/git/refs", {
     owner: state.fork,
     repo,
-    sha: latestCommitSha,
+    sha: state.latestCommitSha,
     ref: `refs/heads/${head}`,
   });
 
