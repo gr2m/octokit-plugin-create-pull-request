@@ -151,7 +151,7 @@
         "forks": 1,
         "open_issues": 1,
         "watchers": 0,
-        "default_branch": "master",
+        "default_branch": "main",
         "permissions": {
           "admin": true,
           "push": true,
@@ -214,12 +214,12 @@
       "url": "/repos/:owner/:repo/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
-      "sha": "master",
+      "sha": "main",
       "per_page": 1
     },
     "response": {
       "status": 200,
-      "url": "https://api.github.com/repos/gr2m/pull-request-test/commits?sha=master&per_page=1",
+      "url": "https://api.github.com/repos/gr2m/pull-request-test/commits?sha=main&per_page=1",
       "headers": {
         "access-control-allow-origin": "*",
         "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
@@ -231,7 +231,7 @@
         "date": "Sun, 15 Sep 2019 19:54:09 GMT",
         "etag": "W/\"976d6002a723f5ba11497ffa4ded826b\"",
         "last-modified": "Mon, 28 Jan 2019 17:23:16 GMT",
-        "link": "<https://api.github.com/repositories/160987492/commits?sha=master&per_page=1&page=2>; rel=\"next\", <https://api.github.com/repositories/160987492/commits?sha=master&per_page=1&page=8>; rel=\"last\"",
+        "link": "<https://api.github.com/repositories/160987492/commits?sha=main&per_page=1&page=2>; rel=\"next\", <https://api.github.com/repositories/160987492/commits?sha=main&per_page=1&page=8>; rel=\"last\"",
         "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
         "server": "GitHub.com",
         "status": "200 OK",
@@ -761,7 +761,7 @@
       "owner": "gr2m",
       "repo": "pull-request-test",
       "head": "gr2m:patch",
-      "base": "master",
+      "base": "main",
       "title": "One comes, one goes",
       "body": "because"
     },
@@ -960,12 +960,12 @@
             "forks": 1,
             "open_issues": 2,
             "watchers": 0,
-            "default_branch": "master"
+            "default_branch": "main"
           }
         },
         "base": {
-          "label": "gr2m:master",
-          "ref": "master",
+          "label": "gr2m:main",
+          "ref": "main",
           "sha": "3b6c2a2df60769aa026013f5bc1649cc004bd925",
           "user": {
             "login": "gr2m",
@@ -1079,7 +1079,7 @@
             "forks": 1,
             "open_issues": 2,
             "watchers": 0,
-            "default_branch": "master"
+            "default_branch": "main"
           }
         },
         "_links": {

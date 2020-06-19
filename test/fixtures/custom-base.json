@@ -151,7 +151,7 @@
         "forks": 1,
         "open_issues": 1,
         "watchers": 0,
-        "default_branch": "master",
+        "default_branch": "main",
         "permissions": {
           "admin": true,
           "push": true,
@@ -895,7 +895,7 @@
             "forks": 1,
             "open_issues": 2,
             "watchers": 0,
-            "default_branch": "master"
+            "default_branch": "main"
           }
         },
         "base": {
@@ -1014,7 +1014,7 @@
             "forks": 1,
             "open_issues": 2,
             "watchers": 0,
-            "default_branch": "master"
+            "default_branch": "main"
           }
         },
         "_links": {
