@@ -116,7 +116,7 @@
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "default_branch": "master",
+        "default_branch": "main",
         "permissions": {
           "admin": true,
           "push": true,
@@ -204,7 +204,7 @@
       "url": "/repos/:owner/:repo/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
-      "sha": "master",
+      "sha": "main",
       "per_page": 1
     },
     "response": {
@@ -301,7 +301,7 @@
         "date": "Thu, 13 Dec 2018 22:21:24 GMT",
         "etag": "W/\"b34001d703c7eab137bd1528e6e8ef7e\"",
         "last-modified": "Thu, 13 Dec 2018 21:17:00 GMT",
-        "link": "<https://api.github.com/repositories/160987492/commits?sha=master&per_page=1&page=2>; rel=\"next\", <https://api.github.com/repositories/160987492/commits?sha=master&per_page=1&page=3>; rel=\"last\"",
+        "link": "<https://api.github.com/repositories/160987492/commits?sha=main&per_page=1&page=2>; rel=\"next\", <https://api.github.com/repositories/160987492/commits?sha=main&per_page=1&page=3>; rel=\"last\"",
         "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
         "server": "GitHub.com",
         "status": "200 OK",
@@ -678,7 +678,7 @@
       "owner": "gr2m",
       "repo": "pull-request-test",
       "head": "gr2m:patch",
-      "base": "master",
+      "base": "main",
       "title": "One comes, one goes",
       "body": "because"
     },
@@ -847,12 +847,12 @@
             "forks": 0,
             "open_issues": 1,
             "watchers": 0,
-            "default_branch": "master"
+            "default_branch": "main"
           }
         },
         "base": {
-          "label": "gr2m:master",
-          "ref": "master",
+          "label": "gr2m:main",
+          "ref": "main",
           "sha": "17691c2ddfd50d749c83fada3584841038b3b661",
           "user": {
             "login": "gr2m",
@@ -965,7 +965,7 @@
             "forks": 0,
             "open_issues": 1,
             "watchers": 0,
-            "default_branch": "master"
+            "default_branch": "main"
           }
         },
         "_links": {

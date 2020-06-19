@@ -62,7 +62,7 @@ octokit
     repo: "repo-name",
     title: "pull request title",
     body: "pull request description",
-    base: "master" /* optional: defaults to default branch */,
+    base: "main" /* optional: defaults to default branch */,
     head: "pull-request-branch-name",
     changes: [
       {
