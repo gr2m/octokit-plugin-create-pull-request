@@ -20,13 +20,15 @@ export async function octokitCreatePullRequest(
   const state: State = { octokit, owner, repo };
 
   // https://developer.github.com/v3/repos/#get-a-repository
-  const { data: repository } = await octokit.request(
+  const { data: repository, headers } = await octokit.request(
     "GET /repos/:owner/:repo",
     {
       owner,
       repo,
     }
   );
+
+  const isUser = !!headers["x-oauth-scopes"];
 
   if (!repository.permissions) {
     throw new Error(
@@ -40,7 +42,7 @@ export async function octokitCreatePullRequest(
 
   state.fork = owner;
 
-  if (!repository.permissions.push) {
+  if (isUser && !repository.permissions.push) {
     // https://developer.github.com/v3/users/#get-the-authenticated-user
     const user = await octokit.request("GET /user");
 
