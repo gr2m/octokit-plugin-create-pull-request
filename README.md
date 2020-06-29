@@ -76,14 +76,17 @@ octokit
           // deletes file if it exists,
           "path/to/file3.txt": null,
           // updates file based on current content
-          "path/to/file4.txt": ({ encoding, content }) => {
+          "path/to/file4.txt": ({ exists, xencoding, content }) => {
+            // do not create the file if it does not exist
+            if (!exists) return null;
+
             return Buffer.from(content, encoding)
               .toString("utf-8")
               .toUpperCase();
           },
         },
         commit:
-          "creating file1.txt, file2.png, deleting file3.txt, updating file4.txt",
+          "creating file1.txt, file2.png, deleting file3.txt, updating file4.txt (if it exists)",
       },
     ],
   })

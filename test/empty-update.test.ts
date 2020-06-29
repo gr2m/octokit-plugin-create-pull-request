@@ -5,8 +5,8 @@ import { createPullRequest } from "../src";
 import { UpdateFunction } from "../src/types";
 const Octokit = Core.plugin(createPullRequest);
 
-test("update readme", async () => {
-  const fixtures = require("./fixtures/update-readme");
+test("empty update", async () => {
+  const fixtures = require("./fixtures/empty-update");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -51,15 +51,14 @@ test("update readme", async () => {
   const pr = await octokit.createPullRequest({
     owner: "gr2m",
     repo: "pull-request-test",
-    title: "Uppercase README content",
-    head: "uppercase-readme",
+    title: "Empty update",
+    head: "empty-update",
     body: "",
     changes: {
       files: {
-        "README.md": updateReadme,
-        "readme.md": updateReadme,
+        "test.txt": () => null,
       },
-      commit: "uppercase README content",
+      commit: "empty update",
     },
   });
 
