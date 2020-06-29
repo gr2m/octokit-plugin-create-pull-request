@@ -5,8 +5,8 @@ import { createPullRequest } from "../src";
 import { UpdateFunction } from "../src/types";
 const Octokit = Core.plugin(createPullRequest);
 
-test("options.createWhenEmpty", async () => {
-  const fixtures = require("./fixtures/create-when-empty");
+test("no empty commit", async () => {
+  const fixtures = require("./fixtures/no-empty-commit");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -45,18 +45,26 @@ test("options.createWhenEmpty", async () => {
   const pr = await octokit.createPullRequest({
     owner: "gr2m",
     repo: "pull-request-test",
-    title: "Should not create a pull request",
-    head: "create-when-empty",
+    title: "No empty commits",
+    head: "no-empty-commits",
     body: "",
-    createWhenEmpty: false,
-    changes: {
-      files: {
-        "test.txt": () => null,
+    changes: [
+      {
+        files: {
+          "foo.txt": "bar",
+        },
+        commit: "foo.txt created",
       },
-      commit: "empty update",
-    },
+      {
+        files: {
+          "test.txt": () => null,
+        },
+        emptyCommit: false,
+        commit: "empty update",
+      },
+    ],
   });
 
-  expect(pr).toStrictEqual(null);
+  expect(pr).toStrictEqual(fixturePr);
   expect(fixtures.length).toEqual(0);
 });

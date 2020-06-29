@@ -42,12 +42,6 @@ test("empty update", async () => {
     return currentFixtures.response;
   });
 
-  const updateReadme: UpdateFunction = ({ exists, encoding, content }) => {
-    if (!exists) return null;
-
-    return Buffer.from(content, encoding).toString("utf-8").toUpperCase();
-  };
-
   const pr = await octokit.createPullRequest({
     owner: "gr2m",
     repo: "pull-request-test",
