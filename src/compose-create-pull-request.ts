@@ -80,10 +80,14 @@ export async function composeCreatePullRequest(
 
   for (const change of changes) {
     if (change.files && Object.keys(change.files).length) {
-      state.latestCommitTreeSha = await createTree(
+      const latestCommitTreeSha = await createTree(
         state as Required<State>,
         change as Required<Changes>
       );
+
+      if (latestCommitTreeSha) {
+        state.latestCommitTreeSha = latestCommitTreeSha;
+      }
     }
     state.latestCommitSha = await createCommit(
       state as Required<State>,

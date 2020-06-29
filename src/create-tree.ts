@@ -10,7 +10,7 @@ import { valueToTreeObject } from "./value-to-tree-object";
 export async function createTree(
   state: Required<State>,
   changes: Required<Changes>
-): Promise<string> {
+): Promise<string | null> {
   const {
     octokit,
     owner,
@@ -67,6 +67,7 @@ export async function createTree(
               Object.assign(file, { exists: true }) as UpdateFunctionFile
             );
           } catch (error) {
+            // istanbul ignore if
             if (error.status !== 404) throw error;
 
             // @ts-ignore
@@ -81,6 +82,10 @@ export async function createTree(
       })
     )
   ).filter(Boolean) as TreeParameter;
+
+  if (tree.length === 0) {
+    return null;
+  }
 
   // https://developer.github.com/v3/git/trees/#create-a-tree
   const {
