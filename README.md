@@ -90,6 +90,27 @@ octokit
   .then((pr) => console.log(pr.data.number));
 ```
 
+For using this plugin with another plugin, you can import the `composeCreatePullRequest` function, which accepts an `octokit` instance as first argument, and the same options as `octokit.createPullRequest` as second argument.
+
+```js
+import { Octokit } from "@octokit/core";
+import { composeCreatePullRequest } from "octokit-plugin-create-pull-request";
+
+export function myPlugin(octokit) {
+  return {
+    async myFunction(options) {
+      // custom code here
+
+      const response = await composeCreatePullRequest(octokit, options);
+
+      // more custom code here
+
+      return response;
+    },
+  };
+}
+```
+
 You can create a personal access token with the `repo` scope at
 https://github.com/settings/tokens/new?scopes=repo
 
