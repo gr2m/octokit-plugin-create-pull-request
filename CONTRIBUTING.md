@@ -37,6 +37,21 @@ octokit.hook.after("request", (response, options) => {
     response,
   });
 });
+octokit.hook.error("request", (error, options) => {
+  fixtures.push({
+    request: options,
+    response: {
+      status: error.status,
+      headers: error.headers,
+      data: {
+        error: error.message,
+        documentation_url: error.documentation_url,
+      },
+    },
+  });
+
+  throw error;
+});
 
 octokit
   .createPullRequest({
