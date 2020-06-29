@@ -10,6 +10,7 @@ export type Options = {
   body: string;
   head: string;
   base?: string;
+  createWhenEmpty?: boolean;
   changes: Changes | Changes[];
 };
 

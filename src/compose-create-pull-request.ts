@@ -6,7 +6,16 @@ import { createCommit } from "./create-commit";
 
 export async function composeCreatePullRequest(
   octokit: Octokit,
-  { owner, repo, title, body, base, head, changes: changesOption }: Options
+  {
+    owner,
+    repo,
+    title,
+    body,
+    base,
+    head,
+    createWhenEmpty,
+    changes: changesOption,
+  }: Options
 ) {
   const changes = Array.isArray(changesOption)
     ? changesOption
@@ -77,6 +86,7 @@ export async function composeCreatePullRequest(
   });
   state.latestCommitSha = latestCommit.sha;
   state.latestCommitTreeSha = latestCommit.commit.tree.sha;
+  const startCommitTreeSha = latestCommit.commit.tree.sha;
 
   for (const change of changes) {
     if (change.files && Object.keys(change.files).length) {
@@ -93,6 +103,11 @@ export async function composeCreatePullRequest(
       state as Required<State>,
       change
     );
+  }
+
+  const hasNoChanges = startCommitTreeSha === state.latestCommitTreeSha;
+  if (hasNoChanges && createWhenEmpty === false) {
+    return null;
   }
 
   // https://developer.github.com/v3/git/refs/#create-a-reference
