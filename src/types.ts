@@ -26,13 +26,21 @@ export type File = {
   encoding: "utf-8" | "base64";
 };
 
-export type UpdateFunctionFile = {
-  size: number;
-  encoding: "base64";
-  content: string;
-};
+export type UpdateFunctionFile =
+  | {
+      exists: true;
+      size: number;
+      encoding: "base64";
+      content: string;
+    }
+  | {
+      exists: false;
+      size: never;
+      encoding: never;
+      content: never;
+    };
 
-export type UpdateFunction = (file: UpdateFunctionFile) => string | File;
+export type UpdateFunction = (file: UpdateFunctionFile) => string | File | null;
 
 export type State = {
   octokit: Octokit;

@@ -50,17 +50,30 @@ export async function createTree(
         // When passed a function, retrieve the content of the file, pass it
         // to the function, then return the result
         if (typeof value === "function") {
-          const { data: file } = await octokit.request(
-            "GET /repos/:owner/:repo/contents/:path",
-            {
-              owner: fork,
-              repo,
-              ref: latestCommitSha,
-              path,
-            }
-          );
+          let result;
 
-          const result = await value(file as UpdateFunctionFile);
+          try {
+            const { data: file } = await octokit.request(
+              "GET /repos/:owner/:repo/contents/:path",
+              {
+                owner: fork,
+                repo,
+                ref: latestCommitSha,
+                path,
+              }
+            );
+
+            result = await value(
+              Object.assign(file, { exists: true }) as UpdateFunctionFile
+            );
+          } catch (error) {
+            if (error.status !== 404) throw error;
+
+            // @ts-ignore
+            result = await value({ exists: false });
+          }
+
+          if (result === null || typeof result === "undefined") return;
           return valueToTreeObject(octokit, owner, repo, path, result);
         }
 
