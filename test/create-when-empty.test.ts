@@ -2,7 +2,6 @@ import { Octokit as Core } from "@octokit/core";
 import { RequestError } from "@octokit/request-error";
 
 import { createPullRequest } from "../src";
-import { UpdateFunction } from "../src/types";
 const Octokit = Core.plugin(createPullRequest);
 
 test("options.createWhenEmpty", async () => {
