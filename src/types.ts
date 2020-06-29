@@ -18,6 +18,7 @@ export type Changes = {
   files?: {
     [path: string]: string | File | UpdateFunction;
   };
+  emptyCommit?: boolean | string;
   commit: string;
 };
 
