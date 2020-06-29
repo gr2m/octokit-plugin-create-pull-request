@@ -95,6 +95,8 @@ octokit
 
 By default, a pull request is created, even if no files have been changed. To prevent an empty pull request, set `options.createWhenEmpty` to `false`. If no pull request has been created, `octokit.createPullRequest()` resolves with `null`.
 
+By default, commits are always created, even if no files have been updated. To prevent empty commits, set `options.changes[].emptyCommit` to `false`. To set a custom commit message for empty commits, set `emptyCommit` to a string.
+
 For using this plugin with another plugin, you can import the `composeCreatePullRequest` function, which accepts an `octokit` instance as first argument, and the same options as `octokit.createPullRequest` as second argument.
 
 ```js
