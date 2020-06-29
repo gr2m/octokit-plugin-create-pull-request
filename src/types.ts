@@ -10,6 +10,7 @@ export type Options = {
   body: string;
   head: string;
   base?: string;
+  createWhenEmpty?: boolean;
   changes: Changes | Changes[];
 };
 
@@ -17,6 +18,7 @@ export type Changes = {
   files?: {
     [path: string]: string | File | UpdateFunction;
   };
+  emptyCommit?: boolean | string;
   commit: string;
 };
 

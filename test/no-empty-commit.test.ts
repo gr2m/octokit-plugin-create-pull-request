@@ -4,8 +4,8 @@ import { RequestError } from "@octokit/request-error";
 import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("empty update", async () => {
-  const fixtures = require("./fixtures/empty-update");
+test("no empty commit", async () => {
+  const fixtures = require("./fixtures/no-empty-commit");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -44,15 +44,24 @@ test("empty update", async () => {
   const pr = await octokit.createPullRequest({
     owner: "gr2m",
     repo: "pull-request-test",
-    title: "Empty update",
-    head: "empty-update",
+    title: "No empty commits",
+    head: "no-empty-commits",
     body: "",
-    changes: {
-      files: {
-        "test.txt": () => null,
+    changes: [
+      {
+        files: {
+          "foo.txt": "bar",
+        },
+        commit: "foo.txt created",
       },
-      commit: "empty update",
-    },
+      {
+        files: {
+          "test.txt": () => null,
+        },
+        emptyCommit: false,
+        commit: "empty update",
+      },
+    ],
   });
 
   expect(pr).toStrictEqual(fixturePr);
