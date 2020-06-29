@@ -2,6 +2,7 @@ import { Octokit as Core } from "@octokit/core";
 import { RequestError } from "@octokit/request-error";
 
 import { createPullRequest } from "../src";
+import { UpdateFunction } from "../src/types";
 const Octokit = Core.plugin(createPullRequest);
 
 test("update readme", async () => {
@@ -21,8 +22,9 @@ test("update readme", async () => {
       ...params
     } = options;
 
-    expect(currentFixtures.request.method).toEqual(options.method);
-    expect(currentFixtures.request.url).toEqual(options.url);
+    expect(
+      `${currentFixtures.request.method} ${currentFixtures.request.url}`
+    ).toEqual(`${options.method} ${options.url}`);
 
     Object.keys(params).forEach((paramName) => {
       expect(currentFixtures.request[paramName]).toStrictEqual(
@@ -36,22 +38,28 @@ test("update readme", async () => {
         headers: currentFixtures.response.headers,
       });
     }
+
     return currentFixtures.response;
   });
+
+  const updateReadme: UpdateFunction = ({ exists, encoding, content }) => {
+    if (!exists) return null;
+
+    return Buffer.from(content, encoding).toString("utf-8").toUpperCase();
+  };
 
   const pr = await octokit.createPullRequest({
     owner: "gr2m",
     repo: "pull-request-test",
-    title: "Test",
-    head: "test",
+    title: "Uppercase README content",
+    head: "uppercase-readme",
     body: "",
     changes: {
       files: {
-        "README.md": ({ encoding, content }) => {
-          return Buffer.from(content, encoding).toString("utf-8").toUpperCase();
-        },
+        "README.md": updateReadme,
+        "readme.md": updateReadme,
       },
-      commit: "up up up",
+      commit: "uppercase README content",
     },
   });
 
