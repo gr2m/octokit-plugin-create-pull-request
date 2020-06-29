@@ -1,6 +1,6 @@
 import type { Octokit } from "@octokit/core";
 
-import { octokitCreatePullRequest } from "./create-pull-request";
+import { composeCreatePullRequest } from "./compose-create-pull-request";
 import { VERSION } from "./version";
 import type * as Types from "./types";
 
@@ -9,9 +9,11 @@ import type * as Types from "./types";
  */
 export function createPullRequest(octokit: Octokit) {
   return {
-    createPullRequest: octokitCreatePullRequest.bind(null, octokit),
+    createPullRequest: composeCreatePullRequest.bind(null, octokit),
   };
 }
+
+export { composeCreatePullRequest } from "./compose-create-pull-request";
 
 createPullRequest.VERSION = VERSION;
 

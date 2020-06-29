@@ -4,7 +4,7 @@ import type { Changes, Options, State } from "./types";
 import { createTree } from "./create-tree";
 import { createCommit } from "./create-commit";
 
-export async function octokitCreatePullRequest(
+export async function composeCreatePullRequest(
   octokit: Octokit,
   { owner, repo, title, body, base, head, changes: changesOption }: Options
 ) {
