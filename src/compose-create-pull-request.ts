@@ -102,7 +102,7 @@ export async function composeCreatePullRequest(
       }
     }
 
-    if (change.emptyCommit !== false) {
+    if (treeCreated || change.emptyCommit !== false) {
       state.latestCommitSha = await createCommit(
         state as Required<State>,
         treeCreated,
