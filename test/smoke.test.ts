@@ -1,10 +1,14 @@
 import { Octokit } from "@octokit/core";
 
-import { createPullRequest } from "../src";
+import { createPullRequest, composeCreatePullRequest } from "../src";
 
 describe("Smoke test", () => {
-  it("is a function", () => {
+  it("createPullRequest is a function", () => {
     expect(createPullRequest).toBeInstanceOf(Function);
+  });
+
+  it("composeCreatePullRequest is a function", () => {
+    expect(composeCreatePullRequest).toBeInstanceOf(Function);
   });
 
   it("createPullRequest.VERSION is set", () => {
