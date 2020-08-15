@@ -32,6 +32,7 @@ describe("Smoke test", () => {
         head: "test",
         body: "",
         changes: [],
+        draft: false,
       });
     }).rejects.toThrow(
       new Error(

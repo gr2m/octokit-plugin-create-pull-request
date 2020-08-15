@@ -17,6 +17,7 @@ test("invalid auth", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 
@@ -38,6 +39,7 @@ test("invalid auth", async () => {
       title: "One comes, one goes",
       body: "because",
       head: "patch",
+      draft: false,
       changes: {
         files: {
           "path/to/file1.txt": "Content for file1",
