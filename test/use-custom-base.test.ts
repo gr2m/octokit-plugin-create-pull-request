@@ -39,7 +39,6 @@ test("use custom base", async () => {
     body: "because",
     head: "test-branch-1rtg5",
     base: "other-branch",
-    draft: false,
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",

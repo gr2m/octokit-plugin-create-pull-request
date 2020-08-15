@@ -37,7 +37,6 @@ test("multiple commits", async () => {
     title: "Test",
     head: "multiple-commits",
     body: "",
-    draft: false,
     changes: [
       {
         files: {

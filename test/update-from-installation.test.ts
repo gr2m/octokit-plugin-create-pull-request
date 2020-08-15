@@ -37,7 +37,6 @@ test("update from installation", async () => {
     title: "Test",
     head: "update-from-installation",
     body: "",
-    draft: false,
     changes: [
       {
         files: {

@@ -48,7 +48,6 @@ test("Empty commit message", async () => {
     title: "Empty commit message",
     head: "empty-commit-message",
     body: "",
-    draft: false,
     changes: [
       {
         files: {

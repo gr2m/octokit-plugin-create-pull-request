@@ -48,7 +48,6 @@ test("empty update", async () => {
     title: "Empty update",
     head: "empty-update",
     body: "",
-    draft: false,
     changes: {
       files: {
         "test.txt": () => null,

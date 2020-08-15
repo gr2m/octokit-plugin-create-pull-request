@@ -37,7 +37,6 @@ test("empty commits", async () => {
     title: "Test",
     head: "empty-files",
     body: "",
-    draft: false,
     changes: [
       {
         files: {},

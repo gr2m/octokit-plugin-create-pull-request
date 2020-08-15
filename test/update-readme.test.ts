@@ -55,7 +55,6 @@ test("update readme", async () => {
     title: "Uppercase README content",
     head: "uppercase-readme",
     body: "",
-    draft: false,
     changes: {
       files: {
         "README.md": updateReadme,

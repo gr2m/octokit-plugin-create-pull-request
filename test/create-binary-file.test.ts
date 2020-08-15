@@ -46,7 +46,6 @@ test("create binary file", async () => {
     title: "A black gif",
     body: "because",
     head: "patch",
-    draft: false,
     changes: {
       files: {
         "path/to/1x1-black.gif": {
