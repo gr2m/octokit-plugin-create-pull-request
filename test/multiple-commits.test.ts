@@ -16,6 +16,7 @@ test("multiple commits", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 
@@ -36,6 +37,7 @@ test("multiple commits", async () => {
     title: "Test",
     head: "multiple-commits",
     body: "",
+    draft: false,
     changes: [
       {
         files: {

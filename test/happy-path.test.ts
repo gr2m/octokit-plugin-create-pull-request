@@ -16,6 +16,7 @@ test("happy path", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 
@@ -36,6 +37,7 @@ test("happy path", async () => {
     title: "One comes, one goes",
     body: "because",
     head: "patch",
+    draft: false,
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",

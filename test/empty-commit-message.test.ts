@@ -18,6 +18,7 @@ test("Empty commit message", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 
@@ -47,6 +48,7 @@ test("Empty commit message", async () => {
     title: "Empty commit message",
     head: "empty-commit-message",
     body: "",
+    draft: false,
     changes: [
       {
         files: {

@@ -16,6 +16,7 @@ test("use fork", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 
@@ -36,6 +37,7 @@ test("use fork", async () => {
     title: "Fork has already been created",
     body: "because",
     head: "test-branch-rlbes",
+    draft: false,
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",

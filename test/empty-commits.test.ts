@@ -16,6 +16,7 @@ test("empty commits", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 
@@ -36,6 +37,7 @@ test("empty commits", async () => {
     title: "Test",
     head: "empty-files",
     body: "",
+    draft: false,
     changes: [
       {
         files: {},

@@ -18,6 +18,7 @@ test("options.createWhenEmpty", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 
@@ -47,6 +48,7 @@ test("options.createWhenEmpty", async () => {
     title: "Should not create a pull request",
     head: "create-when-empty",
     body: "",
+    draft: false,
     createWhenEmpty: false,
     changes: {
       files: {

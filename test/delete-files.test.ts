@@ -18,6 +18,7 @@ test("delete files", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 
@@ -45,6 +46,7 @@ test("delete files", async () => {
     title: "One comes, one goes",
     body: "because",
     head: "patch",
+    draft: false,
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",

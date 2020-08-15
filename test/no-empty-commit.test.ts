@@ -18,6 +18,7 @@ test("no empty commit", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 
@@ -47,6 +48,7 @@ test("no empty commit", async () => {
     title: "No empty commits",
     head: "no-empty-commits",
     body: "",
+    draft: false,
     changes: [
       {
         files: {
