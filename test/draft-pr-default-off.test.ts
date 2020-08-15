@@ -2,7 +2,7 @@ import { Octokit as Core } from "@octokit/core";
 import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("draft pr", async () => {
+test("draft pr has a default", async () => {
   const fixtures = require("./fixtures/draft-pr");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
