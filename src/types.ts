@@ -12,7 +12,7 @@ export type Options = {
   base?: string;
   createWhenEmpty?: boolean;
   changes: Changes | Changes[];
-  draft: boolean;
+  draft?: boolean;
 };
 
 export type Changes = {
