@@ -3,7 +3,7 @@ import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
 test("draft pr has a default", async () => {
-  const fixtures = require("./fixtures/draft-pr");
+  const fixtures = require("./fixtures/happy-path");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
