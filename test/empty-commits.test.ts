@@ -16,6 +16,7 @@ test("empty commits", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 

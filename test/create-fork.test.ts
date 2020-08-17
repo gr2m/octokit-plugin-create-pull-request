@@ -16,6 +16,7 @@ test("create fork", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 

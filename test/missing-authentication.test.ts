@@ -17,6 +17,7 @@ test("invalid auth", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 

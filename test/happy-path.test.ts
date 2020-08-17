@@ -16,6 +16,7 @@ test("happy path", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 

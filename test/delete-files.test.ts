@@ -18,6 +18,7 @@ test("delete files", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 

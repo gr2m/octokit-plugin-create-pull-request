@@ -17,6 +17,7 @@ test("use custom base", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 

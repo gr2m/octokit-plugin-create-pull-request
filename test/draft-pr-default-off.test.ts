@@ -2,8 +2,8 @@ import { Octokit as Core } from "@octokit/core";
 import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("update from installation", async () => {
-  const fixtures = require("./fixtures/update-from-installation");
+test("draft pr has a default", async () => {
+  const fixtures = require("./fixtures/happy-path");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -16,6 +16,7 @@ test("update from installation", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 
@@ -33,17 +34,16 @@ test("update from installation", async () => {
   const pr = await octokit.createPullRequest({
     owner: "gr2m",
     repo: "pull-request-test",
-    title: "Test",
-    head: "update-from-installation",
-    body: "",
-    changes: [
-      {
-        files: {
-          "foo.txt": "bar",
-        },
-        commit: "empty commit",
+    title: "One comes, one goes",
+    body: "because",
+    head: "patch",
+    changes: {
+      files: {
+        "path/to/file1.txt": "Content for file1",
+        "path/to/file2.txt": "Content for file2",
       },
-    ],
+      commit: "why",
+    },
   });
 
   expect(pr).toStrictEqual(fixturePr);

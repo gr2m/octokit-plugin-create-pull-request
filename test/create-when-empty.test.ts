@@ -18,6 +18,7 @@ test("options.createWhenEmpty", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 

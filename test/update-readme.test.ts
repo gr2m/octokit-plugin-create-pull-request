@@ -19,6 +19,7 @@ test("update readme", async () => {
       request,
       headers,
       mediaType,
+      draft,
       ...params
     } = options;
 

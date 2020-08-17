@@ -15,6 +15,7 @@ export async function composeCreatePullRequest(
     head,
     createWhenEmpty,
     changes: changesOption,
+    draft = false,
   }: Options
 ) {
   const changes = Array.isArray(changesOption)
@@ -132,5 +133,6 @@ export async function composeCreatePullRequest(
     base,
     title,
     body,
+    draft,
   });
 }
