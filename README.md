@@ -76,7 +76,7 @@ octokit
           // deletes file if it exists,
           "path/to/file3.txt": null,
           // updates file based on current content
-          "path/to/file4.txt": ({ exists, xencoding, content }) => {
+          "path/to/file4.txt": ({ exists, encoding, content }) => {
             // do not create the file if it does not exist
             if (!exists) return null;
 
