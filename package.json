@@ -18,9 +18,8 @@
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
   "devDependencies": {
-    "@octokit/core": "^3.2.4",
+    "@octokit/core": "^3.0.0",
     "@octokit/plugin-paginate-rest": "^2.0.1",
-    "@octokit/types": "^6.2.1",
     "@pika/pack": "^0.5.0",
     "@pika/plugin-build-node": "^0.9.2",
     "@pika/plugin-build-web": "^0.9.2",
