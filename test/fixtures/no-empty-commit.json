@@ -12,7 +12,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo",
+      "url": "/repos/{owner}/{repo}",
       "owner": "gr2m",
       "repo": "pull-request-test"
     },
@@ -168,7 +168,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/commits",
+      "url": "/repos/{owner}/{repo}/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "master",
@@ -302,7 +302,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/trees",
+      "url": "/repos/{owner}/{repo}/git/trees",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "base_tree": "8582bb07259f445f7124689763bd5a1c81012504",
@@ -404,12 +404,14 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/commits",
+      "url": "/repos/{owner}/{repo}/git/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "message": "foo.txt created",
       "tree": "02ca64b41ac7ee402db0a52cb6f40d77a03d96aa",
-      "parents": ["b6cc0485d5157e05292f1a9d274836553964eb21"]
+      "parents": [
+        "b6cc0485d5157e05292f1a9d274836553964eb21"
+      ]
     },
     "response": {
       "status": 201,
@@ -490,7 +492,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/contents/:path",
+      "url": "/repos/{owner}/{repo}/contents/:path",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "ref": "e2dda95c560a5909a91858725ae1576b360a86a7",
@@ -561,7 +563,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/refs",
+      "url": "/repos/{owner}/{repo}/git/refs",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "e2dda95c560a5909a91858725ae1576b360a86a7",
@@ -622,7 +624,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/pulls",
+      "url": "/repos/{owner}/{repo}/pulls",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "head": "gr2m:no-empty-commits",

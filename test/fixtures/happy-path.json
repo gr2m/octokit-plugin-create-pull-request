@@ -20,7 +20,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo",
+      "url": "/repos/{owner}/{repo}",
       "owner": "gr2m",
       "repo": "pull-request-test"
     },
@@ -201,7 +201,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/commits",
+      "url": "/repos/{owner}/{repo}/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "main",
@@ -352,7 +352,13 @@
             "type": "string"
           },
           "tree[].mode": {
-            "enum": ["100644", "100755", "040000", "160000", "120000"],
+            "enum": [
+              "100644",
+              "100755",
+              "040000",
+              "160000",
+              "120000"
+            ],
             "type": "string"
           },
           "tree[].path": {
@@ -362,12 +368,16 @@
             "type": "string"
           },
           "tree[].type": {
-            "enum": ["blob", "tree", "commit"],
+            "enum": [
+              "blob",
+              "tree",
+              "commit"
+            ],
             "type": "string"
           }
         }
       },
-      "url": "/repos/:owner/:repo/git/trees",
+      "url": "/repos/{owner}/{repo}/git/trees",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "base_tree": "aa09dbd73b3fafd81d91210f693517f43e8ddb0b",
@@ -485,12 +495,14 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/git/commits",
+      "url": "/repos/{owner}/{repo}/git/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "message": "why",
       "tree": "2795a02a92bc252969879a4f39203a88a519e95d",
-      "parents": ["17691c2ddfd50d749c83fada3584841038b3b661"]
+      "parents": [
+        "17691c2ddfd50d749c83fada3584841038b3b661"
+      ]
     },
     "response": {
       "data": {
@@ -587,7 +599,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/git/refs",
+      "url": "/repos/{owner}/{repo}/git/refs",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "0c30060c56316094a3df8a7594930974bb21104d",
@@ -674,7 +686,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/pulls",
+      "url": "/repos/{owner}/{repo}/pulls",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "head": "gr2m:patch",

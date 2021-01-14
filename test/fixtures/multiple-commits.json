@@ -12,7 +12,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo",
+      "url": "/repos/{owner}/{repo}",
       "owner": "gr2m",
       "repo": "pull-request-test"
     },
@@ -168,7 +168,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/commits",
+      "url": "/repos/{owner}/{repo}/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "main",
@@ -302,7 +302,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/trees",
+      "url": "/repos/{owner}/{repo}/git/trees",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "base_tree": "fb00ef8a5edaf5cae464878939b413004407b9e4",
@@ -389,12 +389,14 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/commits",
+      "url": "/repos/{owner}/{repo}/git/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "message": "foo",
       "tree": "61b0dda711c2658fc267c9100058ea2dd8e96f30",
-      "parents": ["3b6c2a2df60769aa026013f5bc1649cc004bd925"]
+      "parents": [
+        "3b6c2a2df60769aa026013f5bc1649cc004bd925"
+      ]
     },
     "response": {
       "status": 201,
@@ -475,7 +477,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/trees",
+      "url": "/repos/{owner}/{repo}/git/trees",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "base_tree": "61b0dda711c2658fc267c9100058ea2dd8e96f30",
@@ -570,12 +572,14 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/commits",
+      "url": "/repos/{owner}/{repo}/git/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "message": "bar",
       "tree": "e282fd633fab34f9f1eea108e6a1a2c42525efa9",
-      "parents": ["90495d129cecc567ab9f6c8d6f9dcce6ed758928"]
+      "parents": [
+        "90495d129cecc567ab9f6c8d6f9dcce6ed758928"
+      ]
     },
     "response": {
       "status": 201,
@@ -656,7 +660,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/refs",
+      "url": "/repos/{owner}/{repo}/git/refs",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "0faae268248dea050abbd31245f1ec8bf9515b17",
@@ -717,7 +721,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/pulls",
+      "url": "/repos/{owner}/{repo}/pulls",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "head": "gr2m:multiple-commits",

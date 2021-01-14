@@ -12,7 +12,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo",
+      "url": "/repos/{owner}/{repo}",
       "owner": "gr2m",
       "repo": "pull-request-test"
     },
@@ -166,7 +166,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/commits",
+      "url": "/repos/{owner}/{repo}/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "master",
@@ -303,7 +303,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/trees",
+      "url": "/repos/{owner}/{repo}/git/trees",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "base_tree": "3f408721c8e2da996e5a5db55cd865d03338792d",
@@ -395,12 +395,14 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/commits",
+      "url": "/repos/{owner}/{repo}/git/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "message": "empty commit",
       "tree": "ff3f79fdc2c0afc6fa10a674155ba3051c951cbb",
-      "parents": ["b15ef3672d9fd27552604b9bb1c8d11920c3296e"]
+      "parents": [
+        "b15ef3672d9fd27552604b9bb1c8d11920c3296e"
+      ]
     },
     "response": {
       "status": 201,
@@ -479,7 +481,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/refs",
+      "url": "/repos/{owner}/{repo}/git/refs",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "7c3a7a87b4306cceebff7d8d95b76a98ba8b2a85",
@@ -538,7 +540,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/pulls",
+      "url": "/repos/{owner}/{repo}/pulls",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "head": "gr2m:update-from-installation",

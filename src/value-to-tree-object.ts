@@ -19,11 +19,14 @@ export async function valueToTreeObject(
 
   // Binary files need to be created first using the git blob API,
   // then changed by referencing in the .sha key
-  const { data } = await octokit.request("POST /repos/:owner/:repo/git/blobs", {
-    owner,
-    repo,
-    ...value,
-  });
+  const { data } = await octokit.request(
+    "POST /repos/{owner}/{repo}/git/blobs",
+    {
+      owner,
+      repo,
+      ...value,
+    }
+  );
   const blobSha = data.sha;
   return {
     path,

@@ -12,7 +12,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo",
+      "url": "/repos/{owner}/{repo}",
       "owner": "gr2m",
       "repo": "pull-request-test"
     },
@@ -168,7 +168,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/commits",
+      "url": "/repos/{owner}/{repo}/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "master",
@@ -294,7 +294,6 @@
       ]
     }
   },
-
   {
     "request": {
       "method": "GET",
@@ -308,7 +307,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/contents/:path",
+      "url": "/repos/{owner}/{repo}/contents/:path",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "ref": "b15ef3672d9fd27552604b9bb1c8d11920c3296e",
@@ -379,7 +378,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/contents/:path",
+      "url": "/repos/{owner}/{repo}/contents/:path",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "ref": "b15ef3672d9fd27552604b9bb1c8d11920c3296e",
@@ -431,7 +430,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/trees",
+      "url": "/repos/{owner}/{repo}/git/trees",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "base_tree": "3f408721c8e2da996e5a5db55cd865d03338792d",
@@ -517,12 +516,14 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/commits",
+      "url": "/repos/{owner}/{repo}/git/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "message": "uppercase README content",
       "tree": "74a097069384b22083a76cd3221570d6d03faaae",
-      "parents": ["b15ef3672d9fd27552604b9bb1c8d11920c3296e"]
+      "parents": [
+        "b15ef3672d9fd27552604b9bb1c8d11920c3296e"
+      ]
     },
     "response": {
       "status": 201,
@@ -603,7 +604,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/refs",
+      "url": "/repos/{owner}/{repo}/git/refs",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "bc1c7abd84984864a891192e76f4cc6beb56435d",
@@ -664,7 +665,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/pulls",
+      "url": "/repos/{owner}/{repo}/pulls",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "head": "gr2m:uppercase-readme",

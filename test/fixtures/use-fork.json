@@ -24,7 +24,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo",
+      "url": "/repos/{owner}/{repo}",
       "owner": "gr2m",
       "repo": "pull-request-test"
     },
@@ -288,12 +288,16 @@
             "type": "string"
           },
           "sort": {
-            "enum": ["newest", "oldest", "stargazers"],
+            "enum": [
+              "newest",
+              "oldest",
+              "stargazers"
+            ],
             "type": "string"
           }
         }
       },
-      "url": "/repos/:owner/:repo/forks",
+      "url": "/repos/{owner}/{repo}/forks",
       "owner": "gr2m",
       "repo": "pull-request-test"
     },
@@ -476,7 +480,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/commits",
+      "url": "/repos/{owner}/{repo}/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "main",
@@ -631,7 +635,13 @@
             "type": "string"
           },
           "tree[].mode": {
-            "enum": ["100644", "100755", "040000", "160000", "120000"],
+            "enum": [
+              "100644",
+              "100755",
+              "040000",
+              "160000",
+              "120000"
+            ],
             "type": "string"
           },
           "tree[].path": {
@@ -641,12 +651,16 @@
             "type": "string"
           },
           "tree[].type": {
-            "enum": ["blob", "tree", "commit"],
+            "enum": [
+              "blob",
+              "tree",
+              "commit"
+            ],
             "type": "string"
           }
         }
       },
-      "url": "/repos/:owner/:repo/git/trees",
+      "url": "/repos/{owner}/{repo}/git/trees",
       "owner": "hipstersmoothie",
       "repo": "pull-request-test",
       "base_tree": "fb00ef8a5edaf5cae464878939b413004407b9e4",
@@ -781,12 +795,14 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/git/commits",
+      "url": "/repos/{owner}/{repo}/git/commits",
       "owner": "hipstersmoothie",
       "repo": "pull-request-test",
       "message": "why",
       "tree": "57359ee9bd51c9222ba2d288a8ce676169c2cdcf",
-      "parents": ["3b6c2a2df60769aa026013f5bc1649cc004bd925"]
+      "parents": [
+        "3b6c2a2df60769aa026013f5bc1649cc004bd925"
+      ]
     },
     "response": {
       "status": 201,
@@ -887,7 +903,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/git/refs",
+      "url": "/repos/{owner}/{repo}/git/refs",
       "owner": "hipstersmoothie",
       "repo": "pull-request-test",
       "sha": "6c053da602cad322c51ffe9503865b1e077ed8a9",
@@ -981,7 +997,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/pulls",
+      "url": "/repos/{owner}/{repo}/pulls",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "head": "hipstersmoothie:test-branch-rlbes",
