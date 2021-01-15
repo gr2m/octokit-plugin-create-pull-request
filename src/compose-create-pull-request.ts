@@ -31,7 +31,7 @@ export async function composeCreatePullRequest(
 
   // https://developer.github.com/v3/repos/#get-a-repository
   const { data: repository, headers } = await octokit.request(
-    "GET /repos/:owner/:repo",
+    "GET /repos/{owner}/{repo}",
     {
       owner,
       repo,
@@ -57,17 +57,18 @@ export async function composeCreatePullRequest(
     const user = await octokit.request("GET /user");
 
     // https://developer.github.com/v3/repos/forks/#list-forks
-    const forks = await octokit.request("GET /repos/:owner/:repo/forks", {
+    const forks = await octokit.request("GET /repos/{owner}/{repo}/forks", {
       owner,
       repo,
     });
     const hasFork = forks.data.find(
-      (fork) => fork.owner.login === user.data.login
+      /* istanbul ignore next - fork owner can be null, but we don't test that */
+      (fork) => fork.owner?.login === user.data.login
     );
 
     if (!hasFork) {
       // https://developer.github.com/v3/repos/forks/#create-a-fork
-      await octokit.request("POST /repos/:owner/:repo/forks", {
+      await octokit.request("POST /repos/{owner}/{repo}/forks", {
         owner,
         repo,
       });
@@ -79,7 +80,7 @@ export async function composeCreatePullRequest(
   // https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
   const {
     data: [latestCommit],
-  } = await octokit.request("GET /repos/:owner/:repo/commits", {
+  } = await octokit.request("GET /repos/{owner}/{repo}/commits", {
     owner,
     repo,
     sha: base,
@@ -118,7 +119,7 @@ export async function composeCreatePullRequest(
   }
 
   // https://developer.github.com/v3/git/refs/#create-a-reference
-  await octokit.request("POST /repos/:owner/:repo/git/refs", {
+  await octokit.request("POST /repos/{owner}/{repo}/git/refs", {
     owner: state.fork,
     repo,
     sha: state.latestCommitSha,
@@ -126,7 +127,7 @@ export async function composeCreatePullRequest(
   });
 
   // https://developer.github.com/v3/pulls/#create-a-pull-request
-  return await octokit.request("POST /repos/:owner/:repo/pulls", {
+  return await octokit.request("POST /repos/{owner}/{repo}/pulls", {
     owner,
     repo,
     head: `${state.fork}:${head}`,

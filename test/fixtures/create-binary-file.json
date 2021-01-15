@@ -12,7 +12,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo",
+      "url": "/repos/{owner}/{repo}",
       "owner": "gr2m",
       "repo": "pull-request-test"
     },
@@ -168,7 +168,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/commits",
+      "url": "/repos/{owner}/{repo}/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "latest",
@@ -302,7 +302,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/blobs",
+      "url": "/repos/{owner}/{repo}/git/blobs",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "content": "R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=",
@@ -357,7 +357,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/trees",
+      "url": "/repos/{owner}/{repo}/git/trees",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "base_tree": "6919b5815d734549eb8071edf686da366c60ae72",
@@ -474,12 +474,14 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/commits",
+      "url": "/repos/{owner}/{repo}/git/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "message": "why",
       "tree": "d723044b9b085d768f1574e3c9ceec5a8d0116b8",
-      "parents": ["0b147e7357bff7bc8dc4c2dc7d0bbc4e39ae8137"]
+      "parents": [
+        "0b147e7357bff7bc8dc4c2dc7d0bbc4e39ae8137"
+      ]
     },
     "response": {
       "status": 201,
@@ -560,7 +562,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/refs",
+      "url": "/repos/{owner}/{repo}/git/refs",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "d5b91a8da5645425762aab93c2f523c033702028",
@@ -621,7 +623,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/pulls",
+      "url": "/repos/{owner}/{repo}/pulls",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "head": "gr2m:patch",

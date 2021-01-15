@@ -4,8 +4,8 @@
   "description": "Octokit plugin to create a pull request with multiple file changes",
   "scripts": {
     "build": "pika build",
-    "lint": "prettier --check '{src,test}/**/*.{ts,md}' *.md package.json tsconfig.json",
-    "lint:fix": "prettier --write '{src,test}/**/*.{ts,md}' *.md package.json tsconfig.json",
+    "lint": "prettier --check \"{src,test}/**/*.{ts,md}\" *.md package.json tsconfig.json",
+    "lint:fix": "prettier --write \"{src,test}/**/*.{ts,md}\" *.md package.json tsconfig.json",
     "pretest": "npm run -s lint",
     "test": "jest --coverage"
   },
@@ -17,6 +17,9 @@
   ],
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
+  "dependencies": {
+    "@octokit/types": "^6.3.0"
+  },
   "devDependencies": {
     "@octokit/core": "^3.0.0",
     "@octokit/plugin-paginate-rest": "^2.0.1",

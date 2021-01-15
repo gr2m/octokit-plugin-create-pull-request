@@ -24,7 +24,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo",
+      "url": "/repos/{owner}/{repo}",
       "owner": "gr2m",
       "repo": "pull-request-test"
     },
@@ -211,7 +211,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/commits",
+      "url": "/repos/{owner}/{repo}/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "main",
@@ -346,7 +346,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/contents/:path",
+      "url": "/repos/{owner}/{repo}/contents/:path",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "ref": "3b6c2a2df60769aa026013f5bc1649cc004bd925",
@@ -398,7 +398,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/contents/:path",
+      "url": "/repos/{owner}/{repo}/contents/:path",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "ref": "3b6c2a2df60769aa026013f5bc1649cc004bd925",
@@ -422,7 +422,7 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/:owner/:repo/git/trees",
+      "url": "/repos/{owner}/{repo}/git/trees",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "base_tree": "fb00ef8a5edaf5cae464878939b413004407b9e4",
@@ -557,12 +557,14 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/git/commits",
+      "url": "/repos/{owner}/{repo}/git/commits",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "message": "why",
       "tree": "a2a2812d82ef4073ba2d0e31edfdad71dca5a849",
-      "parents": ["3b6c2a2df60769aa026013f5bc1649cc004bd925"]
+      "parents": [
+        "3b6c2a2df60769aa026013f5bc1649cc004bd925"
+      ]
     },
     "response": {
       "status": 201,
@@ -663,7 +665,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/git/refs",
+      "url": "/repos/{owner}/{repo}/git/refs",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "sha": "126d610e92e99081dc8e78da232ea18854994811",
@@ -757,7 +759,7 @@
           }
         }
       },
-      "url": "/repos/:owner/:repo/pulls",
+      "url": "/repos/{owner}/{repo}/pulls",
       "owner": "gr2m",
       "repo": "pull-request-test",
       "head": "gr2m:patch",

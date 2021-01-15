@@ -15,7 +15,7 @@ export async function createCommit(
 
   // https://developer.github.com/v3/git/commits/#create-a-commit
   const { data: latestCommit } = await octokit.request(
-    "POST /repos/:owner/:repo/git/commits",
+    "POST /repos/{owner}/{repo}/git/commits",
     {
       owner: fork,
       repo,

@@ -30,7 +30,7 @@ export async function createTree(
           // so we only attempt to delete the file if it exists.
           try {
             // https://developer.github.com/v3/repos/contents/#get-contents
-            await octokit.request("HEAD /repos/:owner/:repo/contents/:path", {
+            await octokit.request("HEAD /repos/{owner}/{repo}/contents/:path", {
               owner: fork,
               repo,
               ref: latestCommitSha,
@@ -54,7 +54,7 @@ export async function createTree(
 
           try {
             const { data: file } = await octokit.request(
-              "GET /repos/:owner/:repo/contents/:path",
+              "GET /repos/{owner}/{repo}/contents/:path",
               {
                 owner: fork,
                 repo,
@@ -90,7 +90,7 @@ export async function createTree(
   // https://developer.github.com/v3/git/trees/#create-a-tree
   const {
     data: { sha: newTreeSha },
-  } = await octokit.request("POST /repos/:owner/:repo/git/trees", {
+  } = await octokit.request("POST /repos/{owner}/{repo}/git/trees", {
     owner: fork,
     repo,
     base_tree: latestCommitTreeSha,

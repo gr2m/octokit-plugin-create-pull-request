@@ -1,7 +1,7 @@
 import type { Octokit } from "@octokit/core";
 import type { Endpoints } from "@octokit/types";
 
-export type TreeParameter = Endpoints["POST /repos/:owner/:repo/git/trees"]["parameters"]["tree"];
+export type TreeParameter = Endpoints["POST /repos/{owner}/{repo}/git/trees"]["parameters"]["tree"];
 
 export type Options = {
   owner: string;
