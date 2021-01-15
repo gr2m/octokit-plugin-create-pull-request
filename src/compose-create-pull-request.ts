@@ -85,7 +85,7 @@ export async function composeCreatePullRequest(
     sha: base,
     per_page: 1,
   });
-  state.latestCommitSha = latestCommit.sha as string;
+  state.latestCommitSha = latestCommit.sha;
   state.latestCommitTreeSha = latestCommit.commit.tree.sha;
   const baseCommitTreeSha = latestCommit.commit.tree.sha;
 

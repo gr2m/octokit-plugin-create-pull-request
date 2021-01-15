@@ -17,6 +17,9 @@
   ],
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
+  "dependencies": {
+    "@octokit/types": "^6.3.0"
+  },
   "devDependencies": {
     "@octokit/core": "^3.0.0",
     "@octokit/plugin-paginate-rest": "^2.0.1",
