@@ -63,7 +63,7 @@ export async function composeCreatePullRequest(
     });
     const hasFork = forks.data.find(
       /* istanbul ignore next - fork owner can be null, but we don't test that */
-      (fork) => fork.owner?.login === user.data.login
+      (fork) => fork.owner && fork.owner.login === user.data.login
     );
 
     if (!hasFork) {
