@@ -36,7 +36,7 @@
     "ts-jest": "^26.5.1",
     "typescript": "^4.1.4"
   },
-  "repository": "https://github.com/gr2m/octokit-plugin-create-pull-request",
+  "repository": "github:gr2m/octokit-plugin-create-pull-request",
   "jest": {
     "preset": "ts-jest",
     "coverageThreshold": {
