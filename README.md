@@ -11,7 +11,6 @@ Features
 - Makes multiple file changes using a single commit
 - Creates a fork if the authenticated user does not have write access to the
   repository
-- See [Todos](#todos) for more cool feature ideas! Pull requests welcome!
 
 ## Usage
 
