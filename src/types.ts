@@ -27,6 +27,7 @@ export type Changes = {
 export type File = {
   content: string;
   encoding: "utf-8" | "base64";
+  mode?: string;
 };
 
 export type UpdateFunctionFile =

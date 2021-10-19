@@ -8,11 +8,16 @@ export async function valueToTreeObject(
   path: string,
   value: string | File
 ) {
+  let mode = "100644";
+  if (value !== null && typeof value !== "string") {
+    mode = value.mode || mode;
+  }
+
   // Text files can be changed through the .content key
   if (typeof value === "string") {
     return {
       path,
-      mode: "100644",
+      mode: mode,
       content: value,
     };
   }
@@ -28,9 +33,10 @@ export async function valueToTreeObject(
     }
   );
   const blobSha = data.sha;
+
   return {
     path,
-    mode: "100644",
+    mode: mode,
     sha: blobSha,
   };
 }
