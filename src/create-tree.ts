@@ -75,10 +75,10 @@ export async function createTree(
           }
 
           if (result === null || typeof result === "undefined") return;
-          return valueToTreeObject(octokit, owner, repo, path, result);
+          return valueToTreeObject(octokit, fork, repo, path, result);
         }
 
-        return valueToTreeObject(octokit, owner, repo, path, value);
+        return valueToTreeObject(octokit, fork, repo, path, value);
       })
     )
   ).filter(Boolean) as TreeParameter;
