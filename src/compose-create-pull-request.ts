@@ -81,7 +81,7 @@ export async function composeCreatePullRequest(
   const {
     data: [latestCommit],
   } = await octokit.request("GET /repos/{owner}/{repo}/commits", {
-    owner,
+    owner: state.fork,
     repo,
     sha: base,
     per_page: 1,
