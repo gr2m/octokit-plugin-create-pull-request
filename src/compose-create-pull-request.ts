@@ -16,6 +16,7 @@ export async function composeCreatePullRequest(
     createWhenEmpty,
     changes: changesOption,
     draft = false,
+    forceFork = false,
   }: Options
 ) {
   const changes = Array.isArray(changesOption)
@@ -52,7 +53,7 @@ export async function composeCreatePullRequest(
 
   state.fork = owner;
 
-  if (isUser && !repository.permissions.push) {
+  if (forceFork || (isUser && !repository.permissions.push)) {
     // https://developer.github.com/v3/users/#get-the-authenticated-user
     const user = await octokit.request("GET /user");
 
