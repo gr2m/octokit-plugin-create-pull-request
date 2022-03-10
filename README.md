@@ -63,7 +63,7 @@ octokit
     body: "pull request description",
     base: "main" /* optional: defaults to default branch */,
     head: "pull-request-branch-name",
-    forceFork: false, /* optional: force creating fork even when user has write rights */
+    forceFork: false, /* optional: force creating fork even when user has write rights */,
     changes: [
       {
         /* optional: if `files` is not passed, an empty commit is created instead */
