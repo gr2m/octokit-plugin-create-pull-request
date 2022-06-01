@@ -481,7 +481,7 @@
         }
       },
       "url": "/repos/{owner}/{repo}/commits",
-      "owner": "gr2m",
+      "owner": "hipstersmoothie",
       "repo": "pull-request-test",
       "sha": "main",
       "per_page": 1
