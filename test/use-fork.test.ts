@@ -20,7 +20,6 @@ test("use fork", async () => {
       ...params
     } = options;
 
-    console.log(`${options.method} ${options.url}`, params);
     expect(currentFixtures.request.method).toEqual(options.method);
     expect(currentFixtures.request.url).toEqual(options.url);
 

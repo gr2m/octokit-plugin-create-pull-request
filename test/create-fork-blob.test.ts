@@ -1,10 +1,10 @@
 import { Octokit as Core } from "@octokit/core";
-
 import { createPullRequest } from "../src";
+
 const Octokit = Core.plugin(createPullRequest);
 
-test("use fork blob", async () => {
-  const fixtures = require("./fixtures/use-fork-blob");
+test("create fork blob", async () => {
+  const fixtures = require("./fixtures/create-fork-blob");
   const octokit = new Octokit();
 
   octokit.hook.wrap("request", (_, options) => {
@@ -20,9 +20,9 @@ test("use fork blob", async () => {
       ...params
     } = options;
 
+    console.log(`${options.method} ${options.url}`, params);
     expect(currentFixtures.request.method).toEqual(options.method);
     expect(currentFixtures.request.url).toEqual(options.url);
-
     Object.keys(params).forEach((paramName) => {
       expect(params[paramName]).toStrictEqual(
         currentFixtures.request[paramName]
@@ -34,9 +34,9 @@ test("use fork blob", async () => {
   await octokit.createPullRequest({
     owner: "gr2m",
     repo: "pull-request-test",
-    title: "Fork has already been created",
+    title: "One comes, one goes",
     body: "because",
-    head: "test-branch-rlbes",
+    head: "test-branch-u7es0",
     changes: {
       files: {
         "path/to/1x1-black.gif": {
