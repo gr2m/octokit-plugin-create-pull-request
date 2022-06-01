@@ -20,9 +20,9 @@ test("create fork", async () => {
       ...params
     } = options;
 
+    console.log(`${options.method} ${options.url}`, params);
     expect(currentFixtures.request.method).toEqual(options.method);
     expect(currentFixtures.request.url).toEqual(options.url);
-
     Object.keys(params).forEach((paramName) => {
       expect(currentFixtures.request[paramName]).toStrictEqual(
         params[paramName]
