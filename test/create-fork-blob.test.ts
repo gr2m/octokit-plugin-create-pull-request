@@ -3,8 +3,8 @@ import { createPullRequest } from "../src";
 
 const Octokit = Core.plugin(createPullRequest);
 
-test("create fork", async () => {
-  const fixtures = require("./fixtures/create-fork");
+test("create fork blob", async () => {
+  const fixtures = require("./fixtures/create-fork-blob");
   const octokit = new Octokit();
 
   octokit.hook.wrap("request", (_, options) => {
@@ -39,8 +39,11 @@ test("create fork", async () => {
     head: "test-branch-u7es0",
     changes: {
       files: {
-        "path/to/file1.txt": "Content for file1",
-        "path/to/file2.txt": "Content for file2",
+        "path/to/1x1-black.gif": {
+          // https://css-tricks.com/snippets/html/base64-encode-of-1x1px-transparent-gif/
+          content: "R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=",
+          encoding: "base64",
+        },
       },
       commit: "why",
     },
