@@ -22,8 +22,9 @@ test("create binary file", async () => {
       ...params
     } = options;
 
-    expect(currentFixtures.request.method).toEqual(options.method);
-    expect(currentFixtures.request.url).toEqual(options.url);
+    expect(
+      `${currentFixtures.request.method} ${currentFixtures.request.url}`
+    ).toEqual(`${options.method} ${options.url}`);
 
     Object.keys(params).forEach((paramName) => {
       expect(currentFixtures.request[paramName]).toStrictEqual(
@@ -37,6 +38,7 @@ test("create binary file", async () => {
         headers: currentFixtures.response.headers,
       });
     }
+
     return currentFixtures.response;
   });
 

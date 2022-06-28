@@ -5,7 +5,7 @@
       "baseUrl": "https://api.github.com",
       "headers": {
         "accept": "application/vnd.github.v3+json",
-        "user-agent": "octokit-core.js/3.0.0 Node.js/14.3.0 (macOS Catalina; x64)"
+        "user-agent": "octokit-core.js/3.2.5 Node.js/18.3.0 (darwin; arm64)"
       },
       "mediaType": {
         "format": "",
@@ -21,31 +21,35 @@
       "url": "https://api.github.com/repos/gr2m/pull-request-test",
       "headers": {
         "access-control-allow-origin": "*",
-        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
         "cache-control": "private, max-age=60, s-maxage=60",
         "connection": "close",
         "content-encoding": "gzip",
         "content-security-policy": "default-src 'none'",
         "content-type": "application/json; charset=utf-8",
-        "date": "Mon, 29 Jun 2020 19:10:55 GMT",
-        "etag": "W/\"897ba0abf69120b194b7727d7ff1cc78\"",
-        "last-modified": "Wed, 17 Jun 2020 17:35:08 GMT",
+        "date": "Tue, 28 Jun 2022 00:38:25 GMT",
+        "etag": "W/\"d1c1b3565de23378611062c9f75ae3ab70e1a8319ad2d63bee6d113b7c03462a\"",
+        "github-authentication-token-expiration": "2022-08-24 23:46:54 UTC",
+        "last-modified": "Thu, 15 Oct 2020 00:04:09 GMT",
         "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
         "server": "GitHub.com",
-        "status": "200 OK",
         "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
         "transfer-encoding": "chunked",
-        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding",
+        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With",
         "x-accepted-oauth-scopes": "repo",
         "x-content-type-options": "nosniff",
         "x-frame-options": "deny",
+        "x-github-api-version-selected": "",
+        "x-github-api-version-selected-reason": "unavailable",
         "x-github-media-type": "github.v3; format=json",
-        "x-github-request-id": "A6CA:8DE2:FFC6:14189:5EFA3CBF",
-        "x-oauth-scopes": "repo",
+        "x-github-request-id": "CB76:5D65:C53414:D304E9:62BA4D81",
+        "x-oauth-scopes": "notifications, repo, workflow, write:org",
         "x-ratelimit-limit": "5000",
-        "x-ratelimit-remaining": "4984",
-        "x-ratelimit-reset": "1593461369",
-        "x-xss-protection": "1; mode=block"
+        "x-ratelimit-remaining": "4888",
+        "x-ratelimit-reset": "1656378677",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-used": "112",
+        "x-xss-protection": "0"
       },
       "data": {
         "id": 160987492,
@@ -57,7 +61,7 @@
           "login": "gr2m",
           "id": 39992,
           "node_id": "MDQ6VXNlcjM5OTky",
-          "avatar_url": "https://avatars3.githubusercontent.com/u/39992?v=4",
+          "avatar_url": "https://avatars.githubusercontent.com/u/39992?v=4",
           "gravatar_id": "",
           "url": "https://api.github.com/users/gr2m",
           "html_url": "https://github.com/gr2m",
@@ -71,7 +75,7 @@
           "events_url": "https://api.github.com/users/gr2m/events{/privacy}",
           "received_events_url": "https://api.github.com/users/gr2m/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": true
         },
         "html_url": "https://github.com/gr2m/pull-request-test",
         "description": null,
@@ -114,14 +118,14 @@
         "releases_url": "https://api.github.com/repos/gr2m/pull-request-test/releases{/id}",
         "deployments_url": "https://api.github.com/repos/gr2m/pull-request-test/deployments",
         "created_at": "2018-12-08T23:26:26Z",
-        "updated_at": "2020-06-17T17:35:08Z",
-        "pushed_at": "2020-06-29T19:10:47Z",
+        "updated_at": "2020-10-15T00:04:09Z",
+        "pushed_at": "2022-06-28T00:38:19Z",
         "git_url": "git://github.com/gr2m/pull-request-test.git",
         "ssh_url": "git@github.com:gr2m/pull-request-test.git",
         "clone_url": "https://github.com/gr2m/pull-request-test.git",
         "svn_url": "https://github.com/gr2m/pull-request-test",
         "homepage": null,
-        "size": 9,
+        "size": 11,
         "stargazers_count": 0,
         "watchers_count": 0,
         "language": null,
@@ -130,28 +134,37 @@
         "has_downloads": true,
         "has_wiki": false,
         "has_pages": false,
-        "forks_count": 1,
+        "forks_count": 2,
         "mirror_url": null,
         "archived": false,
         "disabled": false,
-        "open_issues_count": 0,
+        "open_issues_count": 2,
         "license": null,
-        "forks": 1,
-        "open_issues": 0,
+        "allow_forking": true,
+        "is_template": false,
+        "topics": [],
+        "visibility": "public",
+        "forks": 2,
+        "open_issues": 2,
         "watchers": 0,
         "default_branch": "master",
         "permissions": {
           "admin": true,
+          "maintain": true,
           "push": true,
+          "triage": true,
           "pull": true
         },
         "temp_clone_token": "",
         "allow_squash_merge": true,
         "allow_merge_commit": true,
         "allow_rebase_merge": true,
+        "allow_auto_merge": false,
         "delete_branch_on_merge": true,
-        "network_count": 1,
-        "subscribers_count": 0
+        "allow_update_branch": false,
+        "use_squash_pr_title_as_default": true,
+        "network_count": 2,
+        "subscribers_count": 1
       }
     }
   },
@@ -161,7 +174,7 @@
       "baseUrl": "https://api.github.com",
       "headers": {
         "accept": "application/vnd.github.v3+json",
-        "user-agent": "octokit-core.js/3.0.0 Node.js/14.3.0 (macOS Catalina; x64)"
+        "user-agent": "octokit-core.js/3.2.5 Node.js/18.3.0 (darwin; arm64)"
       },
       "mediaType": {
         "format": "",
@@ -179,70 +192,74 @@
       "url": "https://api.github.com/repos/gr2m/pull-request-test/commits?sha=master&per_page=1",
       "headers": {
         "access-control-allow-origin": "*",
-        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
         "cache-control": "private, max-age=60, s-maxage=60",
         "connection": "close",
         "content-encoding": "gzip",
         "content-security-policy": "default-src 'none'",
         "content-type": "application/json; charset=utf-8",
-        "date": "Mon, 29 Jun 2020 19:10:55 GMT",
-        "etag": "W/\"5c1079710c78e3dab7721b0ae46ec64d\"",
-        "last-modified": "Wed, 17 Jun 2020 17:35:04 GMT",
-        "link": "<https://api.github.com/repositories/160987492/commits?sha=master&per_page=1&page=2>; rel=\"next\", <https://api.github.com/repositories/160987492/commits?sha=master&per_page=1&page=15>; rel=\"last\"",
+        "date": "Tue, 28 Jun 2022 00:38:25 GMT",
+        "etag": "W/\"2fe2b7c39b2b80f77c8d03c07249ea7ce2e2135086205c5d4afe82ca68ce490e\"",
+        "github-authentication-token-expiration": "2022-08-24 23:46:54 UTC",
+        "last-modified": "Thu, 15 Oct 2020 00:04:06 GMT",
+        "link": "<https://api.github.com/repositories/160987492/commits?sha=master&per_page=1&page=2>; rel=\"next\", <https://api.github.com/repositories/160987492/commits?sha=master&per_page=1&page=17>; rel=\"last\"",
         "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
         "server": "GitHub.com",
-        "status": "200 OK",
         "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
         "transfer-encoding": "chunked",
-        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding",
+        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With",
         "x-accepted-oauth-scopes": "",
         "x-content-type-options": "nosniff",
         "x-frame-options": "deny",
+        "x-github-api-version-selected": "",
+        "x-github-api-version-selected-reason": "unavailable",
         "x-github-media-type": "github.v3; format=json",
-        "x-github-request-id": "B82E:12C2:D068:100BD:5EFA3CBF",
-        "x-oauth-scopes": "repo",
+        "x-github-request-id": "CB79:5D64:84AD50:915993:62BA4D81",
+        "x-oauth-scopes": "notifications, repo, workflow, write:org",
         "x-ratelimit-limit": "5000",
-        "x-ratelimit-remaining": "4983",
-        "x-ratelimit-reset": "1593461369",
-        "x-xss-protection": "1; mode=block"
+        "x-ratelimit-remaining": "4887",
+        "x-ratelimit-reset": "1656378677",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-used": "113",
+        "x-xss-protection": "0"
       },
       "data": [
         {
-          "sha": "b15ef3672d9fd27552604b9bb1c8d11920c3296e",
-          "node_id": "MDY6Q29tbWl0MTYwOTg3NDkyOmIxNWVmMzY3MmQ5ZmQyNzU1MjYwNGI5YmIxYzhkMTE5MjBjMzI5NmU=",
+          "sha": "db74c97c4d563d1cdc6b78c2e478860703e89eec",
+          "node_id": "MDY6Q29tbWl0MTYwOTg3NDkyOmRiNzRjOTdjNGQ1NjNkMWNkYzZiNzhjMmU0Nzg4NjA3MDNlODllZWM=",
           "commit": {
             "author": {
               "name": "Gregor Martynus",
               "email": "gregor@martynus.net",
-              "date": "2020-06-17T17:35:04Z"
+              "date": "2020-10-15T00:04:06Z"
             },
             "committer": {
-              "name": "GitHub",
-              "email": "noreply@github.com",
-              "date": "2020-06-17T17:35:04Z"
+              "name": "Gregor Martynus",
+              "email": "gregor@martynus.net",
+              "date": "2020-10-15T00:04:06Z"
             },
-            "message": "Merge pull request #51 from gr2m/revert-50-test\n\nRevert \"Test\"",
+            "message": "docs(CODE_OF_CONDUCT): Contributor Covenant",
             "tree": {
-              "sha": "3f408721c8e2da996e5a5db55cd865d03338792d",
-              "url": "https://api.github.com/repos/gr2m/pull-request-test/git/trees/3f408721c8e2da996e5a5db55cd865d03338792d"
+              "sha": "dbf6b9b90f659c225e8875e2569763c8dbdb7a8f",
+              "url": "https://api.github.com/repos/gr2m/pull-request-test/git/trees/dbf6b9b90f659c225e8875e2569763c8dbdb7a8f"
             },
-            "url": "https://api.github.com/repos/gr2m/pull-request-test/git/commits/b15ef3672d9fd27552604b9bb1c8d11920c3296e",
+            "url": "https://api.github.com/repos/gr2m/pull-request-test/git/commits/db74c97c4d563d1cdc6b78c2e478860703e89eec",
             "comment_count": 0,
             "verification": {
-              "verified": true,
-              "reason": "valid",
-              "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJe6lRICRBK7hj4Ov3rIwAAdHIIACrYPxatDantxDPHKaL5CY/X\nPvZpyjcKWaw5HBxfyEsUNQ00UcJxHisuEHD5MHdpTiED7RNjOiz5cjaA6V+NLxT7\nEQEt/XMDV5MYlLGjUO3S4Q80rFV5JnEmH7xdBXFT8yjfqfSfyLiEN7xpUT0M7X9C\nROFnrfHREqY6Wu61CxxmdLjMViobGKKsYWOpKheuwGjF1TwWNsyLVw6LCGm9XR/m\neYKGAmhk66mGewgQ2AKogHnGq1aEy1ZitrC2Rkjbs3m9E6b3WBKg8sQPn7tzlyPu\nD1C2Jbjq1i9dUChndx+9vJ82JvkrAqVgevGuqJ9kyNQCKUiQ0GoVMGbz4OcJKfc=\n=Bo+z\n-----END PGP SIGNATURE-----\n",
-              "payload": "tree 3f408721c8e2da996e5a5db55cd865d03338792d\nparent c5d5702963592eb8b84488804c38f60a58fc06a2\nparent dd86b05983d3759556c3dcc443040e6072dfc2fe\nauthor Gregor Martynus <gregor@martynus.net> 1592415304 -0700\ncommitter GitHub <noreply@github.com> 1592415304 -0700\n\nMerge pull request #51 from gr2m/revert-50-test\n\nRevert \"Test\""
+              "verified": false,
+              "reason": "unsigned",
+              "signature": null,
+              "payload": null
             }
           },
-          "url": "https://api.github.com/repos/gr2m/pull-request-test/commits/b15ef3672d9fd27552604b9bb1c8d11920c3296e",
-          "html_url": "https://github.com/gr2m/pull-request-test/commit/b15ef3672d9fd27552604b9bb1c8d11920c3296e",
-          "comments_url": "https://api.github.com/repos/gr2m/pull-request-test/commits/b15ef3672d9fd27552604b9bb1c8d11920c3296e/comments",
+          "url": "https://api.github.com/repos/gr2m/pull-request-test/commits/db74c97c4d563d1cdc6b78c2e478860703e89eec",
+          "html_url": "https://github.com/gr2m/pull-request-test/commit/db74c97c4d563d1cdc6b78c2e478860703e89eec",
+          "comments_url": "https://api.github.com/repos/gr2m/pull-request-test/commits/db74c97c4d563d1cdc6b78c2e478860703e89eec/comments",
           "author": {
             "login": "gr2m",
             "id": 39992,
             "node_id": "MDQ6VXNlcjM5OTky",
-            "avatar_url": "https://avatars3.githubusercontent.com/u/39992?v=4",
+            "avatar_url": "https://avatars.githubusercontent.com/u/39992?v=4",
             "gravatar_id": "",
             "url": "https://api.github.com/users/gr2m",
             "html_url": "https://github.com/gr2m",
@@ -256,38 +273,33 @@
             "events_url": "https://api.github.com/users/gr2m/events{/privacy}",
             "received_events_url": "https://api.github.com/users/gr2m/received_events",
             "type": "User",
-            "site_admin": false
+            "site_admin": true
           },
           "committer": {
-            "login": "web-flow",
-            "id": 19864447,
-            "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
-            "avatar_url": "https://avatars3.githubusercontent.com/u/19864447?v=4",
+            "login": "gr2m",
+            "id": 39992,
+            "node_id": "MDQ6VXNlcjM5OTky",
+            "avatar_url": "https://avatars.githubusercontent.com/u/39992?v=4",
             "gravatar_id": "",
-            "url": "https://api.github.com/users/web-flow",
-            "html_url": "https://github.com/web-flow",
-            "followers_url": "https://api.github.com/users/web-flow/followers",
-            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
-            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
-            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
-            "organizations_url": "https://api.github.com/users/web-flow/orgs",
-            "repos_url": "https://api.github.com/users/web-flow/repos",
-            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
-            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "url": "https://api.github.com/users/gr2m",
+            "html_url": "https://github.com/gr2m",
+            "followers_url": "https://api.github.com/users/gr2m/followers",
+            "following_url": "https://api.github.com/users/gr2m/following{/other_user}",
+            "gists_url": "https://api.github.com/users/gr2m/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/gr2m/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/gr2m/subscriptions",
+            "organizations_url": "https://api.github.com/users/gr2m/orgs",
+            "repos_url": "https://api.github.com/users/gr2m/repos",
+            "events_url": "https://api.github.com/users/gr2m/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/gr2m/received_events",
             "type": "User",
-            "site_admin": false
+            "site_admin": true
           },
           "parents": [
             {
-              "sha": "c5d5702963592eb8b84488804c38f60a58fc06a2",
-              "url": "https://api.github.com/repos/gr2m/pull-request-test/commits/c5d5702963592eb8b84488804c38f60a58fc06a2",
-              "html_url": "https://github.com/gr2m/pull-request-test/commit/c5d5702963592eb8b84488804c38f60a58fc06a2"
-            },
-            {
-              "sha": "dd86b05983d3759556c3dcc443040e6072dfc2fe",
-              "url": "https://api.github.com/repos/gr2m/pull-request-test/commits/dd86b05983d3759556c3dcc443040e6072dfc2fe",
-              "html_url": "https://github.com/gr2m/pull-request-test/commit/dd86b05983d3759556c3dcc443040e6072dfc2fe"
+              "sha": "b6cc0485d5157e05292f1a9d274836553964eb21",
+              "url": "https://api.github.com/repos/gr2m/pull-request-test/commits/b6cc0485d5157e05292f1a9d274836553964eb21",
+              "html_url": "https://github.com/gr2m/pull-request-test/commit/b6cc0485d5157e05292f1a9d274836553964eb21"
             }
           ]
         }
@@ -300,7 +312,7 @@
       "baseUrl": "https://api.github.com",
       "headers": {
         "accept": "application/vnd.github.v3+json",
-        "user-agent": "octokit-core.js/3.0.0 Node.js/14.3.0 (macOS Catalina; x64)"
+        "user-agent": "octokit-core.js/3.2.5 Node.js/18.3.0 (darwin; arm64)"
       },
       "mediaType": {
         "format": "",
@@ -310,56 +322,60 @@
       "url": "/repos/{owner}/{repo}/contents/:path",
       "owner": "gr2m",
       "repo": "pull-request-test",
-      "ref": "b15ef3672d9fd27552604b9bb1c8d11920c3296e",
+      "ref": "db74c97c4d563d1cdc6b78c2e478860703e89eec",
       "path": "README.md"
     },
     "response": {
       "status": 200,
-      "url": "https://api.github.com/repos/gr2m/pull-request-test/contents/README.md?ref=b15ef3672d9fd27552604b9bb1c8d11920c3296e",
+      "url": "https://api.github.com/repos/gr2m/pull-request-test/contents/README.md?ref=db74c97c4d563d1cdc6b78c2e478860703e89eec",
       "headers": {
         "access-control-allow-origin": "*",
-        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
         "cache-control": "private, max-age=60, s-maxage=60",
         "connection": "close",
         "content-encoding": "gzip",
         "content-security-policy": "default-src 'none'",
         "content-type": "application/json; charset=utf-8",
-        "date": "Mon, 29 Jun 2020 19:10:56 GMT",
+        "date": "Tue, 28 Jun 2022 00:38:26 GMT",
         "etag": "W/\"5e84a7b5aca35bfb47b8847e90c30ffdb1714db8\"",
-        "last-modified": "Wed, 17 Jun 2020 17:35:04 GMT",
+        "github-authentication-token-expiration": "2022-08-24 23:46:54 UTC",
+        "last-modified": "Thu, 15 Oct 2020 00:04:06 GMT",
         "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
         "server": "GitHub.com",
-        "status": "200 OK",
         "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
         "transfer-encoding": "chunked",
-        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding",
+        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With",
         "x-accepted-oauth-scopes": "",
         "x-content-type-options": "nosniff",
         "x-frame-options": "deny",
+        "x-github-api-version-selected": "",
+        "x-github-api-version-selected-reason": "unavailable",
         "x-github-media-type": "github.v3; format=json",
-        "x-github-request-id": "5D66:8CB0:D433:105CF:5EFA3CBF",
-        "x-oauth-scopes": "repo",
+        "x-github-request-id": "CB7C:48C6:4C5993:582004:62BA4D82",
+        "x-oauth-scopes": "notifications, repo, workflow, write:org",
         "x-ratelimit-limit": "5000",
-        "x-ratelimit-remaining": "4982",
-        "x-ratelimit-reset": "1593461370",
-        "x-xss-protection": "1; mode=block"
+        "x-ratelimit-remaining": "4885",
+        "x-ratelimit-reset": "1656378677",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-used": "115",
+        "x-xss-protection": "0"
       },
       "data": {
         "name": "README.md",
         "path": "README.md",
         "sha": "5e84a7b5aca35bfb47b8847e90c30ffdb1714db8",
         "size": 196,
-        "url": "https://api.github.com/repos/gr2m/pull-request-test/contents/README.md?ref=b15ef3672d9fd27552604b9bb1c8d11920c3296e",
-        "html_url": "https://github.com/gr2m/pull-request-test/blob/b15ef3672d9fd27552604b9bb1c8d11920c3296e/README.md",
+        "url": "https://api.github.com/repos/gr2m/pull-request-test/contents/README.md?ref=db74c97c4d563d1cdc6b78c2e478860703e89eec",
+        "html_url": "https://github.com/gr2m/pull-request-test/blob/db74c97c4d563d1cdc6b78c2e478860703e89eec/README.md",
         "git_url": "https://api.github.com/repos/gr2m/pull-request-test/git/blobs/5e84a7b5aca35bfb47b8847e90c30ffdb1714db8",
-        "download_url": "https://raw.githubusercontent.com/gr2m/pull-request-test/b15ef3672d9fd27552604b9bb1c8d11920c3296e/README.md",
+        "download_url": "https://raw.githubusercontent.com/gr2m/pull-request-test/db74c97c4d563d1cdc6b78c2e478860703e89eec/README.md",
         "type": "file",
         "content": "IyBwdWxsLXJlcXVlc3QtdGVzdAoKWyFbQnVpbGQgU3RhdHVzXShodHRwczov\nL2dpdGh1Yi5jb20vZ3IybS9wdWxsLXJlcXVlc3QtdGVzdC93b3JrZmxvd3Mv\nVGVzdC9iYWRnZS5zdmcpXShodHRwczovL2dpdGh1Yi5jb20vZ3IybS9wdWxs\nLXJlcXVlc3QtdGVzdC9hY3Rpb25zP3F1ZXJ5PXdvcmtmbG93JTNBVGVzdCti\ncmFuY2glM0FtYXN0ZXIpCg==\n",
         "encoding": "base64",
         "_links": {
-          "self": "https://api.github.com/repos/gr2m/pull-request-test/contents/README.md?ref=b15ef3672d9fd27552604b9bb1c8d11920c3296e",
+          "self": "https://api.github.com/repos/gr2m/pull-request-test/contents/README.md?ref=db74c97c4d563d1cdc6b78c2e478860703e89eec",
           "git": "https://api.github.com/repos/gr2m/pull-request-test/git/blobs/5e84a7b5aca35bfb47b8847e90c30ffdb1714db8",
-          "html": "https://github.com/gr2m/pull-request-test/blob/b15ef3672d9fd27552604b9bb1c8d11920c3296e/README.md"
+          "html": "https://github.com/gr2m/pull-request-test/blob/db74c97c4d563d1cdc6b78c2e478860703e89eec/README.md"
         },
         "exists": true
       }
@@ -371,7 +387,7 @@
       "baseUrl": "https://api.github.com",
       "headers": {
         "accept": "application/vnd.github.v3+json",
-        "user-agent": "octokit-core.js/3.0.0 Node.js/14.3.0 (macOS Catalina; x64)"
+        "user-agent": "octokit-core.js/3.2.5 Node.js/18.3.0 (darwin; arm64)"
       },
       "mediaType": {
         "format": "",
@@ -381,39 +397,43 @@
       "url": "/repos/{owner}/{repo}/contents/:path",
       "owner": "gr2m",
       "repo": "pull-request-test",
-      "ref": "b15ef3672d9fd27552604b9bb1c8d11920c3296e",
+      "ref": "db74c97c4d563d1cdc6b78c2e478860703e89eec",
       "path": "readme.md"
     },
     "response": {
       "status": 404,
       "headers": {
         "access-control-allow-origin": "*",
-        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
         "connection": "close",
         "content-encoding": "gzip",
         "content-security-policy": "default-src 'none'",
         "content-type": "application/json; charset=utf-8",
-        "date": "Mon, 29 Jun 2020 19:10:56 GMT",
+        "date": "Tue, 28 Jun 2022 00:38:26 GMT",
+        "github-authentication-token-expiration": "2022-08-24 23:46:54 UTC",
         "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
         "server": "GitHub.com",
-        "status": "404 Not Found",
         "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
         "transfer-encoding": "chunked",
         "vary": "Accept-Encoding, Accept, X-Requested-With",
         "x-accepted-oauth-scopes": "",
         "x-content-type-options": "nosniff",
         "x-frame-options": "deny",
+        "x-github-api-version-selected": "",
+        "x-github-api-version-selected-reason": "unavailable",
         "x-github-media-type": "github.v3; format=json",
-        "x-github-request-id": "5C10:22CE:DAFF:10BBD:5EFA3CBF",
-        "x-oauth-scopes": "repo",
+        "x-github-request-id": "CB7D:8296:89331F:911221:62BA4D82",
+        "x-oauth-scopes": "notifications, repo, workflow, write:org",
         "x-ratelimit-limit": "5000",
-        "x-ratelimit-remaining": "4981",
-        "x-ratelimit-reset": "1593461370",
-        "x-xss-protection": "1; mode=block"
+        "x-ratelimit-remaining": "4886",
+        "x-ratelimit-reset": "1656378677",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-used": "114",
+        "x-xss-protection": "0"
       },
       "data": {
         "error": "Not Found",
-        "documentation_url": "https://developer.github.com/v3/repos/contents/#get-contents"
+        "documentation_url": "https://docs.github.com/rest/reference/repos#get-repository-content"
       }
     }
   },
@@ -423,7 +443,7 @@
       "baseUrl": "https://api.github.com",
       "headers": {
         "accept": "application/vnd.github.v3+json",
-        "user-agent": "octokit-core.js/3.0.0 Node.js/14.3.0 (macOS Catalina; x64)"
+        "user-agent": "octokit-core.js/3.2.5 Node.js/18.3.0 (darwin; arm64)"
       },
       "mediaType": {
         "format": "",
@@ -433,7 +453,7 @@
       "url": "/repos/{owner}/{repo}/git/trees",
       "owner": "gr2m",
       "repo": "pull-request-test",
-      "base_tree": "3f408721c8e2da996e5a5db55cd865d03338792d",
+      "base_tree": "dbf6b9b90f659c225e8875e2569763c8dbdb7a8f",
       "tree": [
         {
           "path": "README.md",
@@ -447,34 +467,38 @@
       "url": "https://api.github.com/repos/gr2m/pull-request-test/git/trees",
       "headers": {
         "access-control-allow-origin": "*",
-        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
         "cache-control": "private, max-age=60, s-maxage=60",
         "connection": "close",
-        "content-length": "825",
+        "content-length": "1276",
         "content-security-policy": "default-src 'none'",
         "content-type": "application/json; charset=utf-8",
-        "date": "Mon, 29 Jun 2020 19:10:56 GMT",
-        "etag": "\"6ce70399029be347752660cafdae5d68\"",
-        "location": "https://api.github.com/repos/gr2m/pull-request-test/git/trees/74a097069384b22083a76cd3221570d6d03faaae",
+        "date": "Tue, 28 Jun 2022 00:38:26 GMT",
+        "etag": "\"2c0baf246faf7a3c49cf40a681d6e1e42104e92978ed1e16dd7262bed5aab79e\"",
+        "github-authentication-token-expiration": "2022-08-24 23:46:54 UTC",
+        "location": "https://api.github.com/repos/gr2m/pull-request-test/git/trees/74ee6387400388ac709842ef24943920f47c09d1",
         "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
         "server": "GitHub.com",
-        "status": "201 Created",
         "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
-        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding",
+        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With",
         "x-accepted-oauth-scopes": "",
         "x-content-type-options": "nosniff",
         "x-frame-options": "deny",
+        "x-github-api-version-selected": "",
+        "x-github-api-version-selected-reason": "unavailable",
         "x-github-media-type": "github.v3; format=json",
-        "x-github-request-id": "DEC1:1D2F:99D3:BC74:5EFA3CC0",
-        "x-oauth-scopes": "repo",
+        "x-github-request-id": "CB80:6E38:7FFE58:8CA967:62BA4D82",
+        "x-oauth-scopes": "notifications, repo, workflow, write:org",
         "x-ratelimit-limit": "5000",
-        "x-ratelimit-remaining": "4980",
-        "x-ratelimit-reset": "1593461369",
-        "x-xss-protection": "1; mode=block"
+        "x-ratelimit-remaining": "4884",
+        "x-ratelimit-reset": "1656378677",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-used": "116",
+        "x-xss-protection": "0"
       },
       "data": {
-        "sha": "74a097069384b22083a76cd3221570d6d03faaae",
-        "url": "https://api.github.com/repos/gr2m/pull-request-test/git/trees/74a097069384b22083a76cd3221570d6d03faaae",
+        "sha": "74ee6387400388ac709842ef24943920f47c09d1",
+        "url": "https://api.github.com/repos/gr2m/pull-request-test/git/trees/74ee6387400388ac709842ef24943920f47c09d1",
         "tree": [
           {
             "path": ".github",
@@ -482,6 +506,14 @@
             "type": "tree",
             "sha": "59f80b89b889df8e8d9fb24da009732c8b21ab8a",
             "url": "https://api.github.com/repos/gr2m/pull-request-test/git/trees/59f80b89b889df8e8d9fb24da009732c8b21ab8a"
+          },
+          {
+            "path": "CODE_OF_CONDUCT.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "dad5ddc09aca02e99a3b46501cf1a439df9ff6ad",
+            "size": 3240,
+            "url": "https://api.github.com/repos/gr2m/pull-request-test/git/blobs/dad5ddc09aca02e99a3b46501cf1a439df9ff6ad"
           },
           {
             "path": "README.md",
@@ -497,6 +529,14 @@
             "type": "tree",
             "sha": "8a200a3a3bb9e2743f228a04d0ede326f45de6b8",
             "url": "https://api.github.com/repos/gr2m/pull-request-test/git/trees/8a200a3a3bb9e2743f228a04d0ede326f45de6b8"
+          },
+          {
+            "path": "test.txt",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "9daeafb9864cf43055ae93beb0afd6c7d144bfa4",
+            "size": 5,
+            "url": "https://api.github.com/repos/gr2m/pull-request-test/git/blobs/9daeafb9864cf43055ae93beb0afd6c7d144bfa4"
           }
         ],
         "truncated": false
@@ -509,7 +549,7 @@
       "baseUrl": "https://api.github.com",
       "headers": {
         "accept": "application/vnd.github.v3+json",
-        "user-agent": "octokit-core.js/3.0.0 Node.js/14.3.0 (macOS Catalina; x64)"
+        "user-agent": "octokit-core.js/3.2.5 Node.js/18.3.0 (darwin; arm64)"
       },
       "mediaType": {
         "format": "",
@@ -520,66 +560,68 @@
       "owner": "gr2m",
       "repo": "pull-request-test",
       "message": "uppercase README content",
-      "tree": "74a097069384b22083a76cd3221570d6d03faaae",
-      "parents": [
-        "b15ef3672d9fd27552604b9bb1c8d11920c3296e"
-      ]
+      "tree": "74ee6387400388ac709842ef24943920f47c09d1",
+      "parents": ["db74c97c4d563d1cdc6b78c2e478860703e89eec"]
     },
     "response": {
       "status": 201,
       "url": "https://api.github.com/repos/gr2m/pull-request-test/git/commits",
       "headers": {
         "access-control-allow-origin": "*",
-        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
         "cache-control": "private, max-age=60, s-maxage=60",
         "connection": "close",
-        "content-length": "1125",
+        "content-length": "1146",
         "content-security-policy": "default-src 'none'",
         "content-type": "application/json; charset=utf-8",
-        "date": "Mon, 29 Jun 2020 19:10:57 GMT",
-        "etag": "\"256b02f36d4a7f9be850f8b65f34c7de\"",
-        "location": "https://api.github.com/repos/gr2m/pull-request-test/git/commits/bc1c7abd84984864a891192e76f4cc6beb56435d",
+        "date": "Tue, 28 Jun 2022 00:38:27 GMT",
+        "etag": "\"1690b4f34f5ea3c32741ebf45fff1f56ee933addf4165efc49189991d127ffd2\"",
+        "github-authentication-token-expiration": "2022-08-24 23:46:54 UTC",
+        "location": "https://api.github.com/repos/gr2m/pull-request-test/git/commits/1c0755edc905eecf8280344a38e6281a14c9795a",
         "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
         "server": "GitHub.com",
-        "status": "201 Created",
         "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
-        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding",
+        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With",
         "x-accepted-oauth-scopes": "",
         "x-content-type-options": "nosniff",
         "x-frame-options": "deny",
+        "x-github-api-version-selected": "",
+        "x-github-api-version-selected-reason": "unavailable",
         "x-github-media-type": "github.v3; format=json",
-        "x-github-request-id": "9A6A:8CAC:1DB1:28F5:5EFA3CC1",
-        "x-oauth-scopes": "repo",
+        "x-github-request-id": "CB81:8291:BC156:11381F:62BA4D82",
+        "x-oauth-scopes": "notifications, repo, workflow, write:org",
         "x-ratelimit-limit": "5000",
-        "x-ratelimit-remaining": "4979",
-        "x-ratelimit-reset": "1593461369",
-        "x-xss-protection": "1; mode=block"
+        "x-ratelimit-remaining": "4883",
+        "x-ratelimit-reset": "1656378677",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-used": "117",
+        "x-xss-protection": "0"
       },
       "data": {
-        "sha": "bc1c7abd84984864a891192e76f4cc6beb56435d",
-        "node_id": "MDY6Q29tbWl0MTYwOTg3NDkyOmJjMWM3YWJkODQ5ODQ4NjRhODkxMTkyZTc2ZjRjYzZiZWI1NjQzNWQ=",
-        "url": "https://api.github.com/repos/gr2m/pull-request-test/git/commits/bc1c7abd84984864a891192e76f4cc6beb56435d",
-        "html_url": "https://github.com/gr2m/pull-request-test/commit/bc1c7abd84984864a891192e76f4cc6beb56435d",
+        "sha": "1c0755edc905eecf8280344a38e6281a14c9795a",
+        "node_id": "C_kwDOCZh5ZNoAKDFjMDc1NWVkYzkwNWVlY2Y4MjgwMzQ0YTM4ZTYyODFhMTRjOTc5NWE",
+        "url": "https://api.github.com/repos/gr2m/pull-request-test/git/commits/1c0755edc905eecf8280344a38e6281a14c9795a",
+        "html_url": "https://github.com/gr2m/pull-request-test/commit/1c0755edc905eecf8280344a38e6281a14c9795a",
         "author": {
           "name": "Gregor Martynus",
-          "email": "gregor@martynus.net",
-          "date": "2020-06-29T19:10:57Z"
+          "email": "39992+gr2m@users.noreply.github.com",
+          "date": "2022-06-28T00:38:27Z"
         },
         "committer": {
           "name": "Gregor Martynus",
-          "email": "gregor@martynus.net",
-          "date": "2020-06-29T19:10:57Z"
+          "email": "39992+gr2m@users.noreply.github.com",
+          "date": "2022-06-28T00:38:27Z"
         },
         "tree": {
-          "sha": "74a097069384b22083a76cd3221570d6d03faaae",
-          "url": "https://api.github.com/repos/gr2m/pull-request-test/git/trees/74a097069384b22083a76cd3221570d6d03faaae"
+          "sha": "74ee6387400388ac709842ef24943920f47c09d1",
+          "url": "https://api.github.com/repos/gr2m/pull-request-test/git/trees/74ee6387400388ac709842ef24943920f47c09d1"
         },
         "message": "uppercase README content",
         "parents": [
           {
-            "sha": "b15ef3672d9fd27552604b9bb1c8d11920c3296e",
-            "url": "https://api.github.com/repos/gr2m/pull-request-test/git/commits/b15ef3672d9fd27552604b9bb1c8d11920c3296e",
-            "html_url": "https://github.com/gr2m/pull-request-test/commit/b15ef3672d9fd27552604b9bb1c8d11920c3296e"
+            "sha": "db74c97c4d563d1cdc6b78c2e478860703e89eec",
+            "url": "https://api.github.com/repos/gr2m/pull-request-test/git/commits/db74c97c4d563d1cdc6b78c2e478860703e89eec",
+            "html_url": "https://github.com/gr2m/pull-request-test/commit/db74c97c4d563d1cdc6b78c2e478860703e89eec"
           }
         ],
         "verification": {
@@ -593,11 +635,67 @@
   },
   {
     "request": {
+      "method": "GET",
+      "baseUrl": "https://api.github.com",
+      "headers": {
+        "accept": "application/vnd.github.v3+json",
+        "user-agent": "octokit-core.js/3.2.5 Node.js/18.3.0 (darwin; arm64)"
+      },
+      "mediaType": {
+        "format": "",
+        "previews": []
+      },
+      "request": {},
+      "url": "/repos/{owner}/{repo}/git/ref/{ref}",
+      "owner": "gr2m",
+      "repo": "pull-request-test",
+      "ref": "heads/uppercase-readme"
+    },
+    "response": {
+      "status": 404,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 28 Jun 2022 00:38:27 GMT",
+        "github-authentication-token-expiration": "2022-08-24 23:46:54 UTC",
+        "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+        "server": "GitHub.com",
+        "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding, Accept, X-Requested-With",
+        "x-accepted-oauth-scopes": "repo",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "deny",
+        "x-github-api-version-selected": "",
+        "x-github-api-version-selected-reason": "unavailable",
+        "x-github-media-type": "github.v3; format=json",
+        "x-github-request-id": "CB84:8295:61E903:68F7C6:62BA4D83",
+        "x-oauth-scopes": "notifications, repo, workflow, write:org",
+        "x-poll-interval": "300",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4882",
+        "x-ratelimit-reset": "1656378677",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-used": "118",
+        "x-xss-protection": "0"
+      },
+      "data": {
+        "error": "Not Found",
+        "documentation_url": "https://docs.github.com/rest/reference/git#get-a-reference"
+      }
+    }
+  },
+  {
+    "request": {
       "method": "POST",
       "baseUrl": "https://api.github.com",
       "headers": {
         "accept": "application/vnd.github.v3+json",
-        "user-agent": "octokit-core.js/3.0.0 Node.js/14.3.0 (macOS Catalina; x64)"
+        "user-agent": "octokit-core.js/3.2.5 Node.js/18.3.0 (darwin; arm64)"
       },
       "mediaType": {
         "format": "",
@@ -607,7 +705,7 @@
       "url": "/repos/{owner}/{repo}/git/refs",
       "owner": "gr2m",
       "repo": "pull-request-test",
-      "sha": "bc1c7abd84984864a891192e76f4cc6beb56435d",
+      "sha": "1c0755edc905eecf8280344a38e6281a14c9795a",
       "ref": "refs/heads/uppercase-readme"
     },
     "response": {
@@ -615,39 +713,43 @@
       "url": "https://api.github.com/repos/gr2m/pull-request-test/git/refs",
       "headers": {
         "access-control-allow-origin": "*",
-        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
         "cache-control": "private, max-age=60, s-maxage=60",
         "connection": "close",
         "content-length": "391",
         "content-security-policy": "default-src 'none'",
         "content-type": "application/json; charset=utf-8",
-        "date": "Mon, 29 Jun 2020 19:10:58 GMT",
-        "etag": "\"69a547d7899aa9bc3ea506215e9e2c33\"",
+        "date": "Tue, 28 Jun 2022 00:38:28 GMT",
+        "etag": "\"92635bbeb77560d52ec843e49cbd65cd30c6f04641825aa841085f8b91183104\"",
+        "github-authentication-token-expiration": "2022-08-24 23:46:54 UTC",
         "location": "https://api.github.com/repos/gr2m/pull-request-test/git/refs/heads/uppercase-readme",
         "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
         "server": "GitHub.com",
-        "status": "201 Created",
         "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
-        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding",
+        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With",
         "x-accepted-oauth-scopes": "repo",
         "x-content-type-options": "nosniff",
         "x-frame-options": "deny",
+        "x-github-api-version-selected": "",
+        "x-github-api-version-selected-reason": "unavailable",
         "x-github-media-type": "github.v3; format=json",
-        "x-github-request-id": "C37E:25F8:13A94:183FC:5EFA3CC1",
-        "x-oauth-scopes": "repo",
+        "x-github-request-id": "CB87:058B:B158B7:BF104D:62BA4D83",
+        "x-oauth-scopes": "notifications, repo, workflow, write:org",
         "x-ratelimit-limit": "5000",
-        "x-ratelimit-remaining": "4978",
-        "x-ratelimit-reset": "1593461369",
-        "x-xss-protection": "1; mode=block"
+        "x-ratelimit-remaining": "4881",
+        "x-ratelimit-reset": "1656378677",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-used": "119",
+        "x-xss-protection": "0"
       },
       "data": {
         "ref": "refs/heads/uppercase-readme",
         "node_id": "MDM6UmVmMTYwOTg3NDkyOnJlZnMvaGVhZHMvdXBwZXJjYXNlLXJlYWRtZQ==",
         "url": "https://api.github.com/repos/gr2m/pull-request-test/git/refs/heads/uppercase-readme",
         "object": {
-          "sha": "bc1c7abd84984864a891192e76f4cc6beb56435d",
+          "sha": "1c0755edc905eecf8280344a38e6281a14c9795a",
           "type": "commit",
-          "url": "https://api.github.com/repos/gr2m/pull-request-test/git/commits/bc1c7abd84984864a891192e76f4cc6beb56435d"
+          "url": "https://api.github.com/repos/gr2m/pull-request-test/git/commits/1c0755edc905eecf8280344a38e6281a14c9795a"
         }
       }
     }
@@ -658,7 +760,7 @@
       "baseUrl": "https://api.github.com",
       "headers": {
         "accept": "application/vnd.github.v3+json",
-        "user-agent": "octokit-core.js/3.0.0 Node.js/14.3.0 (macOS Catalina; x64)"
+        "user-agent": "octokit-core.js/3.2.5 Node.js/18.3.0 (darwin; arm64)"
       },
       "mediaType": {
         "format": "",
@@ -671,47 +773,52 @@
       "head": "gr2m:uppercase-readme",
       "base": "master",
       "title": "Uppercase README content",
-      "body": ""
+      "body": "",
+      "draft": false
     },
     "response": {
       "status": 201,
       "url": "https://api.github.com/repos/gr2m/pull-request-test/pulls",
       "headers": {
         "access-control-allow-origin": "*",
-        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
         "cache-control": "private, max-age=60, s-maxage=60",
         "connection": "close",
-        "content-length": "14787",
+        "content-length": "14936",
         "content-security-policy": "default-src 'none'",
         "content-type": "application/json; charset=utf-8",
-        "date": "Mon, 29 Jun 2020 19:10:59 GMT",
-        "etag": "\"ea8bc12c798f8cced88e5c16a800d0a5\"",
-        "location": "https://api.github.com/repos/gr2m/pull-request-test/pulls/64",
+        "date": "Tue, 28 Jun 2022 00:38:29 GMT",
+        "etag": "\"802e0475aaf29d14b39910ff8b25c6ea72d7f8b991719670e79dd3f019e94e4e\"",
+        "github-authentication-token-expiration": "2022-08-24 23:46:54 UTC",
+        "location": "https://api.github.com/repos/gr2m/pull-request-test/pulls/94",
         "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
         "server": "GitHub.com",
-        "status": "201 Created",
         "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
-        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding",
+        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With",
         "x-accepted-oauth-scopes": "",
         "x-content-type-options": "nosniff",
         "x-frame-options": "deny",
+        "x-github-api-version-selected": "",
+        "x-github-api-version-selected-reason": "unavailable",
         "x-github-media-type": "github.v3; format=json",
-        "x-github-request-id": "D473:1D31:138B5:17EF6:5EFA3CC2",
-        "x-oauth-scopes": "repo",
+        "x-github-request-id": "CB8E:634E:36A08D:41E4BA:62BA4D84",
+        "x-oauth-scopes": "notifications, repo, workflow, write:org",
         "x-ratelimit-limit": "5000",
-        "x-ratelimit-remaining": "4977",
-        "x-ratelimit-reset": "1593461369",
-        "x-xss-protection": "1; mode=block"
+        "x-ratelimit-remaining": "4880",
+        "x-ratelimit-reset": "1656378677",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-used": "120",
+        "x-xss-protection": "0"
       },
       "data": {
-        "url": "https://api.github.com/repos/gr2m/pull-request-test/pulls/64",
-        "id": 441597454,
-        "node_id": "MDExOlB1bGxSZXF1ZXN0NDQxNTk3NDU0",
-        "html_url": "https://github.com/gr2m/pull-request-test/pull/64",
-        "diff_url": "https://github.com/gr2m/pull-request-test/pull/64.diff",
-        "patch_url": "https://github.com/gr2m/pull-request-test/pull/64.patch",
-        "issue_url": "https://api.github.com/repos/gr2m/pull-request-test/issues/64",
-        "number": 64,
+        "url": "https://api.github.com/repos/gr2m/pull-request-test/pulls/94",
+        "id": 980771873,
+        "node_id": "PR_kwDOCZh5ZM46dWQh",
+        "html_url": "https://github.com/gr2m/pull-request-test/pull/94",
+        "diff_url": "https://github.com/gr2m/pull-request-test/pull/94.diff",
+        "patch_url": "https://github.com/gr2m/pull-request-test/pull/94.patch",
+        "issue_url": "https://api.github.com/repos/gr2m/pull-request-test/issues/94",
+        "number": 94,
         "state": "open",
         "locked": false,
         "title": "Uppercase README content",
@@ -719,7 +826,7 @@
           "login": "gr2m",
           "id": 39992,
           "node_id": "MDQ6VXNlcjM5OTky",
-          "avatar_url": "https://avatars3.githubusercontent.com/u/39992?v=4",
+          "avatar_url": "https://avatars.githubusercontent.com/u/39992?v=4",
           "gravatar_id": "",
           "url": "https://api.github.com/users/gr2m",
           "html_url": "https://github.com/gr2m",
@@ -733,11 +840,11 @@
           "events_url": "https://api.github.com/users/gr2m/events{/privacy}",
           "received_events_url": "https://api.github.com/users/gr2m/received_events",
           "type": "User",
-          "site_admin": false
+          "site_admin": true
         },
-        "body": "",
-        "created_at": "2020-06-29T19:10:59Z",
-        "updated_at": "2020-06-29T19:10:59Z",
+        "body": null,
+        "created_at": "2022-06-28T00:38:28Z",
+        "updated_at": "2022-06-28T00:38:28Z",
         "closed_at": null,
         "merged_at": null,
         "merge_commit_sha": null,
@@ -748,20 +855,20 @@
         "labels": [],
         "milestone": null,
         "draft": false,
-        "commits_url": "https://api.github.com/repos/gr2m/pull-request-test/pulls/64/commits",
-        "review_comments_url": "https://api.github.com/repos/gr2m/pull-request-test/pulls/64/comments",
+        "commits_url": "https://api.github.com/repos/gr2m/pull-request-test/pulls/94/commits",
+        "review_comments_url": "https://api.github.com/repos/gr2m/pull-request-test/pulls/94/comments",
         "review_comment_url": "https://api.github.com/repos/gr2m/pull-request-test/pulls/comments{/number}",
-        "comments_url": "https://api.github.com/repos/gr2m/pull-request-test/issues/64/comments",
-        "statuses_url": "https://api.github.com/repos/gr2m/pull-request-test/statuses/bc1c7abd84984864a891192e76f4cc6beb56435d",
+        "comments_url": "https://api.github.com/repos/gr2m/pull-request-test/issues/94/comments",
+        "statuses_url": "https://api.github.com/repos/gr2m/pull-request-test/statuses/1c0755edc905eecf8280344a38e6281a14c9795a",
         "head": {
           "label": "gr2m:uppercase-readme",
           "ref": "uppercase-readme",
-          "sha": "bc1c7abd84984864a891192e76f4cc6beb56435d",
+          "sha": "1c0755edc905eecf8280344a38e6281a14c9795a",
           "user": {
             "login": "gr2m",
             "id": 39992,
             "node_id": "MDQ6VXNlcjM5OTky",
-            "avatar_url": "https://avatars3.githubusercontent.com/u/39992?v=4",
+            "avatar_url": "https://avatars.githubusercontent.com/u/39992?v=4",
             "gravatar_id": "",
             "url": "https://api.github.com/users/gr2m",
             "html_url": "https://github.com/gr2m",
@@ -775,7 +882,7 @@
             "events_url": "https://api.github.com/users/gr2m/events{/privacy}",
             "received_events_url": "https://api.github.com/users/gr2m/received_events",
             "type": "User",
-            "site_admin": false
+            "site_admin": true
           },
           "repo": {
             "id": 160987492,
@@ -787,7 +894,7 @@
               "login": "gr2m",
               "id": 39992,
               "node_id": "MDQ6VXNlcjM5OTky",
-              "avatar_url": "https://avatars3.githubusercontent.com/u/39992?v=4",
+              "avatar_url": "https://avatars.githubusercontent.com/u/39992?v=4",
               "gravatar_id": "",
               "url": "https://api.github.com/users/gr2m",
               "html_url": "https://github.com/gr2m",
@@ -801,7 +908,7 @@
               "events_url": "https://api.github.com/users/gr2m/events{/privacy}",
               "received_events_url": "https://api.github.com/users/gr2m/received_events",
               "type": "User",
-              "site_admin": false
+              "site_admin": true
             },
             "html_url": "https://github.com/gr2m/pull-request-test",
             "description": null,
@@ -844,14 +951,14 @@
             "releases_url": "https://api.github.com/repos/gr2m/pull-request-test/releases{/id}",
             "deployments_url": "https://api.github.com/repos/gr2m/pull-request-test/deployments",
             "created_at": "2018-12-08T23:26:26Z",
-            "updated_at": "2020-06-17T17:35:08Z",
-            "pushed_at": "2020-06-29T19:10:58Z",
+            "updated_at": "2020-10-15T00:04:09Z",
+            "pushed_at": "2022-06-28T00:38:28Z",
             "git_url": "git://github.com/gr2m/pull-request-test.git",
             "ssh_url": "git@github.com:gr2m/pull-request-test.git",
             "clone_url": "https://github.com/gr2m/pull-request-test.git",
             "svn_url": "https://github.com/gr2m/pull-request-test",
             "homepage": null,
-            "size": 9,
+            "size": 11,
             "stargazers_count": 0,
             "watchers_count": 0,
             "language": null,
@@ -860,14 +967,18 @@
             "has_downloads": true,
             "has_wiki": false,
             "has_pages": false,
-            "forks_count": 1,
+            "forks_count": 2,
             "mirror_url": null,
             "archived": false,
             "disabled": false,
-            "open_issues_count": 1,
+            "open_issues_count": 3,
             "license": null,
-            "forks": 1,
-            "open_issues": 1,
+            "allow_forking": true,
+            "is_template": false,
+            "topics": [],
+            "visibility": "public",
+            "forks": 2,
+            "open_issues": 3,
             "watchers": 0,
             "default_branch": "master"
           }
@@ -875,12 +986,12 @@
         "base": {
           "label": "gr2m:master",
           "ref": "master",
-          "sha": "b15ef3672d9fd27552604b9bb1c8d11920c3296e",
+          "sha": "db74c97c4d563d1cdc6b78c2e478860703e89eec",
           "user": {
             "login": "gr2m",
             "id": 39992,
             "node_id": "MDQ6VXNlcjM5OTky",
-            "avatar_url": "https://avatars3.githubusercontent.com/u/39992?v=4",
+            "avatar_url": "https://avatars.githubusercontent.com/u/39992?v=4",
             "gravatar_id": "",
             "url": "https://api.github.com/users/gr2m",
             "html_url": "https://github.com/gr2m",
@@ -894,7 +1005,7 @@
             "events_url": "https://api.github.com/users/gr2m/events{/privacy}",
             "received_events_url": "https://api.github.com/users/gr2m/received_events",
             "type": "User",
-            "site_admin": false
+            "site_admin": true
           },
           "repo": {
             "id": 160987492,
@@ -906,7 +1017,7 @@
               "login": "gr2m",
               "id": 39992,
               "node_id": "MDQ6VXNlcjM5OTky",
-              "avatar_url": "https://avatars3.githubusercontent.com/u/39992?v=4",
+              "avatar_url": "https://avatars.githubusercontent.com/u/39992?v=4",
               "gravatar_id": "",
               "url": "https://api.github.com/users/gr2m",
               "html_url": "https://github.com/gr2m",
@@ -920,7 +1031,7 @@
               "events_url": "https://api.github.com/users/gr2m/events{/privacy}",
               "received_events_url": "https://api.github.com/users/gr2m/received_events",
               "type": "User",
-              "site_admin": false
+              "site_admin": true
             },
             "html_url": "https://github.com/gr2m/pull-request-test",
             "description": null,
@@ -963,14 +1074,14 @@
             "releases_url": "https://api.github.com/repos/gr2m/pull-request-test/releases{/id}",
             "deployments_url": "https://api.github.com/repos/gr2m/pull-request-test/deployments",
             "created_at": "2018-12-08T23:26:26Z",
-            "updated_at": "2020-06-17T17:35:08Z",
-            "pushed_at": "2020-06-29T19:10:58Z",
+            "updated_at": "2020-10-15T00:04:09Z",
+            "pushed_at": "2022-06-28T00:38:28Z",
             "git_url": "git://github.com/gr2m/pull-request-test.git",
             "ssh_url": "git@github.com:gr2m/pull-request-test.git",
             "clone_url": "https://github.com/gr2m/pull-request-test.git",
             "svn_url": "https://github.com/gr2m/pull-request-test",
             "homepage": null,
-            "size": 9,
+            "size": 11,
             "stargazers_count": 0,
             "watchers_count": 0,
             "language": null,
@@ -979,45 +1090,50 @@
             "has_downloads": true,
             "has_wiki": false,
             "has_pages": false,
-            "forks_count": 1,
+            "forks_count": 2,
             "mirror_url": null,
             "archived": false,
             "disabled": false,
-            "open_issues_count": 1,
+            "open_issues_count": 3,
             "license": null,
-            "forks": 1,
-            "open_issues": 1,
+            "allow_forking": true,
+            "is_template": false,
+            "topics": [],
+            "visibility": "public",
+            "forks": 2,
+            "open_issues": 3,
             "watchers": 0,
             "default_branch": "master"
           }
         },
         "_links": {
           "self": {
-            "href": "https://api.github.com/repos/gr2m/pull-request-test/pulls/64"
+            "href": "https://api.github.com/repos/gr2m/pull-request-test/pulls/94"
           },
           "html": {
-            "href": "https://github.com/gr2m/pull-request-test/pull/64"
+            "href": "https://github.com/gr2m/pull-request-test/pull/94"
           },
           "issue": {
-            "href": "https://api.github.com/repos/gr2m/pull-request-test/issues/64"
+            "href": "https://api.github.com/repos/gr2m/pull-request-test/issues/94"
           },
           "comments": {
-            "href": "https://api.github.com/repos/gr2m/pull-request-test/issues/64/comments"
+            "href": "https://api.github.com/repos/gr2m/pull-request-test/issues/94/comments"
           },
           "review_comments": {
-            "href": "https://api.github.com/repos/gr2m/pull-request-test/pulls/64/comments"
+            "href": "https://api.github.com/repos/gr2m/pull-request-test/pulls/94/comments"
           },
           "review_comment": {
             "href": "https://api.github.com/repos/gr2m/pull-request-test/pulls/comments{/number}"
           },
           "commits": {
-            "href": "https://api.github.com/repos/gr2m/pull-request-test/pulls/64/commits"
+            "href": "https://api.github.com/repos/gr2m/pull-request-test/pulls/94/commits"
           },
           "statuses": {
-            "href": "https://api.github.com/repos/gr2m/pull-request-test/statuses/bc1c7abd84984864a891192e76f4cc6beb56435d"
+            "href": "https://api.github.com/repos/gr2m/pull-request-test/statuses/1c0755edc905eecf8280344a38e6281a14c9795a"
           }
         },
         "author_association": "OWNER",
+        "auto_merge": null,
         "active_lock_reason": null,
         "merged": false,
         "mergeable": null,
