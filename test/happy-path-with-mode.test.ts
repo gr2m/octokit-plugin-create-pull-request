@@ -1,4 +1,6 @@
 import { Octokit as Core } from "@octokit/core";
+import { RequestError } from "@octokit/request-error";
+
 import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
@@ -19,29 +21,34 @@ test("happy path with mode", async () => {
       ...params
     } = options;
 
-    expect(options.method).toEqual(currentFixtures.request.method);
-    expect(options.url).toEqual(currentFixtures.request.url);
+    expect(
+      `${currentFixtures.request.method} ${currentFixtures.request.url}`
+    ).toEqual(`${options.method} ${options.url}`);
 
     Object.keys(params).forEach((paramName) => {
       expect(params[paramName]).toEqual(currentFixtures.request[paramName]);
     });
+
+    if (currentFixtures.response.status >= 400) {
+      throw new RequestError("Error", currentFixtures.response.status, {
+        request: currentFixtures.request,
+        headers: currentFixtures.response.headers,
+      });
+    }
+
     return currentFixtures.response;
   });
 
   const pr = await octokit.createPullRequest({
-    owner: "kennethzfeng",
+    owner: "gr2m",
     repo: "pull-request-test",
     title: "One comes, one goes",
     body: "because",
-    head: "patch",
+    head: "happy-path-with-mode",
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",
-        "path/to/file2.txt": {
-          content: "Content for file2",
-          encoding: "utf-8",
-        },
-        "path/to/file3.sh": {
+        "path/to/file2.sh": {
           content: "echo Hello World",
           encoding: "utf-8",
           mode: "100755",

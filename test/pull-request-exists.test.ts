@@ -4,9 +4,8 @@ import { RequestError } from "@octokit/request-error";
 import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("happy path", async () => {
-  const fixtures = require("./fixtures/happy-path");
-  const fixturePr = fixtures[fixtures.length - 1].response;
+test("pull-request-exists", async () => {
+  const fixtures = require("./fixtures/pull-request-exists");
   const octokit = new Octokit();
 
   octokit.hook.wrap("request", (_, options) => {
@@ -42,21 +41,26 @@ test("happy path", async () => {
     return currentFixtures.response;
   });
 
-  const pr = await octokit.createPullRequest({
-    owner: "gr2m",
-    repo: "pull-request-test",
-    title: "One comes, one goes",
-    body: "because",
-    head: "happy-path",
-    changes: {
-      files: {
-        "path/to/file1.txt": "Content for file1",
-        "path/to/file2.txt": "Content for file2",
+  try {
+    await octokit.createPullRequest({
+      owner: "gr2m",
+      repo: "pull-request-test",
+      title: "One comes, one goes",
+      body: "because",
+      head: "pull-request-exists",
+      changes: {
+        files: {
+          "file1.txt": "Content for file1",
+        },
+        commit: "why",
       },
-      commit: "why",
-    },
-  });
+    });
+    throw new Error("Should not resolve");
+  } catch (error) {
+    expect(error.message).toEqual(
+      "[octokit-plugin-create-pull-request] Pull request already exists: https://github.com/gr2m/pull-request-test/pull/99. Set update=true to enable updating"
+    );
+  }
 
-  expect(pr).toStrictEqual(fixturePr);
   expect(fixtures.length).toEqual(0);
 });

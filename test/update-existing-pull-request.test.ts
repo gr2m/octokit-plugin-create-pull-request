@@ -4,8 +4,8 @@ import { RequestError } from "@octokit/request-error";
 import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("happy path", async () => {
-  const fixtures = require("./fixtures/happy-path");
+test("update-existing-pull-request", async () => {
+  const fixtures = require("./fixtures/update-existing-pull-request");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -47,11 +47,11 @@ test("happy path", async () => {
     repo: "pull-request-test",
     title: "One comes, one goes",
     body: "because",
-    head: "happy-path",
+    head: "update-existing-pull-request",
+    update: true,
     changes: {
       files: {
-        "path/to/file1.txt": "Content for file1",
-        "path/to/file2.txt": "Content for file2",
+        "file1.txt": "Content for file1",
       },
       commit: "why",
     },
