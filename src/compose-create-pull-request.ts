@@ -152,7 +152,16 @@ export async function composeCreatePullRequest(
     );
   }
 
-  if (!branchExists) {
+  if (branchExists) {
+    // https://docs.github.com/en/rest/git/refs#update-a-reference
+    await octokit.request("PATCH /repos/{owner}/{repo}/git/refs/{ref}", {
+      owner: state.fork,
+      repo,
+      sha: state.latestCommitSha,
+      ref: `heads/${head}`,
+      force: true,
+    });
+  } else {
     // https://developer.github.com/v3/git/refs/#create-a-reference
     await octokit.request("POST /repos/{owner}/{repo}/git/refs", {
       owner: state.fork,
