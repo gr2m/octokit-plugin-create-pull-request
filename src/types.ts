@@ -9,11 +9,12 @@ export type Options = {
   title: string;
   body: string;
   head: string;
+  changes: Changes | Changes[];
   base?: string;
   createWhenEmpty?: boolean;
-  changes: Changes | Changes[];
   draft?: boolean;
   forceFork?: boolean;
+  update?: boolean;
 };
 
 export type Changes = {

@@ -17,6 +17,7 @@ export async function composeCreatePullRequest(
     changes: changesOption,
     draft = false,
     forceFork = false,
+    update = false,
   }: Options
 ) {
   const changes = Array.isArray(changesOption)
@@ -119,16 +120,49 @@ export async function composeCreatePullRequest(
     return null;
   }
 
-  // https://developer.github.com/v3/git/refs/#create-a-reference
-  await octokit.request("POST /repos/{owner}/{repo}/git/refs", {
-    owner: state.fork,
-    repo,
-    sha: state.latestCommitSha,
-    ref: `refs/heads/${head}`,
-  });
+  // https://docs.github.com/en/rest/git/refs#get-a-reference
+  const branchExists = await octokit
+    .request("GET /repos/{owner}/{repo}/git/ref/{ref}", {
+      owner: state.fork,
+      repo,
+      ref: `heads/${head}`,
+    })
+    .then(
+      () => true,
+      (error) => {
+        /* istanbul ignore else */
+        if (error.status === 404) return false;
 
-  // https://developer.github.com/v3/pulls/#create-a-pull-request
-  return await octokit.request("POST /repos/{owner}/{repo}/pulls", {
+        /* istanbul ignore next */
+        throw error;
+      }
+    );
+
+  const existingPullRequest = branchExists
+    ? await octokit
+        .request("GET /search/issues", {
+          q: `head:${head} type:pr is:open repo:${owner}/${repo}`,
+        })
+        .then((response) => response.data.items[0])
+    : undefined;
+
+  if (existingPullRequest && !update) {
+    throw new Error(
+      `[octokit-plugin-create-pull-request] Pull request already exists: ${existingPullRequest.html_url}. Set update=true to enable updating`
+    );
+  }
+
+  if (!branchExists) {
+    // https://developer.github.com/v3/git/refs/#create-a-reference
+    await octokit.request("POST /repos/{owner}/{repo}/git/refs", {
+      owner: state.fork,
+      repo,
+      sha: state.latestCommitSha,
+      ref: `refs/heads/${head}`,
+    });
+  }
+
+  const pullRequestOptions = {
     owner,
     repo,
     head: `${state.fork}:${head}`,
@@ -136,5 +170,22 @@ export async function composeCreatePullRequest(
     title,
     body,
     draft,
-  });
+  };
+
+  if (existingPullRequest) {
+    // https://docs.github.com/en/rest/pulls/pulls#update-a-pull-request
+    return await octokit.request(
+      "PATCH /repos/{owner}/{repo}/pulls/{pull_number}",
+      {
+        pull_number: existingPullRequest.number,
+        ...pullRequestOptions,
+      }
+    );
+  } else {
+    // https://developer.github.com/v3/pulls/#create-a-pull-request
+    return await octokit.request(
+      "POST /repos/{owner}/{repo}/pulls",
+      pullRequestOptions
+    );
+  }
 }
