@@ -50,9 +50,7 @@ test("delete files", async () => {
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",
-        // @ts-ignore null is a valid value, but it's not documented.
         "path/to/file2.txt": null,
-        // @ts-ignore null is a valid value, but it's not documented.
         "path/to/file-does-not-exist.txt": null,
       },
       commit: "why",
