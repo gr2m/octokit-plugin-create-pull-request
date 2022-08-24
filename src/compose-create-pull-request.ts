@@ -127,16 +127,16 @@ export async function composeCreatePullRequest(
           edges: [
             {
               node: {
-                url: string,
-                number: number,
-              }
+                url: string;
+                number: number;
+              };
             }
-          ]
-        }
-      }
-    }
-  } = await octokit
-    .graphql(`
+          ];
+        };
+      };
+    };
+  } = await octokit.graphql(
+    `
     query ($owner: String!, $repo: String!, $head: String!) {
       repository(name: $repo, owner: $owner) {
         ref(qualifiedName: $head) {
@@ -151,14 +151,17 @@ export async function composeCreatePullRequest(
           }
         }
       }
-    }`, {
+    }`,
+    {
       owner,
       repo,
       head,
-    })
+    }
+  );
 
-  const branchExists = !!branchInfo.repository?.ref
-  const existingPullRequest = branchInfo.repository?.ref?.associatedPullRequests?.edges?.[0]?.node
+  const branchExists = !!branchInfo.repository?.ref;
+  const existingPullRequest =
+    branchInfo.repository?.ref?.associatedPullRequests?.edges?.[0]?.node;
 
   if (existingPullRequest && !update) {
     throw new Error(
