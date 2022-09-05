@@ -159,9 +159,9 @@ export async function composeCreatePullRequest(
     }
   );
 
-  const branchExists = !!branchInfo.repository?.ref;
+  const branchExists = !!branchInfo.repository.ref;
   const existingPullRequest =
-    branchInfo.repository?.ref?.associatedPullRequests?.edges?.[0]?.node;
+    branchInfo.repository.ref?.associatedPullRequests?.edges?.[0]?.node;
 
   if (existingPullRequest && !update) {
     throw new Error(
