@@ -120,35 +120,52 @@ export async function composeCreatePullRequest(
     return null;
   }
 
-  // https://docs.github.com/en/rest/git/refs#get-a-reference
-  const branchExists = await octokit
-    .request("GET /repos/{owner}/{repo}/git/ref/{ref}", {
-      owner: state.fork,
-      repo,
-      ref: `heads/${head}`,
-    })
-    .then(
-      () => true,
-      (error) => {
-        /* istanbul ignore else */
-        if (error.status === 404) return false;
-
-        /* istanbul ignore next */
-        throw error;
+  const branchInfo: {
+    repository: {
+      ref: {
+        associatedPullRequests: {
+          edges: [
+            {
+              node: {
+                url: string;
+                number: number;
+              };
+            }
+          ];
+        };
+      };
+    };
+  } = await octokit.graphql(
+    `
+    query ($owner: String!, $repo: String!, $head: String!) {
+      repository(name: $repo, owner: $owner) {
+        ref(qualifiedName: $head) {
+          associatedPullRequests(first: 1, states: OPEN) {
+            edges {
+              node {
+                id
+                number
+                url
+              }
+            }
+          }
+        }
       }
-    );
+    }`,
+    {
+      owner,
+      repo,
+      head,
+    }
+  );
 
-  const existingPullRequest = branchExists
-    ? await octokit
-        .request("GET /search/issues", {
-          q: `head:${head} type:pr is:open repo:${owner}/${repo}`,
-        })
-        .then((response) => response.data.items[0])
-    : undefined;
+  const branchExists = !!branchInfo.repository.ref;
+  const existingPullRequest =
+    branchInfo.repository.ref?.associatedPullRequests?.edges?.[0]?.node;
 
   if (existingPullRequest && !update) {
     throw new Error(
-      `[octokit-plugin-create-pull-request] Pull request already exists: ${existingPullRequest.html_url}. Set update=true to enable updating`
+      `[octokit-plugin-create-pull-request] Pull request already exists: ${existingPullRequest.url}. Set update=true to enable updating`
     );
   }
 

@@ -509,7 +509,7 @@
   },
   {
     "request": {
-      "method": "GET",
+      "method": "POST",
       "baseUrl": "https://api.github.com",
       "headers": {
         "accept": "application/vnd.github.v3+json",
@@ -520,13 +520,16 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/{owner}/{repo}/git/ref/{ref}",
-      "owner": "gr2m",
-      "repo": "pull-request-test",
-      "ref": "heads/happy-path"
+      "url": "/graphql",
+      "query": "\n    query ($owner: String!, $repo: String!, $head: String!) {\n      repository(name: $repo, owner: $owner) {\n        ref(qualifiedName: $head) {\n          associatedPullRequests(first: 1, states: OPEN) {\n            edges {\n              node {\n                id\n                number\n                url\n              }\n            }\n          }\n        }\n      }\n    }",
+      "variables": {
+        "owner": "gr2m",
+        "repo": "pull-request-test",
+        "head": "happy-path"
+      }
     },
     "response": {
-      "status": 404,
+      "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
         "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
@@ -558,8 +561,11 @@
         "x-xss-protection": "0"
       },
       "data": {
-        "error": "Not Found",
-        "documentation_url": "https://docs.github.com/rest/reference/git#get-a-reference"
+        "data": {
+          "repository": {
+            "ref": null
+          }
+        }
       }
     }
   },
