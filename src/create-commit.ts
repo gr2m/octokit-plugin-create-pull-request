@@ -5,7 +5,7 @@ export async function createCommit(
   treeCreated: boolean,
   changes: Changes
 ): Promise<string> {
-  const { octokit, repo, fork, latestCommitSha } = state;
+  const { octokit, repo, ownerOrFork, latestCommitSha } = state;
 
   const message = treeCreated
     ? changes.commit
@@ -17,7 +17,7 @@ export async function createCommit(
   const { data: latestCommit } = await octokit.request(
     "POST /repos/{owner}/{repo}/git/commits",
     {
-      owner: fork,
+      owner: ownerOrFork,
       repo,
       message,
       tree: state.latestCommitTreeSha,
