@@ -52,7 +52,7 @@ export async function composeCreatePullRequest(
     base = repository.default_branch;
   }
 
-  state.fork = owner;
+  state.ownerOrFork = owner;
 
   if (forceFork || (isUser && !repository.permissions.push)) {
     // https://developer.github.com/v3/users/#get-the-authenticated-user
@@ -76,7 +76,7 @@ export async function composeCreatePullRequest(
       });
     }
 
-    state.fork = user.data.login;
+    state.ownerOrFork = user.data.login;
   }
 
   // https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
@@ -153,7 +153,7 @@ export async function composeCreatePullRequest(
       }
     }`,
     {
-      owner,
+      owner: state.ownerOrFork,
       repo,
       head,
     }
@@ -172,7 +172,7 @@ export async function composeCreatePullRequest(
   if (branchExists) {
     // https://docs.github.com/en/rest/git/refs#update-a-reference
     await octokit.request("PATCH /repos/{owner}/{repo}/git/refs/{ref}", {
-      owner: state.fork,
+      owner: state.ownerOrFork,
       repo,
       sha: state.latestCommitSha,
       ref: `heads/${head}`,
@@ -181,7 +181,7 @@ export async function composeCreatePullRequest(
   } else {
     // https://developer.github.com/v3/git/refs/#create-a-reference
     await octokit.request("POST /repos/{owner}/{repo}/git/refs", {
-      owner: state.fork,
+      owner: state.ownerOrFork,
       repo,
       sha: state.latestCommitSha,
       ref: `refs/heads/${head}`,
@@ -191,7 +191,7 @@ export async function composeCreatePullRequest(
   const pullRequestOptions = {
     owner,
     repo,
-    head: `${state.fork}:${head}`,
+    head: `${state.ownerOrFork}:${head}`,
     base,
     title,
     body,

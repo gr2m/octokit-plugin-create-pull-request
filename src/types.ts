@@ -52,7 +52,7 @@ export type State = {
   octokit: Octokit;
   owner: string;
   repo: string;
-  fork?: string;
+  ownerOrFork?: string;
   latestCommitSha?: string;
   latestCommitTreeSha?: string;
   treeSha?: string;

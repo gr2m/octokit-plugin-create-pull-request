@@ -15,7 +15,7 @@ export async function createTree(
     octokit,
     owner,
     repo,
-    fork,
+    ownerOrFork,
     latestCommitSha,
     latestCommitTreeSha,
   } = state;
@@ -31,7 +31,7 @@ export async function createTree(
           try {
             // https://developer.github.com/v3/repos/contents/#get-contents
             await octokit.request("HEAD /repos/{owner}/{repo}/contents/:path", {
-              owner: fork,
+              owner: ownerOrFork,
               repo,
               ref: latestCommitSha,
               path,
@@ -56,7 +56,7 @@ export async function createTree(
             const { data: file } = await octokit.request(
               "GET /repos/{owner}/{repo}/contents/:path",
               {
-                owner: fork,
+                owner: ownerOrFork,
                 repo,
                 ref: latestCommitSha,
                 path,
@@ -75,10 +75,10 @@ export async function createTree(
           }
 
           if (result === null || typeof result === "undefined") return;
-          return valueToTreeObject(octokit, fork, repo, path, result);
+          return valueToTreeObject(octokit, ownerOrFork, repo, path, result);
         }
 
-        return valueToTreeObject(octokit, fork, repo, path, value);
+        return valueToTreeObject(octokit, ownerOrFork, repo, path, value);
       })
     )
   ).filter(Boolean) as TreeParameter;
@@ -91,7 +91,7 @@ export async function createTree(
   const {
     data: { sha: newTreeSha },
   } = await octokit.request("POST /repos/{owner}/{repo}/git/trees", {
-    owner: fork,
+    owner: ownerOrFork,
     repo,
     base_tree: latestCommitTreeSha,
     tree,
