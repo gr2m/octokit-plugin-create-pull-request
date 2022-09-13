@@ -153,7 +153,7 @@ export async function composeCreatePullRequest(
       }
     }`,
     {
-      owner,
+      owner: state.fork,
       repo,
       head,
     }
