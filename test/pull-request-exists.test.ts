@@ -57,6 +57,7 @@ test("pull-request-exists", async () => {
     });
     throw new Error("Should not resolve");
   } catch (error) {
+    // @ts-ignore
     expect(error.message).toEqual(
       "[octokit-plugin-create-pull-request] Pull request already exists: https://github.com/gr2m/pull-request-test/pull/99. Set update=true to enable updating"
     );

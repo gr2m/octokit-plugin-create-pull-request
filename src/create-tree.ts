@@ -1,9 +1,4 @@
-import type {
-  Changes,
-  State,
-  TreeParameter,
-  UpdateFunctionFile,
-} from "./types";
+import { Changes, State, TreeParameter, UpdateFunctionFile } from "./types";
 
 import { valueToTreeObject } from "./value-to-tree-object";
 
@@ -67,6 +62,7 @@ export async function createTree(
               Object.assign(file, { exists: true }) as UpdateFunctionFile
             );
           } catch (error) {
+            // @ts-ignore
             // istanbul ignore if
             if (error.status !== 404) throw error;
 
