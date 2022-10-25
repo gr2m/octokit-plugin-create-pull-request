@@ -59,6 +59,7 @@ test("invalid auth", async () => {
     });
     throw new Error("Should not resolve");
   } catch (error) {
+    // @ts-ignore
     expect(error.message).toEqual(
       "[octokit-plugin-create-pull-request] Missing authentication"
     );
