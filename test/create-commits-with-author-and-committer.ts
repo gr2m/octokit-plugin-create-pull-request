@@ -47,7 +47,7 @@ test("multiple commits", async () => {
     repo: "sandbox",
     title: "One comes, one goes",
     body: "because",
-    head: "test-branch-" + Math.random().toString(36).substr(2, 5),
+    head: "test-branch-tv12s",
     changes: [
       {
         files: {
