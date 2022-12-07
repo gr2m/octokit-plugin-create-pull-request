@@ -4,7 +4,7 @@ import { RequestError } from "@octokit/request-error";
 import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("multiple commits", async () => {
+test("author and committer", async () => {
   const fixtures = require("./fixtures/create-commits-with-author-and-comitter");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
