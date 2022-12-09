@@ -95,6 +95,18 @@ octokit
         },
         commit:
           "creating file1.txt, file2.png, deleting file3.txt, updating file4.txt (if it exists), file5.sh",
+        /* optional: if not passed, will be the authenticated user and the current date */
+        author: {
+          name: "Author LastName",
+          email: "Author.LastName@acme.com",
+          date: new Date().toISOString() // must be ISO date string
+        },
+        /* optional: if not passed, will use the information set in author */
+        committer: {
+          name: "Committer LastName",
+          email: "Committer.LastName@acme.com",
+          date: new Date().toISOString() // must be ISO date string
+        },
       },
     ],
   })
