@@ -24,7 +24,7 @@ jobs:
           node-version: ${{ matrix.node_version }}
           cache: npm
       - run: npm ci
-      - run: jest --coverage
+      - run: npm test
 
   test:
     runs-on: ubuntu-latest
