@@ -5,7 +5,7 @@ import { createPullRequest } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
 test("author and committer", async () => {
-  const fixtures = require("./fixtures/create-commits-with-author-and-comitter");
+  const fixtures = require("./fixtures/create-commits-with-author-and-committer");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -57,12 +57,12 @@ test("author and committer", async () => {
         author: {
           name: "Author LastName",
           email: "Author.LastName@acme.com",
-          date: new Date().toISOString(),
+          date: "2022-12-06T19:58:39.672Z",
         },
         committer: {
           name: "Committer LastName",
           email: "Committer.LastName@acme.com",
-          date: new Date().toISOString(),
+          date: "2022-12-06T19:58:39.672Z",
         },
         commit: "why",
       },
@@ -74,7 +74,7 @@ test("author and committer", async () => {
         committer: {
           name: "Committer Smith",
           email: "Committer.Smith@acme.com",
-          date: new Date().toISOString(),
+          date: "2022-12-06T19:58:39.672Z",
         },
         commit: "Make a fix",
       },
