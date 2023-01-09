@@ -1,4 +1,4 @@
-import type { Changes, State } from "./types";
+import type { Committer, Changes, State } from "./types";
 
 export async function createCommit(
   state: Required<State>,
@@ -20,6 +20,8 @@ export async function createCommit(
       owner: ownerOrFork,
       repo,
       message,
+      author: changes.author,
+      committer: changes.committer,
       tree: state.latestCommitTreeSha,
       parents: [latestCommitSha],
     }

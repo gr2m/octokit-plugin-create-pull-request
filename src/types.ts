@@ -24,6 +24,8 @@ export type Changes = {
   };
   emptyCommit?: boolean | string;
   commit: string;
+  committer?: Committer;
+  author?: Author | undefined;
 };
 
 // https://developer.github.com/v3/git/blobs/#parameters
@@ -57,4 +59,16 @@ export type State = {
   latestCommitSha?: string;
   latestCommitTreeSha?: string;
   treeSha?: string;
+};
+
+export type Committer = {
+  name?: string;
+  email?: string;
+  date?: string;
+};
+
+export type Author = {
+  name: string;
+  email: string;
+  date?: string;
 };
