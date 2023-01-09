@@ -99,13 +99,13 @@ octokit
         author: {
           name: "Author LastName",
           email: "Author.LastName@acme.com",
-          date: new Date().toISOString() // must be ISO date string
+          date: new Date().toISOString(), // must be ISO date string
         },
         /* optional: if not passed, will use the information set in author */
         committer: {
           name: "Committer LastName",
           email: "Committer.LastName@acme.com",
-          date: new Date().toISOString() // must be ISO date string
+          date: new Date().toISOString(), // must be ISO date string
         },
       },
     ],
