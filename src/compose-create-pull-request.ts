@@ -20,6 +20,11 @@ export async function composeCreatePullRequest(
     update = false,
   }: Options
 ) {
+  if (head === base) {
+    throw new Error(
+      "[octokit-plugin-create-pull-request] head cannot be the same value as base"
+    );
+  }
   const changes = Array.isArray(changesOption)
     ? changesOption
     : [changesOption];
