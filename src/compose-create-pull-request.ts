@@ -3,6 +3,7 @@ import type { Changes, Options, State } from "./types";
 
 import { createTree } from "./create-tree";
 import { createCommit } from "./create-commit";
+import { HeadBaseEqualityError } from "./errors/headBaseEqualityError";
 
 export async function composeCreatePullRequest(
   octokit: Octokit,
@@ -21,9 +22,7 @@ export async function composeCreatePullRequest(
   }: Options
 ) {
   if (head === base) {
-    throw new Error(
-      "[octokit-plugin-create-pull-request] head cannot be the same value as base"
-    );
+    throw new HeadBaseEqualityError();
   }
   const changes = Array.isArray(changesOption)
     ? changesOption
