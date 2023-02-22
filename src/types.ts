@@ -26,6 +26,7 @@ export type Changes = {
   commit: string;
   committer?: Committer;
   author?: Author | undefined;
+  signature?: SignatureFunction | undefined;
 };
 
 // https://developer.github.com/v3/git/blobs/#parameters
@@ -34,6 +35,8 @@ export type File = {
   encoding: "utf-8" | "base64";
   mode?: string;
 };
+
+export type SignatureFunction = (commitPayload: CommitPayload) => string;
 
 export type UpdateFunctionFile =
   | {
@@ -71,4 +74,12 @@ export type Author = {
   name: string;
   email: string;
   date?: string;
+};
+
+export type CommitPayload = {
+  message: string;
+  tree: string;
+  parents: string[];
+  author?: Author;
+  committer?: Committer;
 };

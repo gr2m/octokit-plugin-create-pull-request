@@ -27,6 +27,12 @@ test("author and committer", async () => {
     ).toEqual(`${options.method} ${options.url}`);
 
     Object.keys(params).forEach((paramName) => {
+      if (paramName === "signature") {
+        expect(currentFixtures.request.verification.signature).toStrictEqual(
+          "my-signature"
+        );
+        return;
+      }
       expect(currentFixtures.request[paramName]).toStrictEqual(
         params[paramName]
       );
@@ -76,6 +82,7 @@ test("author and committer", async () => {
           email: "Committer.Smith@acme.com",
           date: "2022-12-06T19:58:39.672Z",
         },
+        signature: () => "my-signature",
         commit: "Make a fix",
       },
     ],

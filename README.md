@@ -107,6 +107,16 @@ octokit
           email: "Committer.LastName@acme.com",
           date: new Date().toISOString(), // must be ISO date string
         },
+        /* optional: if not passed, commit won't be signed*/
+        signature: async function (commitPayload) {
+          // import { createSignature } from 'github-api-signature'
+          //
+          // return createSignature(
+          //   commitPayload,
+          //   privateKey,
+          //   passphrase
+          // );
+        },
       },
     ],
   })

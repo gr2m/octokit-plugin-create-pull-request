@@ -1,4 +1,4 @@
-import type { Committer, Changes, State } from "./types";
+import type { CommitPayload, Changes, State } from "./types";
 
 export async function createCommit(
   state: Required<State>,
@@ -13,17 +13,24 @@ export async function createCommit(
     ? changes.emptyCommit
     : changes.commit;
 
+  const commit: CommitPayload = {
+    message,
+    author: changes.author,
+    committer: changes.committer,
+    tree: state.latestCommitTreeSha,
+    parents: [latestCommitSha],
+  };
+
   // https://developer.github.com/v3/git/commits/#create-a-commit
   const { data: latestCommit } = await octokit.request(
     "POST /repos/{owner}/{repo}/git/commits",
     {
       owner: ownerOrFork,
       repo,
-      message,
-      author: changes.author,
-      committer: changes.committer,
-      tree: state.latestCommitTreeSha,
-      parents: [latestCommitSha],
+      ...commit,
+      signature: changes.signature
+        ? await changes.signature(commit)
+        : undefined,
     }
   );
 
