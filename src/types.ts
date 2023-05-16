@@ -52,7 +52,9 @@ export type UpdateFunctionFile =
       content: never;
     };
 
-export type UpdateFunction = (file: UpdateFunctionFile) => string | File | null;
+export type UpdateFunction = (
+  file: UpdateFunctionFile
+) => string | File | null | Promise<string | File | null>;
 
 export type State = {
   octokit: Octokit;
