@@ -1839,6 +1839,12 @@
           "email": "Committer.Smith@acme.com",
           "date": "2022-12-06T19:58:39.672Z"
         },
+        "verification": {
+          "verified": false,
+          "reason": "signed",
+          "signature": "my-signature",
+          "payload": null
+        },
         "tree": "342b3bfaaa972fe97be3e14d3665f9649327913b",
         "parents": [
           "61165f91e197e5759eff4c7b27bb87ef2c200bf2"
