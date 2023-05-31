@@ -2,6 +2,7 @@ import type { Octokit } from "@octokit/core";
 
 import { composeCreatePullRequest } from "./compose-create-pull-request";
 import { VERSION } from "./version";
+export { DELETE_FILE } from "./constants";
 import type * as Types from "./types";
 
 /**
