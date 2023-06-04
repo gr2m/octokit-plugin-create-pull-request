@@ -20,7 +20,7 @@ export type Options = {
 
 export type Changes = {
   files?: {
-    [path: string]: string | File | UpdateFunction | null;
+    [path: string]: string | File | UpdateFunction | null | Symbol;
   };
   emptyCommit?: boolean | string;
   commit: string;
@@ -54,7 +54,7 @@ export type UpdateFunctionFile =
 
 export type UpdateFunction = (
   file: UpdateFunctionFile
-) => string | File | null | Promise<string | File | null>;
+) => string | File | null | Symbol | Promise<string | File | null | Symbol>;
 
 export type State = {
   octokit: Octokit;

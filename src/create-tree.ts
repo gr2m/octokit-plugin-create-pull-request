@@ -1,6 +1,7 @@
 import { Changes, State, TreeParameter, UpdateFunctionFile } from "./types";
 
 import { valueToTreeObject } from "./value-to-tree-object";
+import { DELETE_FILE } from "./constants";
 
 export async function createTree(
   state: Required<State>,
@@ -20,7 +21,7 @@ export async function createTree(
   for (const path of Object.keys(changes.files)) {
     const value = changes.files[path];
 
-    if (value === null) {
+    if (value === DELETE_FILE) {
       // Deleting a non-existent file from a tree leads to an "GitRPC::BadObjectState" error,
       // so we only attempt to delete the file if it exists.
       try {
@@ -62,6 +63,28 @@ export async function createTree(
         result = await value(
           Object.assign(file, { exists: true }) as UpdateFunctionFile
         );
+
+        if (result === DELETE_FILE) {
+          try {
+            // https://developer.github.com/v3/repos/contents/#get-contents
+            await octokit.request("HEAD /repos/{owner}/{repo}/contents/:path", {
+              owner: ownerOrFork,
+              repo,
+              ref: latestCommitSha,
+              path,
+            });
+
+            tree.push({
+              path,
+              mode: "100644",
+              sha: null,
+            });
+            continue;
+          } catch (error) {
+            // istanbul ignore next
+            continue;
+          }
+        }
       } catch (error) {
         // @ts-ignore
         // istanbul ignore if
@@ -71,13 +94,24 @@ export async function createTree(
         result = await value({ exists: false });
       }
 
-      if (result === null || typeof result === "undefined") continue;
+      if (
+        result === null ||
+        typeof result === "undefined" ||
+        typeof result === "symbol"
+      ) {
+        continue;
+      }
+
       tree.push(
+        // @ts-expect-error - Argument result can never be of type Symbol at this branch
+        // because the above condition will catch it and move on to the next iteration cycle
         await valueToTreeObject(octokit, ownerOrFork, repo, path, result)
       );
       continue;
     }
 
+    // @ts-expect-error - Argument value can never be of type Symbol at this branch
+    // because the above condition will catch it and initiate a file deletion operation
     tree.push(await valueToTreeObject(octokit, ownerOrFork, repo, path, value));
     continue;
   }

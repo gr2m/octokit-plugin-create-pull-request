@@ -38,7 +38,10 @@ Install with `npm install @octokit/core octokit-plugin-create-pull-request`. Opt
 
 ```js
 const { Octokit } = require("@octokit/core");
-const { createPullRequest } = require("octokit-plugin-create-pull-request");
+const {
+  createPullRequest,
+  DELETE_FILE,
+} = require("octokit-plugin-create-pull-request");
 ```
 
 </td></tr>
@@ -75,7 +78,7 @@ octokit
             encoding: "base64",
           },
           // deletes file if it exists,
-          "path/to/file3.txt": null,
+          "path/to/file3.txt": DELETE_FILE,
           // updates file based on current content
           "path/to/file4.txt": ({ exists, encoding, content }) => {
             // do not create the file if it does not exist
@@ -91,6 +94,22 @@ octokit
             // one of the modes supported by the git tree object
             // https://developer.github.com/v3/git/trees/#tree-object
             mode: "100755",
+          },
+          "path/to/file6.txt": ({ exists, encoding, content }) => {
+            // do nothing if it does not exist
+            if (!exists) return null;
+
+            const content = Buffer.from(content, encoding)
+              .toString("utf-8")
+              .toUpperCase();
+
+            if (content.includes("octomania")) {
+              // delete file
+              return DELETE_FILE;
+            }
+
+            // keep file
+            return null;
           },
         },
         commit:

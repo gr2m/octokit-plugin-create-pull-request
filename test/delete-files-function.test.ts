@@ -4,8 +4,8 @@ import { RequestError } from "@octokit/request-error";
 import { createPullRequest, DELETE_FILE } from "../src";
 const Octokit = Core.plugin(createPullRequest);
 
-test("delete files", async () => {
-  const fixtures = require("./fixtures/delete-files");
+test("delete files function", async () => {
+  const fixtures = require("./fixtures/delete-files-function");
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -50,8 +50,8 @@ test("delete files", async () => {
     changes: {
       files: {
         "path/to/file1.txt": "Content for file1",
-        "path/to/file2.txt": DELETE_FILE,
-        "path/to/file-does-not-exist.txt": DELETE_FILE,
+        "path/to/file2.txt": () => DELETE_FILE,
+        "path/to/file-does-not-exist.txt": () => DELETE_FILE,
       },
       commit: "why",
     },
