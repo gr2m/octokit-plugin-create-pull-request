@@ -11,6 +11,7 @@ export type Options = {
   body: string;
   head: string;
   changes: Changes | Changes[];
+  labels?: String[];
   base?: string;
   createWhenEmpty?: boolean;
   draft?: boolean;
