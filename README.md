@@ -99,9 +99,9 @@ octokit
             // do nothing if it does not exist
             if (!exists) return null;
 
-            const fileContent = Buffer.from(content, encoding)
-              .toString("utf-8")
-              .toUpperCase();
+            const fileContent = Buffer.from(content, encoding).toString(
+              "utf-8"
+            );
 
             if (fileContent.includes("octomania")) {
               // delete file
