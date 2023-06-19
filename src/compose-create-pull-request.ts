@@ -224,7 +224,7 @@ export async function composeCreatePullRequest(
 
   if (labels.length) {
     try {
-      await octokit.request(
+      const labelRes = await octokit.request(
         "POST /repos/{owner}/{repo}/issues/{number}/labels",
         {
           owner,
@@ -233,7 +233,23 @@ export async function composeCreatePullRequest(
           labels,
         }
       );
+
+      // istanbul ignore if
+      if (labelRes.data.length > labels.length) {
+        octokit.log.warn(
+          "The pull request already contains more labels than the ones provided. This could be due to the presence of previous labels."
+        );
+      }
     } catch (error) {
+      // @ts-ignore
+      // istanbul ignore if
+      if (error.status === 403) {
+        octokit.log.warn(
+          "You do not have permissions to apply labels to this pull request. However, the pull request has been successfully created without the requested labels."
+        );
+        return res;
+      }
+
       // @ts-ignore
       if (error.status !== 403) throw error;
     }

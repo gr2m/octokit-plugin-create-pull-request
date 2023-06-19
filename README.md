@@ -70,7 +70,7 @@ octokit
     forceFork: false /* optional: force creating fork even when user has write rights */,
     labels: [
       "bug",
-    ] /* optional: applies the given labels when user has permissions */,
+    ] /* optional: applies the given labels when user has permissions. When updating an existing pull request, already present labels will not be deleted. */
     changes: [
       {
         /* optional: if `files` is not passed, an empty commit is created instead */
