@@ -16,6 +16,7 @@ export async function composeCreatePullRequest(
     createWhenEmpty,
     changes: changesOption,
     draft = false,
+    labels = [],
     forceFork = false,
     update = false,
   }: Options
@@ -203,9 +204,10 @@ export async function composeCreatePullRequest(
     draft,
   };
 
+  let res;
   if (existingPullRequest) {
     // https://docs.github.com/en/rest/pulls/pulls#update-a-pull-request
-    return await octokit.request(
+    res = await octokit.request(
       "PATCH /repos/{owner}/{repo}/pulls/{pull_number}",
       {
         pull_number: existingPullRequest.number,
@@ -214,9 +216,44 @@ export async function composeCreatePullRequest(
     );
   } else {
     // https://developer.github.com/v3/pulls/#create-a-pull-request
-    return await octokit.request(
+    res = await octokit.request(
       "POST /repos/{owner}/{repo}/pulls",
       pullRequestOptions
     );
   }
+
+  if (labels.length) {
+    try {
+      const labelRes = await octokit.request(
+        "POST /repos/{owner}/{repo}/issues/{number}/labels",
+        {
+          owner,
+          repo,
+          number: res.data.number,
+          labels,
+        }
+      );
+
+      // istanbul ignore if
+      if (labelRes.data.length > labels.length) {
+        octokit.log.warn(
+          "The pull request already contains more labels than the ones provided. This could be due to the presence of previous labels."
+        );
+      }
+    } catch (error) {
+      // @ts-ignore
+      // istanbul ignore if
+      if (error.status === 403) {
+        octokit.log.warn(
+          "You do not have permissions to apply labels to this pull request. However, the pull request has been successfully created without the requested labels."
+        );
+        return res;
+      }
+
+      // @ts-ignore
+      if (error.status !== 403) throw error;
+    }
+  }
+
+  return res;
 }
