@@ -319,66 +319,6 @@
         "previews": []
       },
       "request": {},
-      "url": "/repos/{owner}/{repo}/git/blobs",
-      "owner": "gr2m",
-      "repo": "pull-request-test",
-      "content": "echo Hello World",
-      "encoding": "utf-8",
-      "mode": "100755"
-    },
-    "response": {
-      "status": 201,
-      "url": "https://api.github.com/repos/gr2m/pull-request-test/git/blobs",
-      "headers": {
-        "access-control-allow-origin": "*",
-        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
-        "cache-control": "private, max-age=60, s-maxage=60",
-        "connection": "close",
-        "content-length": "161",
-        "content-security-policy": "default-src 'none'",
-        "content-type": "application/json; charset=utf-8",
-        "date": "Tue, 28 Jun 2022 00:21:09 GMT",
-        "etag": "\"8766a6d276b4ae70c5318400840f7c1f1951b5243b0d6d29a0104281c29f9077\"",
-        "github-authentication-token-expiration": "2022-08-24 23:46:54 UTC",
-        "location": "https://api.github.com/repos/gr2m/pull-request-test/git/blobs/c346b86cea27ec508d99b869b35d45b5edbd53f0",
-        "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
-        "server": "GitHub.com",
-        "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
-        "vary": "Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With",
-        "x-accepted-oauth-scopes": "",
-        "x-content-type-options": "nosniff",
-        "x-frame-options": "deny",
-        "x-github-api-version-selected": "",
-        "x-github-api-version-selected-reason": "unavailable",
-        "x-github-media-type": "github.v3; format=json",
-        "x-github-request-id": "F8BE:2BA5:2E5128:398B6D:62BA4975",
-        "x-oauth-scopes": "notifications, repo, workflow, write:org",
-        "x-ratelimit-limit": "5000",
-        "x-ratelimit-remaining": "4948",
-        "x-ratelimit-reset": "1656378677",
-        "x-ratelimit-resource": "core",
-        "x-ratelimit-used": "52",
-        "x-xss-protection": "0"
-      },
-      "data": {
-        "sha": "c346b86cea27ec508d99b869b35d45b5edbd53f0",
-        "url": "https://api.github.com/repos/gr2m/pull-request-test/git/blobs/c346b86cea27ec508d99b869b35d45b5edbd53f0"
-      }
-    }
-  },
-  {
-    "request": {
-      "method": "POST",
-      "baseUrl": "https://api.github.com",
-      "headers": {
-        "accept": "application/vnd.github.v3+json",
-        "user-agent": "octokit-core.js/3.2.5 Node.js/18.3.0 (darwin; arm64)"
-      },
-      "mediaType": {
-        "format": "",
-        "previews": []
-      },
-      "request": {},
       "url": "/repos/{owner}/{repo}/git/trees",
       "owner": "gr2m",
       "repo": "pull-request-test",
@@ -392,7 +332,7 @@
         {
           "path": "path/to/file2.sh",
           "mode": "100755",
-          "sha": "c346b86cea27ec508d99b869b35d45b5edbd53f0"
+          "content": "echo Hello World"
         }
       ]
     },
