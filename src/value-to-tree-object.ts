@@ -22,6 +22,7 @@ export async function valueToTreeObject(
   const mode = value.mode ?? defaultMode;
 
   // UTF-8 files can be treated as text files
+  // https://github.com/gr2m/octokit-plugin-create-pull-request/pull/133
   if (value.encoding === "utf-8") {
     return {
       path,
