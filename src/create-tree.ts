@@ -80,14 +80,14 @@ export async function createTree(
               sha: null,
             });
             continue;
+          /* v8 ignore next 3 */
           } catch (error) {
-            // istanbul ignore next
             continue;
           }
         }
       } catch (error) {
-        // @ts-ignore
-        // istanbul ignore if
+        /* v8 ignore next 2 */
+        // @ts-expect-error
         if (error.status !== 404) throw error;
 
         // @ts-ignore

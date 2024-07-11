@@ -53,7 +53,6 @@ async function main() {
   delete pkg.scripts;
   delete pkg.prettier;
   delete pkg.release;
-  delete pkg.jest;
   await writeFile(
     "pkg/package.json",
     JSON.stringify(

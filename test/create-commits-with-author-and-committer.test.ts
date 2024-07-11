@@ -1,3 +1,5 @@
+import { test, expect } from "vitest";
+
 import { Octokit as Core } from "@octokit/core";
 import { RequestError } from "@octokit/request-error";
 

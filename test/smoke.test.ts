@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 import { Octokit } from "@octokit/core";
 
 import { createPullRequest, composeCreatePullRequest } from "../src/index.ts";

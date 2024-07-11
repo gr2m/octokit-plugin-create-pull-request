@@ -70,7 +70,7 @@ export async function composeCreatePullRequest(
       repo,
     });
     const hasFork = forks.data.find(
-      /* istanbul ignore next - fork owner can be null, but we don't test that */
+      /* v8 ignore next - fork owner can be null, but we don't test that */
       (fork) => fork.owner && fork.owner.login === user.data.login,
     );
 
@@ -234,15 +234,15 @@ export async function composeCreatePullRequest(
         },
       );
 
-      // istanbul ignore if
+      /* v8 ignore next 5 */
       if (labelRes.data.length > labels.length) {
         octokit.log.warn(
           "The pull request already contains more labels than the ones provided. This could be due to the presence of previous labels.",
         );
       }
     } catch (error) {
-      // @ts-ignore
-      // istanbul ignore if
+      /* v8 ignore next 6 */
+      // @ts-expect-error
       if (error.status === 403) {
         octokit.log.warn(
           "You do not have permissions to apply labels to this pull request. However, the pull request has been successfully created without the requested labels.",

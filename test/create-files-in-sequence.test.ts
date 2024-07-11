@@ -1,4 +1,4 @@
-import { jest } from "@jest/globals";
+import { vi, test, expect } from "vitest";
 import { Octokit as Core } from "@octokit/core";
 import { RequestError } from "@octokit/request-error";
 
@@ -31,8 +31,8 @@ test("file functions are called in sequence", async () => {
     return currentFixtures.response;
   });
 
-  const fileOneStub = jest.fn();
-  const fileTwoStub = jest.fn();
+  const fileOneStub = vi.fn();
+  const fileTwoStub = vi.fn();
 
   const pr = await octokit.createPullRequest({
     owner: "gr2m",
