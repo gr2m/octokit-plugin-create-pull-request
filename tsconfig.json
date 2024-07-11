@@ -6,7 +6,8 @@
     "strict": true,
     "target": "es2022",
     "declaration": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "outDir": "pkg/dist-types"
   },
   "include": ["src/**/*"]
 }

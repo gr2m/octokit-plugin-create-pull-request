@@ -4,7 +4,7 @@
   "description": "Octokit plugin to create a pull request with multiple file changes",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.mjs",
+    "build": "node scripts/build.mjs && tsc -p tsconfig.json",
     "lint": "prettier --check \"{src,test}/**/*.{ts,md}\" *.md package.json tsconfig.json",
     "lint:fix": "prettier --write \"{src,test}/**/*.{ts,md}\" *.md package.json tsconfig.json",
     "pretest": "npm run -s lint",
