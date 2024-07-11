@@ -1,8 +1,8 @@
 import type { Octokit } from "@octokit/core";
-import type { Changes, Options, State } from "./types";
+import type { Changes, Options, State } from "./types.js";
 
-import { createTree } from "./create-tree";
-import { createCommit } from "./create-commit";
+import { createTree } from "./create-tree.js";
+import { createCommit } from "./create-commit.js";
 
 export async function composeCreatePullRequest(
   octokit: Octokit,

@@ -1,9 +1,9 @@
 import type { Octokit } from "@octokit/core";
 
-import { composeCreatePullRequest } from "./compose-create-pull-request";
-import { VERSION } from "./version";
-export { DELETE_FILE } from "./constants";
-import type * as Types from "./types";
+import { composeCreatePullRequest } from "./compose-create-pull-request.js";
+import { VERSION } from "./version.js";
+export { DELETE_FILE } from "./constants.js";
+import type * as Types from "./types.js";
 
 /**
  * @param octokit Octokit instance
@@ -14,7 +14,7 @@ export function createPullRequest(octokit: Octokit) {
   };
 }
 
-export { composeCreatePullRequest } from "./compose-create-pull-request";
+export { composeCreatePullRequest } from "./compose-create-pull-request.js";
 
 createPullRequest.VERSION = VERSION;
 

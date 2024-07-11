@@ -1,7 +1,7 @@
-import { Changes, State, TreeParameter, UpdateFunctionFile } from "./types";
+import { Changes, State, TreeParameter, UpdateFunctionFile } from "./types.js";
 
-import { valueToTreeObject } from "./value-to-tree-object";
-import { DELETE_FILE } from "./constants";
+import { valueToTreeObject } from "./value-to-tree-object.js";
+import { DELETE_FILE } from "./constants.js";
 
 export async function createTree(
   state: Required<State>,

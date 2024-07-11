@@ -1,5 +1,5 @@
 import type { Octokit } from "@octokit/core";
-import type { File } from "./types";
+import type { File } from "./types.js";
 
 export async function valueToTreeObject(
   octokit: Octokit,
