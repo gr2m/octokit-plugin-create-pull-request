@@ -20,12 +20,12 @@ Features
 Browsers
 </th><td width=100%>
 
-Load `octokit-plugin-create-pull-request` and [`@octokit/core`](https://github.com/octokit/core.js) (or core-compatible module) directly from [cdn.pika.dev](https://cdn.pika.dev)
+Load `octokit-plugin-create-pull-request` and [`@octokit/core`](https://github.com/octokit/core.js) (or core-compatible module) directly from [esm.sh](https://esm.sh)
 
 ```html
 <script type="module">
-  import { Octokit } from "https://cdn.pika.dev/@octokit/core";
-  import { createPullRequest } from "https://cdn.pika.dev/octokit-plugin-create-pull-request";
+  import { Octokit } from "https://esm.sh/@octokit/core";
+  import { createPullRequest } from "https://esm.sh/octokit-plugin-create-pull-request";
 </script>
 ```
 
