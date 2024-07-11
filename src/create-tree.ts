@@ -80,7 +80,7 @@ export async function createTree(
               sha: null,
             });
             continue;
-          /* v8 ignore next 3 */
+            /* v8 ignore next 3 */
           } catch (error) {
             continue;
           }
