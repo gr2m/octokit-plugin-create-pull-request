@@ -1,5 +1,5 @@
 import { Octokit as Core } from "@octokit/core";
-import { createPullRequest } from "../src";
+import { createPullRequest } from "../src/index.ts";
 
 const Octokit = Core.plugin(createPullRequest);
 

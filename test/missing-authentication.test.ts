@@ -1,11 +1,18 @@
 import { Octokit as Core } from "@octokit/core";
 import { RequestError } from "@octokit/request-error";
 
-import { createPullRequest } from "../src";
+import { readFile } from "node:fs/promises";
+
+import { createPullRequest } from "../src/index.ts";
 const Octokit = Core.plugin(createPullRequest);
 
 test("invalid auth", async () => {
-  const fixtures = require("./fixtures/missing-authentication");
+  const fixtures = JSON.parse(
+    await readFile(
+      new URL("./fixtures/missing-authentication.json", import.meta.url),
+      "utf-8",
+    ),
+  );
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -35,7 +42,7 @@ test("invalid auth", async () => {
     if (currentFixtures.response.status >= 400) {
       throw new RequestError("Error", currentFixtures.response.status, {
         request: currentFixtures.request,
-        headers: currentFixtures.response.headers,
+        response: currentFixtures.response,
       });
     }
 

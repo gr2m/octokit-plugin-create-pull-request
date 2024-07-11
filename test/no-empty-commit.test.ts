@@ -1,11 +1,18 @@
 import { Octokit as Core } from "@octokit/core";
 import { RequestError } from "@octokit/request-error";
 
-import { createPullRequest } from "../src";
+import { readFile } from "node:fs/promises";
+
+import { createPullRequest } from "../src/index.ts";
 const Octokit = Core.plugin(createPullRequest);
 
 test("no empty commit", async () => {
-  const fixtures = require("./fixtures/no-empty-commit");
+  const fixtures = JSON.parse(
+    await readFile(
+      new URL("./fixtures/no-empty-commit.json", import.meta.url),
+      "utf-8",
+    ),
+  );
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -34,8 +41,8 @@ test("no empty commit", async () => {
 
     if (currentFixtures.response.status >= 400) {
       throw new RequestError("Error", currentFixtures.response.status, {
+        response: currentFixtures.response,
         request: currentFixtures.request,
-        headers: currentFixtures.response.headers,
       });
     }
 

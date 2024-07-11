@@ -1,12 +1,19 @@
 import { Octokit as Core } from "@octokit/core";
 import { RequestError } from "@octokit/request-error";
 
-import { createPullRequest } from "../src";
-import { UpdateFunction } from "../src/types";
+import { readFile } from "node:fs/promises";
+
+import { createPullRequest } from "../src/index.ts";
+import { UpdateFunction } from "../src/types.ts";
 const Octokit = Core.plugin(createPullRequest);
 
 test("update readme", async () => {
-  const fixtures = require("./fixtures/update-readme");
+  const fixtures = JSON.parse(
+    await readFile(
+      new URL("./fixtures/update-readme.json", import.meta.url),
+      "utf-8",
+    ),
+  );
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -36,7 +43,7 @@ test("update readme", async () => {
     if (currentFixtures.response.status >= 400) {
       throw new RequestError("Error", currentFixtures.response.status, {
         request: currentFixtures.request,
-        headers: currentFixtures.response.headers,
+        response: currentFixtures.response,
       });
     }
 

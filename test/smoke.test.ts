@@ -1,6 +1,6 @@
 import { Octokit } from "@octokit/core";
 
-import { createPullRequest, composeCreatePullRequest } from "../src";
+import { createPullRequest, composeCreatePullRequest } from "../src/index.ts";
 
 describe("Smoke test", () => {
   it("createPullRequest is a function", () => {
