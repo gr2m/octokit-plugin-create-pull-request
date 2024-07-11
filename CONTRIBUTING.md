@@ -11,20 +11,14 @@ All tests can be run with `npm test`. To run a single test, you can execute the 
 node test/happy-path-test.js
 ```
 
-or with the `tap` binary for nicer output.
-
-```
-npx tap test/happy-path-test.js
-```
-
 ## Update test fixtures
 
-Here is a script that records fixtures and logs them to stdout. Run with `GITHUB_TOKEN=... node my-script.js`. [Create token with repo scope](https://github.com/settings/tokens/new?scopes=repo)
+Here is a script that records fixtures and logs them to stdout. First run the build script, then run with `GITHUB_TOKEN=... node my-script.js`. [Create token with repo scope](https://github.com/settings/tokens/new?scopes=repo)
 
 ```js
 // my-script.js
-const { Octokit } = require("@octokit/core");
-const createPullRequest = require(".");
+import { Octokit } from "@octokit/core";
+import createPullRequest from "./pkg/dist-bundle/index.js";
 const MyOctokit = Octokit.plugin(createPullRequest);
 const octokit = new MyOctokit({
   auth: process.env.GITHUB_TOKEN,
