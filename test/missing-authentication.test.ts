@@ -23,12 +23,12 @@ test("invalid auth", async () => {
     } = options;
 
     expect(
-      `${currentFixtures.request.method} ${currentFixtures.request.url}`
+      `${currentFixtures.request.method} ${currentFixtures.request.url}`,
     ).toEqual(`${options.method} ${options.url}`);
 
     Object.keys(params).forEach((paramName) => {
       expect(currentFixtures.request[paramName]).toStrictEqual(
-        params[paramName]
+        params[paramName],
       );
     });
 
@@ -61,7 +61,7 @@ test("invalid auth", async () => {
   } catch (error) {
     // @ts-ignore
     expect(error.message).toEqual(
-      "[octokit-plugin-create-pull-request] Missing authentication"
+      "[octokit-plugin-create-pull-request] Missing authentication",
     );
   }
 });

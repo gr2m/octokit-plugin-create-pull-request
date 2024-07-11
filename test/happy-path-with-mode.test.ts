@@ -15,7 +15,7 @@ test("happy path with mode", async () => {
       options;
 
     expect(
-      `${currentFixtures.request.method} ${currentFixtures.request.url}`
+      `${currentFixtures.request.method} ${currentFixtures.request.url}`,
     ).toEqual(`${options.method} ${options.url}`);
 
     Object.keys(params).forEach((paramName) => {

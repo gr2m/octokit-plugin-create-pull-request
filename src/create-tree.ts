@@ -5,7 +5,7 @@ import { DELETE_FILE } from "./constants";
 
 export async function createTree(
   state: Required<State>,
-  changes: Required<Changes>
+  changes: Required<Changes>,
 ): Promise<string | null> {
   const {
     octokit,
@@ -57,11 +57,11 @@ export async function createTree(
             repo,
             ref: latestCommitSha,
             path,
-          }
+          },
         );
 
         result = await value(
-          Object.assign(file, { exists: true }) as UpdateFunctionFile
+          Object.assign(file, { exists: true }) as UpdateFunctionFile,
         );
 
         if (result === DELETE_FILE) {
@@ -105,7 +105,7 @@ export async function createTree(
       tree.push(
         // @ts-expect-error - Argument result can never be of type Symbol at this branch
         // because the above condition will catch it and move on to the next iteration cycle
-        await valueToTreeObject(octokit, ownerOrFork, repo, path, result)
+        await valueToTreeObject(octokit, ownerOrFork, repo, path, result),
       );
       continue;
     }

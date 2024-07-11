@@ -22,12 +22,12 @@ test("pull-request-exists", async () => {
     } = options;
 
     expect(
-      `${currentFixtures.request.method} ${currentFixtures.request.url}`
+      `${currentFixtures.request.method} ${currentFixtures.request.url}`,
     ).toEqual(`${options.method} ${options.url}`);
 
     Object.keys(params).forEach((paramName) => {
       expect(currentFixtures.request[paramName]).toStrictEqual(
-        params[paramName]
+        params[paramName],
       );
     });
 
@@ -59,7 +59,7 @@ test("pull-request-exists", async () => {
   } catch (error) {
     // @ts-ignore
     expect(error.message).toEqual(
-      "[octokit-plugin-create-pull-request] Pull request already exists: https://github.com/gr2m/pull-request-test/pull/99. Set update=true to enable updating"
+      "[octokit-plugin-create-pull-request] Pull request already exists: https://github.com/gr2m/pull-request-test/pull/99. Set update=true to enable updating",
     );
   }
 

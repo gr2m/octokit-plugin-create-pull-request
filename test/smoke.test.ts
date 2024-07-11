@@ -35,8 +35,8 @@ describe("Smoke test", () => {
       });
     }).rejects.toThrow(
       new Error(
-        '[octokit-plugin-create-pull-request] "changes" cannot be an empty array'
-      )
+        '[octokit-plugin-create-pull-request] "changes" cannot be an empty array',
+      ),
     );
   });
 });

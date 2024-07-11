@@ -23,18 +23,18 @@ test("author and committer", async () => {
     } = options;
 
     expect(
-      `${currentFixtures.request.method} ${currentFixtures.request.url}`
+      `${currentFixtures.request.method} ${currentFixtures.request.url}`,
     ).toEqual(`${options.method} ${options.url}`);
 
     Object.keys(params).forEach((paramName) => {
       if (paramName === "signature") {
         expect(currentFixtures.request.verification.signature).toStrictEqual(
-          "my-signature"
+          "my-signature",
         );
         return;
       }
       expect(currentFixtures.request[paramName]).toStrictEqual(
-        params[paramName]
+        params[paramName],
       );
     });
 

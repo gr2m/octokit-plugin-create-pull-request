@@ -6,7 +6,7 @@ export async function valueToTreeObject(
   owner: string,
   repo: string,
   path: string,
-  value: string | File
+  value: string | File,
 ) {
   const defaultMode = "100644";
 
@@ -39,7 +39,7 @@ export async function valueToTreeObject(
       owner,
       repo,
       ...value,
-    }
+    },
   );
   const blobSha = data.sha;
 

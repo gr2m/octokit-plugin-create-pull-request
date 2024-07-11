@@ -25,7 +25,7 @@ test("Base and Head equality", async () => {
     throw new Error("Should not resolve");
   } catch (error) {
     expect((error as Error).message).toEqual(
-      '[octokit-plugin-create-pull-request] "head" cannot be the same value as "base"'
+      '[octokit-plugin-create-pull-request] "head" cannot be the same value as "base"',
     );
   }
 });
