@@ -37,11 +37,11 @@ Node
 Install with `npm install @octokit/core octokit-plugin-create-pull-request`. Optionally replace `@octokit/core` with a core-compatible module
 
 ```js
-const { Octokit } = require("@octokit/core");
-const {
+import { Octokit } from "@octokit/core";
+import {
   createPullRequest,
   DELETE_FILE,
-} = require("octokit-plugin-create-pull-request");
+} from "octokit-plugin-create-pull-request";
 ```
 
 </td></tr>
