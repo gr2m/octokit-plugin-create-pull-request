@@ -1,11 +1,11 @@
-import { Changes, State, TreeParameter, UpdateFunctionFile } from "./types";
+import { Changes, State, TreeParameter, UpdateFunctionFile } from "./types.js";
 
-import { valueToTreeObject } from "./value-to-tree-object";
-import { DELETE_FILE } from "./constants";
+import { valueToTreeObject } from "./value-to-tree-object.js";
+import { DELETE_FILE } from "./constants.js";
 
 export async function createTree(
   state: Required<State>,
-  changes: Required<Changes>
+  changes: Required<Changes>,
 ): Promise<string | null> {
   const {
     octokit,
@@ -57,11 +57,11 @@ export async function createTree(
             repo,
             ref: latestCommitSha,
             path,
-          }
+          },
         );
 
         result = await value(
-          Object.assign(file, { exists: true }) as UpdateFunctionFile
+          Object.assign(file, { exists: true }) as UpdateFunctionFile,
         );
 
         if (result === DELETE_FILE) {
@@ -80,14 +80,14 @@ export async function createTree(
               sha: null,
             });
             continue;
+            /* v8 ignore next 3 */
           } catch (error) {
-            // istanbul ignore next
             continue;
           }
         }
       } catch (error) {
-        // @ts-ignore
-        // istanbul ignore if
+        /* v8 ignore next 2 */
+        // @ts-expect-error
         if (error.status !== 404) throw error;
 
         // @ts-ignore
@@ -105,7 +105,7 @@ export async function createTree(
       tree.push(
         // @ts-expect-error - Argument result can never be of type Symbol at this branch
         // because the above condition will catch it and move on to the next iteration cycle
-        await valueToTreeObject(octokit, ownerOrFork, repo, path, result)
+        await valueToTreeObject(octokit, ownerOrFork, repo, path, result),
       );
       continue;
     }

@@ -1,17 +1,17 @@
-import type { CommitPayload, Changes, State } from "./types";
+import type { CommitPayload, Changes, State } from "./types.js";
 
 export async function createCommit(
   state: Required<State>,
   treeCreated: boolean,
-  changes: Changes
+  changes: Changes,
 ): Promise<string> {
   const { octokit, repo, ownerOrFork, latestCommitSha } = state;
 
   const message = treeCreated
     ? changes.commit
     : typeof changes.emptyCommit === "string"
-    ? changes.emptyCommit
-    : changes.commit;
+      ? changes.emptyCommit
+      : changes.commit;
 
   const commit: CommitPayload = {
     message,
@@ -31,7 +31,7 @@ export async function createCommit(
       signature: changes.signature
         ? await changes.signature(commit)
         : undefined,
-    }
+    },
   );
 
   return latestCommit.sha;

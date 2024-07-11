@@ -1,8 +1,8 @@
 import type { Octokit } from "@octokit/core";
-import type { Changes, Options, State } from "./types";
+import type { Changes, Options, State } from "./types.js";
 
-import { createTree } from "./create-tree";
-import { createCommit } from "./create-commit";
+import { createTree } from "./create-tree.js";
+import { createCommit } from "./create-commit.js";
 
 export async function composeCreatePullRequest(
   octokit: Octokit,
@@ -19,11 +19,11 @@ export async function composeCreatePullRequest(
     labels = [],
     forceFork = false,
     update = false,
-  }: Options
+  }: Options,
 ) {
   if (head === base) {
     throw new Error(
-      '[octokit-plugin-create-pull-request] "head" cannot be the same value as "base"'
+      '[octokit-plugin-create-pull-request] "head" cannot be the same value as "base"',
     );
   }
   const changes = Array.isArray(changesOption)
@@ -32,7 +32,7 @@ export async function composeCreatePullRequest(
 
   if (changes.length === 0)
     throw new Error(
-      '[octokit-plugin-create-pull-request] "changes" cannot be an empty array'
+      '[octokit-plugin-create-pull-request] "changes" cannot be an empty array',
     );
 
   const state: State = { octokit, owner, repo };
@@ -43,14 +43,14 @@ export async function composeCreatePullRequest(
     {
       owner,
       repo,
-    }
+    },
   );
 
   const isUser = !!headers["x-oauth-scopes"];
 
   if (!repository.permissions) {
     throw new Error(
-      "[octokit-plugin-create-pull-request] Missing authentication"
+      "[octokit-plugin-create-pull-request] Missing authentication",
     );
   }
 
@@ -70,8 +70,8 @@ export async function composeCreatePullRequest(
       repo,
     });
     const hasFork = forks.data.find(
-      /* istanbul ignore next - fork owner can be null, but we don't test that */
-      (fork) => fork.owner && fork.owner.login === user.data.login
+      /* v8 ignore next - fork owner can be null, but we don't test that */
+      (fork) => fork.owner && fork.owner.login === user.data.login,
     );
 
     if (!hasFork) {
@@ -103,7 +103,7 @@ export async function composeCreatePullRequest(
     if (change.files && Object.keys(change.files).length) {
       const latestCommitTreeSha = await createTree(
         state as Required<State>,
-        change as Required<Changes>
+        change as Required<Changes>,
       );
 
       if (latestCommitTreeSha) {
@@ -116,7 +116,7 @@ export async function composeCreatePullRequest(
       state.latestCommitSha = await createCommit(
         state as Required<State>,
         treeCreated,
-        change
+        change,
       );
     }
   }
@@ -136,7 +136,7 @@ export async function composeCreatePullRequest(
                 url: string;
                 number: number;
               };
-            }
+            },
           ];
         };
       };
@@ -162,7 +162,7 @@ export async function composeCreatePullRequest(
       owner: state.ownerOrFork,
       repo,
       head,
-    }
+    },
   );
 
   const branchExists = !!branchInfo.repository.ref;
@@ -171,7 +171,7 @@ export async function composeCreatePullRequest(
 
   if (existingPullRequest && !update) {
     throw new Error(
-      `[octokit-plugin-create-pull-request] Pull request already exists: ${existingPullRequest.url}. Set update=true to enable updating`
+      `[octokit-plugin-create-pull-request] Pull request already exists: ${existingPullRequest.url}. Set update=true to enable updating`,
     );
   }
 
@@ -212,13 +212,13 @@ export async function composeCreatePullRequest(
       {
         pull_number: existingPullRequest.number,
         ...pullRequestOptions,
-      }
+      },
     );
   } else {
     // https://developer.github.com/v3/pulls/#create-a-pull-request
     res = await octokit.request(
       "POST /repos/{owner}/{repo}/pulls",
-      pullRequestOptions
+      pullRequestOptions,
     );
   }
 
@@ -231,21 +231,21 @@ export async function composeCreatePullRequest(
           repo,
           number: res.data.number,
           labels,
-        }
+        },
       );
 
-      // istanbul ignore if
+      /* v8 ignore next 5 */
       if (labelRes.data.length > labels.length) {
         octokit.log.warn(
-          "The pull request already contains more labels than the ones provided. This could be due to the presence of previous labels."
+          "The pull request already contains more labels than the ones provided. This could be due to the presence of previous labels.",
         );
       }
     } catch (error) {
-      // @ts-ignore
-      // istanbul ignore if
+      /* v8 ignore next 6 */
+      // @ts-expect-error
       if (error.status === 403) {
         octokit.log.warn(
-          "You do not have permissions to apply labels to this pull request. However, the pull request has been successfully created without the requested labels."
+          "You do not have permissions to apply labels to this pull request. However, the pull request has been successfully created without the requested labels.",
         );
         return res;
       }

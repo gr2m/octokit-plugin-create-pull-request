@@ -1,11 +1,23 @@
+import { test, expect } from "vitest";
+
 import { Octokit as Core } from "@octokit/core";
 import { RequestError } from "@octokit/request-error";
 
-import { createPullRequest } from "../src";
+import { readFile } from "node:fs/promises";
+
+import { createPullRequest } from "../src/index.ts";
 const Octokit = Core.plugin(createPullRequest);
 
 test("author and committer", async () => {
-  const fixtures = require("./fixtures/create-commits-with-author-and-committer");
+  const fixtures = JSON.parse(
+    await readFile(
+      new URL(
+        "./fixtures/create-commits-with-author-and-committer.json",
+        import.meta.url,
+      ),
+      "utf-8",
+    ),
+  );
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -23,25 +35,25 @@ test("author and committer", async () => {
     } = options;
 
     expect(
-      `${currentFixtures.request.method} ${currentFixtures.request.url}`
+      `${currentFixtures.request.method} ${currentFixtures.request.url}`,
     ).toEqual(`${options.method} ${options.url}`);
 
     Object.keys(params).forEach((paramName) => {
       if (paramName === "signature") {
         expect(currentFixtures.request.verification.signature).toStrictEqual(
-          "my-signature"
+          "my-signature",
         );
         return;
       }
       expect(currentFixtures.request[paramName]).toStrictEqual(
-        params[paramName]
+        params[paramName],
       );
     });
 
     if (currentFixtures.response.status >= 400) {
       throw new RequestError("Error", currentFixtures.response.status, {
         request: currentFixtures.request,
-        headers: currentFixtures.response.headers,
+        response: currentFixtures.response,
       });
     }
 

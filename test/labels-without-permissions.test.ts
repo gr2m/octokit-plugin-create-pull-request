@@ -1,11 +1,19 @@
+import { test, expect } from "vitest";
 import { Octokit as Core } from "@octokit/core";
 import { RequestError } from "@octokit/request-error";
 
-import { createPullRequest } from "../src";
+import { readFile } from "node:fs/promises";
+
+import { createPullRequest } from "../src/index.ts";
 const Octokit = Core.plugin(createPullRequest);
 
 test("labels without permissions", async () => {
-  const fixtures = require("./fixtures/labels-without-permissions");
+  const fixtures = JSON.parse(
+    await readFile(
+      new URL("./fixtures/labels-without-permissions.json", import.meta.url),
+      "utf-8",
+    ),
+  );
   const fixturePr = fixtures[fixtures.length - 2].response;
   const octokit = new Octokit();
 
@@ -23,19 +31,19 @@ test("labels without permissions", async () => {
     } = options;
 
     expect(
-      `${currentFixtures.request.method} ${currentFixtures.request.url}`
+      `${currentFixtures.request.method} ${currentFixtures.request.url}`,
     ).toEqual(`${options.method} ${options.url}`);
 
     Object.keys(params).forEach((paramName) => {
       expect(currentFixtures.request[paramName]).toStrictEqual(
-        params[paramName]
+        params[paramName],
       );
     });
 
     if (currentFixtures.response.status >= 400) {
       throw new RequestError("Error", currentFixtures.response.status, {
         request: currentFixtures.request,
-        headers: currentFixtures.response.headers,
+        response: currentFixtures.response,
       });
     }
 

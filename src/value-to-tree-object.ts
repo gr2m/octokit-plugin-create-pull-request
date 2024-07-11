@@ -1,12 +1,12 @@
 import type { Octokit } from "@octokit/core";
-import type { File } from "./types";
+import type { File } from "./types.js";
 
 export async function valueToTreeObject(
   octokit: Octokit,
   owner: string,
   repo: string,
   path: string,
-  value: string | File
+  value: string | File,
 ) {
   const defaultMode = "100644";
 
@@ -39,7 +39,7 @@ export async function valueToTreeObject(
       owner,
       repo,
       ...value,
-    }
+    },
   );
   const blobSha = data.sha;
 

@@ -1,6 +1,8 @@
+import { describe, it, expect } from "vitest";
+
 import { Octokit } from "@octokit/core";
 
-import { createPullRequest, composeCreatePullRequest } from "../src";
+import { createPullRequest, composeCreatePullRequest } from "../src/index.ts";
 
 describe("Smoke test", () => {
   it("createPullRequest is a function", () => {
@@ -35,8 +37,8 @@ describe("Smoke test", () => {
       });
     }).rejects.toThrow(
       new Error(
-        '[octokit-plugin-create-pull-request] "changes" cannot be an empty array'
-      )
+        '[octokit-plugin-create-pull-request] "changes" cannot be an empty array',
+      ),
     );
   });
 });

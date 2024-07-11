@@ -1,12 +1,20 @@
+import { vi, test, expect } from "vitest";
 import { Octokit as Core } from "@octokit/core";
 import { RequestError } from "@octokit/request-error";
 
-import { createPullRequest } from "../src";
-import { UpdateFunction } from "../src/types";
+import { readFile } from "node:fs/promises";
+
+import { createPullRequest } from "../src/index.ts";
+import { UpdateFunction } from "../src/types.ts";
 const Octokit = Core.plugin(createPullRequest);
 
 test("file functions are called in sequence", async () => {
-  const fixtures = require("./fixtures/update-readme");
+  const fixtures = JSON.parse(
+    await readFile(
+      new URL("./fixtures/update-readme.json", import.meta.url),
+      "utf-8",
+    ),
+  );
   const fixturePr = fixtures[fixtures.length - 1].response;
   const octokit = new Octokit();
 
@@ -16,15 +24,15 @@ test("file functions are called in sequence", async () => {
     if (currentFixtures.response.status >= 400) {
       throw new RequestError("Error", currentFixtures.response.status, {
         request: currentFixtures.request,
-        headers: currentFixtures.response.headers,
+        response: currentFixtures.response,
       });
     }
 
     return currentFixtures.response;
   });
 
-  const fileOneStub = jest.fn();
-  const fileTwoStub = jest.fn();
+  const fileOneStub = vi.fn();
+  const fileTwoStub = vi.fn();
 
   const pr = await octokit.createPullRequest({
     owner: "gr2m",

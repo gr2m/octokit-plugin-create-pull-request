@@ -11,16 +11,13 @@ jobs:
     name: release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: npm
       - run: npm ci
       - run: npm run build
-      # https://github.com/gr2m/octokit-plugin-create-pull-request/pull/127/
-      - name: "Fix pkg.files file pattern"
-        run: node scripts/fix-package-json.js
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

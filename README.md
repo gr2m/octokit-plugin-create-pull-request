@@ -20,12 +20,12 @@ Features
 Browsers
 </th><td width=100%>
 
-Load `octokit-plugin-create-pull-request` and [`@octokit/core`](https://github.com/octokit/core.js) (or core-compatible module) directly from [cdn.pika.dev](https://cdn.pika.dev)
+Load `octokit-plugin-create-pull-request` and [`@octokit/core`](https://github.com/octokit/core.js) (or core-compatible module) directly from [esm.sh](https://esm.sh)
 
 ```html
 <script type="module">
-  import { Octokit } from "https://cdn.pika.dev/@octokit/core";
-  import { createPullRequest } from "https://cdn.pika.dev/octokit-plugin-create-pull-request";
+  import { Octokit } from "https://esm.sh/@octokit/core";
+  import { createPullRequest } from "https://esm.sh/octokit-plugin-create-pull-request";
 </script>
 ```
 
@@ -37,16 +37,22 @@ Node
 Install with `npm install @octokit/core octokit-plugin-create-pull-request`. Optionally replace `@octokit/core` with a core-compatible module
 
 ```js
-const { Octokit } = require("@octokit/core");
-const {
+import { Octokit } from "@octokit/core";
+import {
   createPullRequest,
   DELETE_FILE,
-} = require("octokit-plugin-create-pull-request");
+} from "octokit-plugin-create-pull-request";
 ```
 
 </td></tr>
 </tbody>
 </table>
+
+> [!IMPORTANT]
+> As we use [conditional exports](https://nodejs.org/api/packages.html#conditional-exports), you will need to adapt your `tsconfig.json` by setting `"moduleResolution": "node16", "module": "node16"`.
+>
+> See the TypeScript docs on [package.json "exports"](https://www.typescriptlang.org/docs/handbook/modules/reference.html#packagejson-exports).<br>
+> See this [helpful guide on transitioning to ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) from [@sindresorhus](https://github.com/sindresorhus)
 
 ```js
 const MyOctokit = Octokit.plugin(createPullRequest);

@@ -1,5 +1,6 @@
+import { test, expect } from "vitest";
 import { Octokit as Core } from "@octokit/core";
-import { createPullRequest } from "../src";
+import { createPullRequest } from "../src/index.ts";
 
 const Octokit = Core.plugin(createPullRequest);
 
@@ -25,7 +26,7 @@ test("Base and Head equality", async () => {
     throw new Error("Should not resolve");
   } catch (error) {
     expect((error as Error).message).toEqual(
-      '[octokit-plugin-create-pull-request] "head" cannot be the same value as "base"'
+      '[octokit-plugin-create-pull-request] "head" cannot be the same value as "base"',
     );
   }
 });

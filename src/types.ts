@@ -54,7 +54,7 @@ export type UpdateFunctionFile =
     };
 
 export type UpdateFunction = (
-  file: UpdateFunctionFile
+  file: UpdateFunctionFile,
 ) => string | File | null | Symbol | Promise<string | File | null | Symbol>;
 
 export type State = {

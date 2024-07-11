@@ -1,11 +1,19 @@
+import { test, expect } from "vitest";
 import { Octokit as Core } from "@octokit/core";
 import { RequestError } from "@octokit/request-error";
 
-import { createPullRequest } from "../src";
+import { readFile } from "node:fs/promises";
+
+import { createPullRequest } from "../src/index.ts";
 const Octokit = Core.plugin(createPullRequest);
 
 test("pull-request-exists", async () => {
-  const fixtures = require("./fixtures/pull-request-exists");
+  const fixtures = JSON.parse(
+    await readFile(
+      new URL("./fixtures/pull-request-exists.json", import.meta.url),
+      "utf-8",
+    ),
+  );
   const octokit = new Octokit();
 
   octokit.hook.wrap("request", (_, options) => {
@@ -22,19 +30,19 @@ test("pull-request-exists", async () => {
     } = options;
 
     expect(
-      `${currentFixtures.request.method} ${currentFixtures.request.url}`
+      `${currentFixtures.request.method} ${currentFixtures.request.url}`,
     ).toEqual(`${options.method} ${options.url}`);
 
     Object.keys(params).forEach((paramName) => {
       expect(currentFixtures.request[paramName]).toStrictEqual(
-        params[paramName]
+        params[paramName],
       );
     });
 
     if (currentFixtures.response.status >= 400) {
       throw new RequestError("Error", currentFixtures.response.status, {
         request: currentFixtures.request,
-        headers: currentFixtures.response.headers,
+        response: currentFixtures.response,
       });
     }
 
@@ -59,7 +67,7 @@ test("pull-request-exists", async () => {
   } catch (error) {
     // @ts-ignore
     expect(error.message).toEqual(
-      "[octokit-plugin-create-pull-request] Pull request already exists: https://github.com/gr2m/pull-request-test/pull/99. Set update=true to enable updating"
+      "[octokit-plugin-create-pull-request] Pull request already exists: https://github.com/gr2m/pull-request-test/pull/99. Set update=true to enable updating",
     );
   }
 
