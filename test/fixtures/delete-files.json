@@ -630,7 +630,7 @@
       },
       "request": {},
       "url": "/graphql",
-      "query": "\n    query ($owner: String!, $repo: String!, $head: String!) {\n      repository(name: $repo, owner: $owner) {\n        ref(qualifiedName: $head) {\n          associatedPullRequests(first: 1, states: OPEN) {\n            edges {\n              node {\n                id\n                number\n                url\n              }\n            }\n          }\n        }\n      }\n    }",
+      "query": "\n    query getPullRequestsForBranch($owner: String!, $repo: String!, $head: String!) {\n      repository(name: $repo, owner: $owner) {\n        ref(qualifiedName: $head) {\n          associatedPullRequests(first: 1, states: OPEN) {\n            edges {\n              node {\n                id\n                number\n                url\n              }\n            }\n          }\n        }\n      }\n    }",
       "variables": {
         "owner": "gr2m",
         "repo": "pull-request-test",

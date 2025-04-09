@@ -143,7 +143,7 @@ export async function composeCreatePullRequest(
     };
   } = await octokit.graphql(
     `
-    query ($owner: String!, $repo: String!, $head: String!) {
+    query getPullRequestsForBranch($owner: String!, $repo: String!, $head: String!) {
       repository(name: $repo, owner: $owner) {
         ref(qualifiedName: $head) {
           associatedPullRequests(first: 1, states: OPEN) {
