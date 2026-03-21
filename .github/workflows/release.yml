@@ -6,6 +6,12 @@ name: Release
       - next
       - beta
       - "*.x"
+permissions:
+  id-token: write # to enable use of OIDC for trusted publishing and npm provenance
+  contents: write # tags and releases
+  pull-requests: write # comments
+  issues: write # comments
+
 jobs:
   release:
     name: release
@@ -21,4 +27,3 @@ jobs:
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
