@@ -50,7 +50,7 @@ test("labels without error", async () => {
     return currentFixtures.response;
   });
 
-  expect(async () => {
+  await expect(async () => {
     return octokit.createPullRequest({
       owner: "gr2m",
       repo: "pull-request-test",
@@ -66,5 +66,5 @@ test("labels without error", async () => {
         commit: "why",
       },
     });
-  }).rejects.toThrow(new Error("Error"));
+  }).rejects.toThrow("Error");
 });

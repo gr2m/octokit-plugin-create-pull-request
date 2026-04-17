@@ -26,7 +26,7 @@ describe("Smoke test", () => {
   it("throws error if `changes` is an empty array", async () => {
     const TestOctokit = Octokit.plugin(createPullRequest);
     const testOctokit = new TestOctokit();
-    expect(async () => {
+    await expect(async () => {
       return testOctokit.createPullRequest({
         owner: "owner",
         repo: "repo",
@@ -36,9 +36,7 @@ describe("Smoke test", () => {
         changes: [],
       });
     }).rejects.toThrow(
-      new Error(
-        '[octokit-plugin-create-pull-request] "changes" cannot be an empty array',
-      ),
+      '[octokit-plugin-create-pull-request] "changes" cannot be an empty array',
     );
   });
 });
